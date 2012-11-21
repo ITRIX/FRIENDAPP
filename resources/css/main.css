@@ -1,0 +1,166 @@
+ 
+/*    Styling applied to Login page.*/
+
+.loginview{
+  background:url("../images/gray_fibers.png") no-repeat!important;
+  background-size:100% 100%!important;
+}
+
+.loginview .expenfieldcls .x-form-fieldset-inner{
+  background:rgba(247, 242, 242, 0.51);
+}
+/* FOnt Styling for fieldset header*/
+.headerUser {
+  width: 100%;
+  font-size: 1.3em;
+  display: block;
+  float: left;
+  text-align: center;
+  color: white;
+  font-family:'Lucida Handwriting';
+}
+
+.loginview .x-input-el{
+  font-size: 0.8em!important
+}
+
+.loginview .x-button-label{
+  font-family: 'GOTHIC';
+  font-size: 0.8em;
+}
+
+.userExpenListView .x-inner.x-list-inner.x-scroll-scroller{
+  padding: 0em;
+}
+
+.x-scroll-container > .x-inner {
+  padding: 0em;
+}
+
+.listbutton.x-button{
+  -webkit-border-radius: 0em;
+}
+
+.maskCls.x-mask .x-mask-inner{
+  background: transparent;
+  margin-bottom: 100px;
+
+}
+
+.x-mask{
+  background: rgba(0,0,0,0.7)!important;
+}
+
+.formPanelStyle{
+  /*  margin:0.7em!important;
+    box-shadow:0px 0px 15px 1px rgba(0, 0, 0, 0.3);*/
+  background:url("../images/background.png") no-repeat ;
+  background-size: 100% 100%;
+}
+
+.listCls .x-body{
+  background:url("../images/gray_fibers.png") no-repeat !important;
+  background-size: 100% 100% !important;
+}
+
+.listCls .x-scroll-container {
+  background-color: transparent!important;
+}
+
+.listCls .x-inner{
+  padding: 0em!important;
+}
+/*
+Styling for list
+*/
+
+.userExpenseItem{
+  color: #13172C!important;
+  font-family: 'Humanist 521';
+  font-size: 1em;
+  background-image: -webkit-gradient( 
+    linear,
+    left bottom,
+    left top,
+    color-stop(0, #F7F7F7),
+    color-stop(0.1, #EDEDED),
+    color-stop(1, #F7F7F7) );
+}
+
+.userExpenseItem .x-list-item-label{
+  border-top: 1px solid white!important;
+  border-bottom: 1px solid #DEDEDE;
+}
+
+.userExpenseList .x-list-disclosure{
+  background: url("../images/arrow.png") center center no-repeat!important;
+  -webkit-mask: 0 !important;
+  margin-right:4px;
+  width: 0.8em!important;
+  height: 0.8em!important;
+  background-size:100% 100% !important;
+  bottom: 0.9em!important;
+
+}
+
+.toolbarButton{
+  webkit-border-radius: 0.2em!important;
+  border-radius: 0.2em!important;
+  box-shadow: inset 1px 1px 20px 10px rgba(0, 0, 0, 0.5);
+  background-color: 2F4768!important;
+  background-image: none !important;
+/*  background-image:-webkit-gradient(linear, 0% 84%, 0% 0%, from(#666666), to(#666666), color-stop(0,#333333))!important;*/
+  color:#fff;
+}
+
+.toolbarButton .x-button-icon{
+  width: 4em!important;
+  height: 4em!important;
+}
+
+.calendarButton .x-button-icon{
+  width: 5em!important;
+  height: 6em!important;
+}
+.calendarCls{
+background-image: url("../images/calendar2.png");
+background-size: 100% 100%;
+}
+
+.graphCls{
+background-image: url("../images/graph.png");
+background-size: 100%;
+}
+
+.reportCls{
+background-image: url("../images/report.png");
+background-size: 100%;
+}
+
+@font-face {
+  font-family: 'Lucida Handwriting';
+  src: url('../fonts/LHANDW.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'GOTHIC';
+  src: url('../fonts/GOTHIC.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Humanist 521';
+  src: url('../fonts/hum521n.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+
+.x-title .x-innerhtml{
+  font-family: 'Humanist 521';
+  font-size: 0.9em!important;
+}
