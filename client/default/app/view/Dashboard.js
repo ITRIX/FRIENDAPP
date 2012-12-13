@@ -8,7 +8,8 @@ Ext.define('FRIENDAPP.view.Dashboard',{
   config:{
     layout:{
       type:'vbox',
-      align:'middle'
+      align:'middle',
+      pack:'center'
     },
     enter:'top',
     exit:'top',
@@ -17,68 +18,75 @@ Ext.define('FRIENDAPP.view.Dashboard',{
     title:'Dashboard',
     items:[
     
-    {
-      xtype: 'panel',
-      width:'90%',
-      height:'160px',
-      layout:{
-        type:'hbox',
-        align:'bottom'
-      },
-      items:[
+//    {
+//      xtype: 'panel',
+//      width:'100%',
+//      height:'50%',
+//      layout:{
+//        type:'hbox',
+//        align:'middle',
+//        pack:'bottom'
+//      },
+//      items:[
       {      
         xtype: 'button',
-        height: '110px',
-        width:'110px',
-        cls:'toolbarButton calendarButton',
+        height: '100%',
+        width:'50%',
+        cls:'toolbarButton',
         iconCls:'calendarCls',
         action:'calendar'
       }, 
-      {
-        xtype:'spacer'
-      },
+//      {
+//        xtype:'spacer',
+//        width:'10%'
+//      },
       {
         xtype :'button',
-        ui :'decline',
-        height: '110px',
-        width:'110px',
+//        ui :'decline',
+        height: '100%',
+        width:'50%',
         id: "logoutButtonHit",
-        text :'Logout',
-        cls: 'logoutButton',
+//        text :'Logout',
+//        cls: 'logoutButton',
+        cls:'toolbarButton',
+        iconCls:'logoutCls',
         action:'logout'
-      }]
+//      }]
     },
-    {
-      xtype:'spacer'
-    },
-    {
-      xtype: 'panel',
-      width:'90%',
-      height:'160px',
-      layout:{
-        type:'hbox',
-        align:'top'
-      },
-      items:[
+//    {
+//      xtype:'spacer',
+//      height:'10%'
+//    },
+//    {
+//      xtype: 'panel',
+//      width:'100%',
+//      height:'49%',
+//      layout:{
+//        type:'hbox',
+//        align:'middle',
+//        pack:'top'
+//      },
+//      items:[
       {
         xtype: 'button',
-        height: '110px',
-        width:'110px',
+       height: '100%',
+        width:'50%',
         cls:'toolbarButton',
         iconCls:'graphCls',
         action:'graph'
       },
-      {
-        xtype:'spacer'
-      },
+//      {
+//        xtype:'spacer',
+//        width:'10%'
+//      },
       {
         xtype: 'button',
-        height: '110px',
-        width:'110px',
+        height: '100%',
+        width:'50%',
         cls:'toolbarButton',
         iconCls:'reportCls',
         action:'report'
-      }]
+//      }]
     }]
   }
 })
