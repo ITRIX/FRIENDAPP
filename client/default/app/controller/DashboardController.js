@@ -46,6 +46,7 @@ Ext.define('FRIENDAPP.controller.DashboardController',{
         
     onScreenSelection:function(obj,e,eOpts){
       this.getDashboard().hide();
+      debugger;
       switch(obj.action)
       {
         case 'calendar':
