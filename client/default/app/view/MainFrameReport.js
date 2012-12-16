@@ -23,6 +23,7 @@ Ext.define("FRIENDAPP.view.MainFrameReport", {
      {
         xtype: 'selectfield',
         itemId:'searchWise',
+        width:'40%',
         options: [
                  {text: 'Month',  value: 'monthRpt'},
                  {text: 'Year', value: 'yearRpt'}
@@ -35,6 +36,7 @@ Ext.define("FRIENDAPP.view.MainFrameReport", {
         xtype: 'datepickerfield',
         name: 'monthWise',
         itemId:'monthWise',
+        width:'40%',
         value: new Date(),
         dateFormat:'F',
         picker: {
