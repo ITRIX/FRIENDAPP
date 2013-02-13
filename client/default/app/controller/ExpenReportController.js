@@ -9,7 +9,7 @@ Ext.define('FRIENDAPP.controller.ExpenReportController', {
     
     config: {
         refs: {
-            reportSelectField:'MainFrameReport #searchWise',
+            reportSelectField:'MainFrameReport selectfield[action=searchWise]',
             reportMonthWise:'MainFrameReport #monthWise',
             reportYearWise:'MainFrameReport #yearWise'
             
@@ -21,6 +21,7 @@ Ext.define('FRIENDAPP.controller.ExpenReportController', {
         }
     },
     onSearchSelection:function(){
+        debugger;
       switch(this.getReportSelectField().getValue())
       {
         case 'monthRpt':
