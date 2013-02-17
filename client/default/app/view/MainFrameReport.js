@@ -23,6 +23,7 @@ Ext.define("FRIENDAPP.view.MainFrameReport", {
      {
         xtype: 'selectfield',
         itemId:'searchWise',
+        name:'selectfieldcontrol',
         width:'40%',
         options: [
                  {text: 'Month',  value: 'monthRpt'},

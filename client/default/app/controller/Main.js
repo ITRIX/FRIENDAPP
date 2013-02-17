@@ -9,7 +9,6 @@ Ext.define('FRIENDAPP.controller.Main', {
     config: {
         refs: {
             calendar:'MainFrameview touchcalendar[title=Calendar]',
-            //calendarView:'calendar',
             expenseList:'userExpenListView1',
             expenList:'userExpenListView1 #expenseList',
             mainFrame:'MainFrameview',
