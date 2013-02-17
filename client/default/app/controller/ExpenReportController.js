@@ -56,7 +56,7 @@ Ext.define('FRIENDAPP.controller.ExpenReportController', {
     var peoplefilter = function(item) {
             debugger;
             alert(Ext.util.Format.date(item.data.amount,'M'));
-            //alert(Ext.util.Format.date(this.getReportMonthWise().getValue(),'M'));
+            //alert(Ext.util.Format.date(this.getReportMonthWise().getValue(),'M')); 
             return item.data.amount=='500' ? true : false            
         }
         
