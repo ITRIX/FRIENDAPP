@@ -5,6 +5,7 @@
 
 
 Ext.define("FRIENDAPP.view.MainFrameReport", {
+
   extend: 'Ext.Panel',
   requires:["FRIENDAPP.view.ExpenReport",
   'Ext.field.Select',
@@ -64,4 +65,5 @@ Ext.define("FRIENDAPP.view.MainFrameReport", {
       xtype:'ExpenReport'
     }]
   }
+
 });
