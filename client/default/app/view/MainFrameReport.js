@@ -40,7 +40,7 @@ Ext.define("FRIENDAPP.view.MainFrameReport", {
         itemId:'monthWise',
         width:'40%',
         value: new Date(),
-        dateFormat:'F',
+        dateFormat:'M',
         picker: {
           yearFrom: 2011,
           dateFormat:'d/m/Y',
