@@ -44,22 +44,12 @@ Ext.define('FRIENDAPP.controller.ExpenReportController', {
     },
     
     onMonthSort:function(){
-      alert("month");
-     var store=Ext.getStore('userExpenStore');
-//     store.load();
-    
-     debugger;
-     //var d=store.get('date');
-       //alert(d);
-    //var store = Ext.data.StoreManager.lookup('userExpenStore');
-     store.clearFilter();
+    var data=this.getReportMonthWise().getValue();
+    var store=Ext.getStore('userExpenStore');
+    store.clearFilter();
     var peoplefilter = function(item) {
-            debugger;
-            alert(Ext.util.Format.date(item.data.amount,'M'));
-            //alert(Ext.util.Format.date(this.getReportMonthWise().getValue(),'M')); 
-            return item.data.amount=='500' ? true : false            
-        }
-        
+      return Ext.util.Format.date(item.data.date,'M')==Ext.util.Format.date(data,'M') ? true : false            
+    }
     store.filterBy(peoplefilter);
     },
     
