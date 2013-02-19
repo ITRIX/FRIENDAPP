@@ -170,3 +170,8 @@ background-size: 100%;
   font-family: 'Humanist 521';
   font-size: 0.9em!important;
 }
+
+
+.formPanelCls .x-field{
+    border-bottom: 1px solid lightgray
+}
