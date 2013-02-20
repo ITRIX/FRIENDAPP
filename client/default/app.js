@@ -5,8 +5,15 @@
 //</debug>
 
 Ext.application({
-    controllers: ["Main","LoginController","LogoutController","ExpenListController","ExpenFormController","DashboardController","ExpenReportController"],
 
+    controllers: ["Main",
+        "LoginController",
+        "LogoutController",
+        "ExpenListController",
+        "ExpenFormController",
+        "DashboardController",
+        "ExpenReportController"
+    ],
     stores: ["userExpenStore"],
      models: ["userExpenModel"],
     name: 'FRIENDAPP',
