@@ -22,4 +22,9 @@ $sheet-bg-color :rgba(0,0,0,0);
 // Your custom code goes here..
 
 @include sencha-button-ui('login', #274581, 'bevel');
+@include sencha-button-ui('dashboard', #347C2C, 'bevel');
 //@include sencha-button-ui('login2', #1957AD, 'glossy');
+
+.x-button-dashboard{
+border-radius:0px;
+}

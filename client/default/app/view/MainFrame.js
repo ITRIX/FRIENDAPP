@@ -23,7 +23,7 @@ Ext.define("FRIENDAPP.view.MainFrame",{
       xtype:'button',
       iconMask: true, 
       text:'DASHBOARD',
-      ui:'login',
+      ui:'dashboard',
       action:'dashboard',
       width:'100%',
       itemId:'dashboardButton',
