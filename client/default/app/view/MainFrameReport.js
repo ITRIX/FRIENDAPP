@@ -20,25 +20,32 @@ Ext.define("FRIENDAPP.view.MainFrameReport", {
     {
      xtype:'toolbar',
      docked: 'top',
+    },
+    {
+      xtype:'panel',
+      cls:'formPanelCls',
+      width:'100%',
+      docked:'top',
+      layout:'vbox',
      items:[
      {
         xtype: 'selectfield',
         itemId:'searchWise',
         name:'selectfieldcontrol',
-        width:'40%',
+        width:'100%',
         options: [
                  {text: 'Month',  value: 'monthRpt'},
                  {text: 'Year', value: 'yearRpt'}
                  ]
      },
-     {
-       xtype:'spacer'
-     },
+//     {
+//       xtype:'spacer'
+//     },
      {   
         xtype: 'datepickerfield',
         name: 'monthWise',
         itemId:'monthWise',
-        width:'40%',
+        width:'100%',
         value: new Date(),
         dateFormat:'M',
         picker: {
