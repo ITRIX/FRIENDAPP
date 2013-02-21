@@ -34,7 +34,6 @@ Ext.define('FRIENDAPP.controller.ExpenReportController', {
     },
     
     onYearSort:function(){
-        alert("year");
     }
     
 });
