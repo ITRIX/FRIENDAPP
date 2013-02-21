@@ -24,7 +24,6 @@ Ext.define('FRIENDAPP.controller.ExpenReportController', {
     },
     onMonthSort:function(field,newValue,oldValue){
         var store=Ext.getStore('userExpenStore');
-        store.clearFilter();
         store.filter(function(item){
             var month=new Date(item.get('date')).getMonth();
             if(month===newValue.getMonth()){
@@ -33,7 +32,15 @@ Ext.define('FRIENDAPP.controller.ExpenReportController', {
         });
     },
     
-    onYearSort:function(){
+    onYearSort:function(field,newValue,oldValue){
+      var store=Ext.getStore('userExpenStore');
+        store.clearFilter();
+        store.filter(function(item){
+            var year=new Date(item.get('date')).getYear();
+            if(year===newValue.getYear()){
+                return true;
+            }
+        });
     }
     
 });
