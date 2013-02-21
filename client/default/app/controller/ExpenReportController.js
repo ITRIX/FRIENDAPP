@@ -9,15 +9,11 @@ Ext.define('FRIENDAPP.controller.ExpenReportController', {
     
     config: {
         refs: {
-            reportSelectField: 'MainFrameReport #searchWise',
             reportMonthWise:'MainFrameReport #monthWise',
             reportYearWise:'MainFrameReport #yearWise'
             
         },
         control: {
-            reportSelectField:{
-                change:'onSearchSelection'
-            },
             reportMonthWise:{
                 change:'onMonthSort'
             },
@@ -26,24 +22,6 @@ Ext.define('FRIENDAPP.controller.ExpenReportController', {
             }
         }
     },
-    onSearchSelection:function(){
-        debugger;
-        //alert (this.getReportSelectField().getValue());
-        switch(this.getReportSelectField().getValue())
-        {
-        
-            case 'monthRpt':
-                this.getReportMonthWise().setHidden(false);
-                this.getReportYearWise().setHidden(true);
-                break;  
-            case 'yearRpt':
-                this.getReportYearWise().setHidden(false);
-                this.getReportMonthWise().setHidden(true);
-                break; 
-        }
-    },
-    
-
     onMonthSort:function(field,newValue,oldValue){
         var store=Ext.getStore('userExpenStore');
         store.clearFilter();

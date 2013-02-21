@@ -19,29 +19,19 @@ Ext.define("FRIENDAPP.view.MainFrameReport", {
     items:[
     {
      xtype:'toolbar',
-     docked: 'top',
+     docked: 'top'
+    },
+    {
+      xtype:'ExpenReport'
     },
     {
       xtype:'panel',
       cls:'formPanelCls',
       width:'100%',
-      docked:'top',
+      docked:'bottom',
       layout:'vbox',
      items:[
-     {
-        xtype: 'selectfield',
-        itemId:'searchWise',
-        name:'selectfieldcontrol',
-        width:'100%',
-        options: [
-                 {text: 'Month',  value: 'monthRpt'},
-                 {text: 'Year', value: 'yearRpt'}
-                 ]
-     },
-//     {
-//       xtype:'spacer'
-//     },
-     {   
+       {   
         xtype: 'datepickerfield',
         name: 'monthWise',
         itemId:'monthWise',
@@ -58,7 +48,6 @@ Ext.define("FRIENDAPP.view.MainFrameReport", {
         xtype: 'datepickerfield',
         name: 'yearWise',
         itemId:'yearWise',
-        hidden:true,
         value: new Date(),
         dateFormat:'Y',
         picker: {
@@ -66,11 +55,10 @@ Ext.define("FRIENDAPP.view.MainFrameReport", {
           dateFormat:'d/m/Y',
           slotOrder: ['year']
         }
-      },]
-    },
-    {
-      xtype:'ExpenReport'
-    }]
+      }
+     ]
+    }
+    ]
   }
 
 });
