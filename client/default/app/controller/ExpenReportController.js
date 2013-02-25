@@ -24,6 +24,8 @@ Ext.define('FRIENDAPP.controller.ExpenReportController', {
     },
     onMonthSort:function(field,newValue,oldValue){
         var store=Ext.getStore('userExpenStore');
+        var newValue_year=this.getReportYearWise().getValue();
+        this.onYearSort(field, newValue_year, oldValue);
         store.filter(function(item){
             var month=new Date(item.get('date')).getMonth();
             if(month===newValue.getMonth()){
