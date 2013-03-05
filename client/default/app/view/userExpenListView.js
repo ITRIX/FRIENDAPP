@@ -45,7 +45,8 @@ Ext.define("FRIENDAPP.view.userExpenListView",{
       },
       {
         iconMask: true,
-//        ui: 'confirm-round',
+        cls:'addButton',
+        ui: 'plain',
         iconCls: 'addIconCls',
         itemId: 'expenAdd'
       }]
