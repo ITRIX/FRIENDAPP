@@ -32,33 +32,41 @@ Ext.define('FRIENDAPP.controller.ExpenReportController', {
     },
     
     onSortChange:function(field,newValue,oldValue,eOpts){
+      var store=Ext.getStore('userExpenStore');
       switch(field.getValue()){
         case 'day':
+                   store.clearFilter();
                    this.getReportYearWise().setHidden(true);
                    this.getReportMonthWise().setHidden(true);
                    this.getReportDayWise().setHidden(false);
                    break;
         
         case 'month':
+                   store.clearFilter();
                    this.getReportYearWise().setHidden(true);
                    this.getReportMonthWise().setHidden(false);
                    this.getReportDayWise().setHidden(true);
                    break;
           
         case 'year':
+                   store.clearFilter();
                    this.getReportYearWise().setHidden(false);
                    this.getReportMonthWise().setHidden(true);
                    this.getReportDayWise().setHidden(true);
+                   break;
+        case 'refresh':
+                    store.clearFilter();
+                    break;
       }
     },
     
     onMonthSort:function(field,newValue,oldValue){
         var store=Ext.getStore('userExpenStore');
-        var newValue_year=this.getReportYearWise().getValue();
-        this.onYearSort(field, newValue_year, oldValue);
-        store.filter(function(item){
+            store.clearFilter();
+            store.filter(function(item){
             var month=new Date(item.get('date')).getMonth();
-            if(month===newValue.getMonth()){
+            var year=new Date(item.get('date')).getYear();
+            if(month===newValue.getMonth() && year===newValue.getYear()){
                 return true;
             }
         });
@@ -78,8 +86,10 @@ Ext.define('FRIENDAPP.controller.ExpenReportController', {
       var store=Ext.getStore('userExpenStore');
         store.clearFilter();
         store.filter(function(item){
+            var day=new Date(item.get('date')).getDay();
+            var month=new Date(item.get('date')).getMonth();
             var year=new Date(item.get('date')).getYear();
-            if(year===newValue.getYear()){
+            if(day===newValue.getDay() && month===newValue.getMonth() && year===newValue.getYear()){
                 return true;
             }
         });
