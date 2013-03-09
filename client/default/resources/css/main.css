@@ -187,3 +187,10 @@ background-image: none;
     width:1.7em!important;
     height:1.7em!important;
 }
+
+.backButton .x-button-icon{
+background: url('../images/backButton_small.png')no-repeat!important;
+background-size: 100%;
+background-color: transparent!important;
+background-image: none;
+}
