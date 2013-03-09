@@ -79,7 +79,8 @@ Ext.define("FRIENDAPP.view.MainFrameReport", {
         options: [
             {text: 'Day Wise',  value: 'day'},
             {text: 'Month Wise', value: 'month'},
-            {text: 'Year Wise',  value: 'year'}
+            {text: 'Year Wise',  value: 'year'},
+            {text: 'Refresh Data',  value: 'refresh'}
         ]}          
      ]
     }
