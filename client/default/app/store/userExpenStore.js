@@ -5,7 +5,7 @@
 
 
 Ext.define('FRIENDAPP.store.userExpenStore', {
-    extend:'Ext.data.Store',
+    extend:'Ext.data.JsonStore',
    
     requires: [ 'Ext.data.proxy.LocalStorage'],   
  config:{

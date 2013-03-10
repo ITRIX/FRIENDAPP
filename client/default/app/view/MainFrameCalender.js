@@ -25,15 +25,15 @@ Ext.define("FRIENDAPP.view.MainFrameCalender", {
       name:'dateLabel',
       items:[  
       {
-//        xtype:'button',
+        xtype:'button',
         iconMask: true, 
-        ui: 'plain',
-        cls:'backButton',
+        ui: 'back',
+//        cls:'backButton',
 //        iconCls: 'reply',
         action:'back',
-        width:30,
-        height:30,
-        
+        width:60,
+//        height:30,
+        text:'BACK',
         itemId:'backButton'
       },
       {
