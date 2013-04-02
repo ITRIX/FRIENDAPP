@@ -8,7 +8,7 @@ Ext.define('FRIENDAPP.model.userExpenModel', {
     config: {
         fields: [
             { name: 'id', type: 'int' },
-            { name: 'date'},
+            { name: 'date', type:'string'},
             { name: 'amount', type: 'int' },
             { name: 'expen', type: 'string'},
             

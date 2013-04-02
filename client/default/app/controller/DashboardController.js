@@ -16,7 +16,8 @@ Ext.define('FRIENDAPP.controller.DashboardController',{
                     reportButton:'dashboard button[action=report]',
                     expenReportView:'ExpenReport',
                     mainFrameCal:'MainFrameCalender',
-                    mainFrame:'MainFrameview'
+                    mainFrame:'MainFrameview',
+                    feeAreaChart:'graphChart chart[action=chart]'
               },
         
               control: {
@@ -54,7 +55,9 @@ Ext.define('FRIENDAPP.controller.DashboardController',{
                     break;
         
         case 'graph':
-                    this.getMainFrame().setActiveItem(1)
+                    this.getMainFrame().setActiveItem(1);
+                    debugger;
+                    this.getFeeAreaChart().setData(Ext.getStore('userExpenStore').getData())
                     break;
                     
         case 'report':

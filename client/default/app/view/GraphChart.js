@@ -24,6 +24,7 @@ Ext.define("FRIENDAPP.view.GraphChart", {
     {
       title:'Emerging Balance',
       xtype:'chart',
+      action:'chart',
       itemId:'feeAreaChart',
       width:'100%',
       //      theme:'Energy',
@@ -102,97 +103,146 @@ Ext.define("FRIENDAPP.view.GraphChart", {
       title:'Area Chart',
       xtype:'chart',
       itemId:'feeAreaChart',
-      width:'100%',
-      //      theme:'Energy',
-      flex:1,
-      animate:true,
-      //      theme:'Category1',
-      store:{
-        fields:['id','balance','currency'],
-        data: [
-        {
-          id:'1',
-          balance:'10',
-          currency:'OMR'
-        },
-        {
-          id:'2',
-          balance:'3',
-          currency:'CNY'
-        },
-
-        {
-          id:'3',
-          balance:'2',
-          currency:'SAR'
-        },
-
-        {
-          id:'4',
-          balance:'2.09',
-          currency:'KZT'
-        },
-
-        {
-          id:'5',
-          balance:'1.63',
-          currency:'MYR'
-        },  
-        {
-          id:'6',
-          balance:'1.14',
-          currency:'SGD'
-        }, 
-        {
-          id:'7',
-          balance:'0.92',
-          currency:'TRL'
-        }, 
-        {
-          id:'8',
-          balance:'0.81',
-          currency:'TRL'
-        },
-        {
-          id:'9',
-          balance:'0.80',
-          currency:'ZAR'
-        },
-        {
-          id:'10',
-          balance:'0.68',
-          currency:'TTD'
-        },
-        ]
-      },
-      
-      axes: [{
+      renderTo: Ext.getBody(),
+    width: 500,
+    height: 300,
+    animate: true,
+    store: 'userExpenStore',
+    axes: [{
         type: 'Category',
         position: 'bottom',
-        fields: ['currency'],
-        title: 'Currency',
+        fields: ['date'],
+        label: {
+//            renderer: Ext.util.Format.numberRenderer('0,0')
+        },
+        title: 'Date',
+        grid: true,
         minimum: 0
-      }, {
+    }, {
         type: 'Numeric',
         position: 'left',
-        
-        maximum:12,
-        minimum:0,
-        fields: ['balance'],
-        title: 'Balance in (MM)'
-      }],
- 
-      series: [{
+        fields: ['amount'],
+        title: 'Amount'
+    }],
+    series: [{
         type: 'line',
+        highlight: {
+            size: 7,
+            radius: 7
+        },
         axis: 'left',
-        fill:true,
-        highlight: true,
-        xField: 'currency',
-        yField: ['balance']
-
-      }, 
+        xField: 'date',
+        yField: 'amount',
+        markerConfig: {
+            type: 'cross',
+            size: 4,
+            radius: 4,
+            'stroke-width': 0
+        }
+    }, {
+        type: 'line',
+        highlight: {
+            size: 7,
+            radius: 7
+        },
+        axis: 'left',
+        fill: true,
+        xField: 'date',
+        yField: 'amount',
+        markerConfig: {
+            type: 'circle',
+            size: 4,
+            radius: 4,
+            'stroke-width': 0
+        }
+    }]
+      //      theme:'Category1',
+//      store:{
+//        fields:['id','balance','currency'],
+//        data: [
+//        {
+//          id:'1',
+//          balance:'10',
+//          currency:'OMR'
+//        },
+//        {
+//          id:'2',
+//          balance:'3',
+//          currency:'CNY'
+//        },
+//
+//        {
+//          id:'3',
+//          balance:'2',
+//          currency:'SAR'
+//        },
+//
+//        {
+//          id:'4',
+//          balance:'2.09',
+//          currency:'KZT'
+//        },
+//
+//        {
+//          id:'5',
+//          balance:'1.63',
+//          currency:'MYR'
+//        },  
+//        {
+//          id:'6',
+//          balance:'1.14',
+//          currency:'SGD'
+//        }, 
+//        {
+//          id:'7',
+//          balance:'0.92',
+//          currency:'TRL'
+//        }, 
+//        {
+//          id:'8',
+//          balance:'0.81',
+//          currency:'TRL'
+//        },
+//        {
+//          id:'9',
+//          balance:'0.80',
+//          currency:'ZAR'
+//        },
+//        {
+//          id:'10',
+//          balance:'0.68',
+//          currency:'TTD'
+//        },
+//        ]
+//      },
       
-      ]
+//      axes: [{
+//        type: 'Category',
+//        position: 'bottom',
+//        fields: ['date'],
+//        title: 'Date',
+//        minimum: 0
+//      }, {
+//        type: 'Numeric',
+//        position: 'left',
+//        
+//        maximum:1200,
+//        minimum:0,
+//        fields: ['amount'],
+//        title: 'Amount in (MM)'
+//      }],
+// 
+//      series: [{
+//        type: 'line',
+//        axis: 'left',
+//        fill:true,
+//        highlight: true,
+//        xField: 'amount',
+//        yField: ['date']
+//
+//      }, 
+//      
+//      ]
     },
     
     ]
