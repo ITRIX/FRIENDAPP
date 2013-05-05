@@ -14,7 +14,7 @@ Ext.application({
         "DashboardController",
         "ExpenReportController"
     ],
-    stores: ["userExpenStore"],
+    stores: ["userExpenStore",'DailyExpenseStore'],
      models: ["userExpenModel"],
     name: 'FRIENDAPP',
 

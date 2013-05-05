@@ -31,7 +31,7 @@ Ext.define("FRIENDAPP.view.GraphChart", {
       flex:1,
       animate:true,
       //      theme:'Category1',
-      store:'userExpenStore',
+      store:'DailyExpenseStore',
       gradients: [
       {
         'id': 'v-0',
@@ -104,10 +104,10 @@ Ext.define("FRIENDAPP.view.GraphChart", {
       xtype:'chart',
       itemId:'feeAreaChart',
       renderTo: Ext.getBody(),
-    width: 500,
-    height: 300,
+    width: '100%',
+    height: '90%',
     animate: true,
-    store: 'userExpenStore',
+    store: 'DailyExpenseStore',
     axes: [{
         type: 'Category',
         position: 'bottom',

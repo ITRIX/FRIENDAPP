@@ -7,6 +7,7 @@ Ext.define('FRIENDAPP.controller.Main', {
     extend: 'Ext.app.Controller',
     
     config: {
+        currentDate:'',
         refs: {
             calendar:'MainFrameview touchcalendar[title=Calendar]',
             expenseList:'userExpenListView1',
@@ -47,7 +48,8 @@ Ext.define('FRIENDAPP.controller.Main', {
      if (!this.getExpenseList()){
         var expenseList=Ext.create("FRIENDAPP.view.userExpenListView");
      }
-     this.getDateLabel().setTitle(Ext.util.Format.date(this.getCalendar().getValue(),'d M Y'));
+     this.currentDate=Ext.util.Format.date(this.getCalendar().getValue(),'d M Y');
+     this.getDateLabel().setTitle(this.currentDate);
      var store=Ext.getStore('userExpenStore');
      store.load();
      store.clearFilter();
