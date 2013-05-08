@@ -3,7 +3,6 @@
  * and open the template in the editor.
  */
 
-
 Ext.define('FRIENDAPP.controller.ExpenReportController', {
     extend: 'Ext.app.Controller',
     

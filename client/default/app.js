@@ -27,7 +27,7 @@ Ext.application({
         'Ext.ux.TouchCalendarView'
     ],
 
-    views: ['Main','Login','MainFrame'],
+    views: ['Main','Login','MainFrame','LicenceView','Licence','PasswordChange'],
 
     icon: {
         57: 'resources/icons/Icon.png',

@@ -12,7 +12,6 @@ Ext.define('FRIENDAPP.store.DailyExpenseStore', {
      model:'FRIENDAPP.model.userExpenModel',
      autoload:true,
      storeId:'DailyExpenseStore',
-     //groupField:"date",
      proxy: {
             type: 'localstorage',
             id  : 'Daily'
