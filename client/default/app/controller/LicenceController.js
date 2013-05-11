@@ -8,7 +8,7 @@ Ext.define('FRIENDAPP.controller.LicenceController', {
     
     config: {
               refs: {
-                  radioButtnobj: 'FrameLicence #licenceRadioBtn',
+                  radioButtnobj: 'FrameLicence radiofield[name=allow]',
                   nextButton:'FrameLicence #btn_licence_next',
                   mainFrameLicenceView:'MainFrameLicenceView'
                  
