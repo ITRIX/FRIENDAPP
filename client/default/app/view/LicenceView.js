@@ -5,12 +5,7 @@
 
 Ext.define("FRIENDAPP.view.LicenceView", {
   extend: 'Ext.Panel',
-  //requires:["FRIENDAPP.view.userExpenListView",
-  //  "FRIENDAPP.view.AddExpenForm",
-    
-  //],
-  xtype: 'MainFrameLicenceView',
-  //id : 'MainPanel',
+    xtype: 'MainFrameLicenceView',
   config: {
     fullscreen: true,
     layout: 'card',

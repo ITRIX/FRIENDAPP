@@ -12,10 +12,12 @@ Ext.application({
         "ExpenListController",
         "ExpenFormController",
         "DashboardController",
-        "ExpenReportController"
+        "ExpenReportController",
+        "LicenceController",
+        "PasswordChangeController"
     ],
-    stores: ["userExpenStore",'DailyExpenseStore'],
-     models: ["userExpenModel"],
+    stores: ["userExpenStore",'DailyExpenseStore','UserDataStore'],
+     models: ["userExpenModel","UserDataModel"],
     name: 'FRIENDAPP',
 
     /*
@@ -42,9 +44,18 @@ Ext.application({
     launch: function() {
         // Destroy the #appLoadingIndicator element
         Ext.fly('appLoadingIndicator').destroy();
-
+        
         // Initialize the main view
-        Ext.Viewport.add(Ext.create('FRIENDAPP.view.Main'));
+        var userInfoData=Ext.getStore('UserDataStore');
+        userInfoData.load();
+        if(null!=userInfoData.getById(1)){
+            Ext.Viewport.add(Ext.create('FRIENDAPP.view.Main'));
+        }
+        else{
+            Ext.Viewport.add(Ext.create('FRIENDAPP.view.LicenceView'));
+       }
+        
+        Ext.Viewport.add(Ext.create('FRIENDAPP.view.LicenceView'));
     },
 
     onUpdated: function() {
