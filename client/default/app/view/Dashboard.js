@@ -18,7 +18,7 @@ Ext.define('FRIENDAPP.view.Dashboard',{
         items:[
         {
             xtype:'panel',
-            width:'48%',
+            width:'49%',
             //            height:'100%',
             docked:'left',
             layout:{
@@ -72,7 +72,7 @@ Ext.define('FRIENDAPP.view.Dashboard',{
         },
         {
             xtype:'panel',
-            width:'48%',
+            width:'49%',
             //            height:'100%',
             docked:'right',
             layout:{
