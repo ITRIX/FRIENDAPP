@@ -19,7 +19,7 @@ Ext.define('FRIENDAPP.controller.LicenceController', {
                     tap:"onNextButtonTap"  
                   },
                   radioButtnobj: {
-                    tap: "onRadioChecked"
+                    uncheck: "onRadioChecked"
                   }
               }      
     },
@@ -27,13 +27,19 @@ Ext.define('FRIENDAPP.controller.LicenceController', {
     /**
      * When User Agree or not hit.
      */
-    onRadioChecked: function() {
-                alert();
+    onRadioChecked: function(obj,e,eopts) {
+        if(obj.getValue()=='true'){
+            this.getNextButton().setHidden(false);
+            return;
+        }else{
+            this.getNextButton().setHidden(true);
+            return;
+        }
     },
     /**
      * When next button is hit.
      */
     onNextButtonTap: function() {
-                this.getMainFrameLicenceView().setActiveItem(1);
+        this.getMainFrameLicenceView().setActiveItem(1);
     }
 });   

@@ -32,6 +32,12 @@ Ext.define("FRIENDAPP.view.PasswordChange",{
       {
         text:"Save",
         itemId:'btn_pass_save'
+       
+      },
+      {
+        text:"Update",
+        itemId:'btn_pass_update',
+        hidden:true
       },
       {
           xtype:'spacer'

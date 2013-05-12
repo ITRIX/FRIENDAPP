@@ -10,8 +10,10 @@ Ext.define('FRIENDAPP.services.LoginServices', {
   loginAuthentication:function(parms,successCb,failureCb){
         var userName = parms.username;
         var password = parms.password;
-        
-        if(userName=="demo" && password=="demo")
+        var userInfoData=Ext.getStore('UserDataStore');
+        userInfoData.load();
+        var data=userInfoData.getById(1);
+        if(userName===data.get('username') && password===data.get('password'))
             {
                 var response={
                 "code":"200",

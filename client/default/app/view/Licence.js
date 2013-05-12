@@ -27,7 +27,8 @@ Ext.define("FRIENDAPP.view.Licence", {
       },
       {
         text:"Next",
-        itemId:'btn_licence_next'
+        itemId:'btn_licence_next',
+        hidden:true
       },
       ]
     },
@@ -116,12 +117,13 @@ Ext.define("FRIENDAPP.view.Licence", {
              {
                 xtype: 'radiofield',
                 name : 'allow',
-                itemId:'licenceRadioBtn',
+                value:'true',
                 label:'I Accept'
              },
              {
                  xtype: 'radiofield',
                  name : 'allow',
+                 value:'false',
                  label:'I Decline'
              }
          ]
