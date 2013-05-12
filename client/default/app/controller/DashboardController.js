@@ -14,10 +14,12 @@ Ext.define('FRIENDAPP.controller.DashboardController',{
                     calendarButton:'dashboard button[action=calendar]',
                     graphButton:'dashboard button[action=graph]',
                     reportButton:'dashboard button[action=report]',
+                    settingsButton:'dashboard button[action=settings]',
                     expenReportView:'ExpenReport',
                     mainFrameCal:'MainFrameCalender',
                     mainFrame:'MainFrameview',
-                    feeAreaChart:'graphChart chart[action=chart]'
+                    feeAreaChart:'graphChart chart[action=chart]',
+                    mainFrameLicenceView:'MainFrameLicenceView'
               },
         
               control: {
@@ -32,6 +34,9 @@ Ext.define('FRIENDAPP.controller.DashboardController',{
                         },
                         reportButton:{
                           tap:'onScreenSelection'
+                        },
+                        settingsButton:{
+                            tap:'onScreenSelection'
                         }
                   }
     },
@@ -66,6 +71,11 @@ Ext.define('FRIENDAPP.controller.DashboardController',{
                     var store=Ext.getStore('userExpenStore');
                     store.clearFilter();
                     store.load();
+                    break;
+                    
+       case 'settings':
+                    this.getMainFrame().setActiveItem(3);
+                    this.getMainFrameLicenceView().setActiveItem(1);
                     break;
     }
     }

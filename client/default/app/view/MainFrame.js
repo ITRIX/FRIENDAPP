@@ -44,6 +44,10 @@ Ext.define("FRIENDAPP.view.MainFrame",{
     {
       xtype:'MainFrameReport',
       action:'report'
+    },
+    {
+      xtype:'MainFrameLicenceView',
+      action:'settings'
     }
     ]
   }
