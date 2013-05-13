@@ -19,7 +19,9 @@ Ext.define('FRIENDAPP.controller.DashboardController',{
                     mainFrameCal:'MainFrameCalender',
                     mainFrame:'MainFrameview',
                     feeAreaChart:'graphChart chart[action=chart]',
-                    mainFrameLicenceView:'MainFrameLicenceView'
+                    mainFrameLicenceView:'MainFrameLicenceView',
+                    updateButton:'FormPasswordChange #btn_pass_update',
+                    saveButton:'FormPasswordChange #btn_pass_save'
               },
         
               control: {
@@ -76,6 +78,8 @@ Ext.define('FRIENDAPP.controller.DashboardController',{
        case 'settings':
                     this.getMainFrame().setActiveItem(3);
                     this.getMainFrameLicenceView().setActiveItem(1);
+                    this.getUpdateButton().setHidden(false);
+                    this.getSaveButton().setHidden(true);
                     break;
     }
     }
