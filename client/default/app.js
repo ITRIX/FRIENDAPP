@@ -16,8 +16,8 @@ Ext.application({
         "LicenceController",
         "PasswordChangeController"
     ],
-    stores: ["userExpenStore",'DailyExpenseStore','UserDataStore','GraphStore'],
-     models: ["userExpenModel","UserDataModel",'GraphModel'],
+    stores: ["userExpenStore",'DailyExpenseStore','UserDataStore','MonthStore','YearStore'],
+     models: ["userExpenModel","UserDataModel",'GraphModel','YearModel'],
     name: 'FRIENDAPP',
 
     /*
