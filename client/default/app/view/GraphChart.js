@@ -1,7 +1,6 @@
 /*
  * The Graph TabPanel represents the Dashboard. Contains the graphs.
  * Contained by the section Panel.
- * 
  * @author Neha
  */
 Ext.define("FRIENDAPP.view.GraphChart", {
@@ -104,11 +103,12 @@ Ext.define("FRIENDAPP.view.GraphChart", {
       xtype:'chart',
       itemId:'feeAreaChart',
       renderTo: Ext.getBody(),
-    width: '100%',
-    height: '90%',
-    animate: true,
-    store: 'DailyExpenseStore',
-    axes: [{
+      
+        width: '100%',
+        height: '90%',
+        animate: true,
+        store: 'DailyExpenseStore',
+        axes: [{
         type: 'Category',
         position: 'bottom',
         fields: ['date'],

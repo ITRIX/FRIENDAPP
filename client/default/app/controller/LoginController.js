@@ -27,7 +27,9 @@ Ext.define('FRIENDAPP.controller.LoginController', {
      * When login button is hit.
      */
     onLoginTap: function() {          
-
+        debugger;
+        this.calculateStore();
+        
         // Form Values
         var loginForm = this.getLoginFormPanel();
         var errorString = this.getErrorMsg();
@@ -36,6 +38,7 @@ Ext.define('FRIENDAPP.controller.LoginController', {
         FRIENDAPP.services.LoginServices.loginAuthentication(values,
                 function success(Response){
                     setIndicator(Response.message);
+                    
                     setTimeout(function(){
                     evaluateMap();
                     setHomeScreen();
@@ -50,6 +53,24 @@ Ext.define('FRIENDAPP.controller.LoginController', {
           /*
            * Todo code to calculate monthly and yearly expenses and add them to respective stores
            */
+  },
+  calculateStore:function(){
+      var store=Ext.getStore('DailyExpenseStore');
+      debugger;
+      store.load();
+      var stWindows = Ext.data.StoreManager.lookup('DailyExpenseStore');
+      var aWindows = [];
+      var vWindow;
+      var c=0;
+
+  for (var i =0; i < stWindows.getCount(); i++){ // loop through store records
+    vWindow = stWindows.getAt(i).data.date; //grab the value for the series field
+    var year=new Date(vWindow).getFullYear();
+    Ext.Array.include(aWindows,year); // populate aWindows with unique values
+  }
+  for(c=0;c<aWindows.length;c++){
+        alert(aWindows[c]);
+    }
   }
 });
 
@@ -65,6 +86,7 @@ function setIndicator(Response){
       message: Response,
       indicator: false
     });
+    
 }
 /**
  * Set login screen as home screen.
