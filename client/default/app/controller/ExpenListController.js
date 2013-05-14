@@ -63,7 +63,7 @@ Ext.define('FRIENDAPP.controller.ExpenListController', {
   
     calTotalAmt:function(){
         var store=Ext.getStore('userExpenStore');
-        var i,amounttot,date,flag;
+        var i,amounttot,date,flag, currentamt;
         flag=false;
         i=0,amounttot=0;
         while(store.getCount()>i)
@@ -75,8 +75,11 @@ Ext.define('FRIENDAPP.controller.ExpenListController', {
         date = FRIENDAPP.app.getController('Main').currentDate;
         store=Ext.getStore('DailyExpenseStore');
         flag=store.find('date',date);
+        currentamt=0; 
+        var record;
         if(flag!=-1){
-            var record=store.getAt(flag);
+            record=store.getAt(flag);
+            currentamt=record.get('amount');
             record.set('amount',amounttot);
         }else{
             store.add({
@@ -84,9 +87,50 @@ Ext.define('FRIENDAPP.controller.ExpenListController', {
                 amount:amounttot
             });
         }
-    
         store.sync();
         store.load();
+        /*
+         * Code for calculating the total monthly and yearly expenditure
+         * Will be use to display monthly and yearly graphs
+         * TO DO optimize and test this code later
+         * @author Neha
+         */
+        // Code to add data in year store
+        var month= date.getMonth();
+        var year= date.getYear();
+        store=Ext.getStore('YearStore');
+        flag=store.find('year',year);
+        if(flag!=-1){
+            record=store.getAt(flag);
+            amounttot= record.get('amount')+(amounttot-currentamt);
+            record.set('amount',amounttot);
+        }else{
+            store.add({
+                amount:amounttot,
+                year:year
+            });
+        }
+        store.sync();
+        store.load();
+        
+        // Code to add data in month store
+        store=Ext.getStore('MonthStore');
+        store.filter('year',year);
+        flag=store.find('month',month);
+        if(flag!=-1){
+            record=store.getAt(flag);
+            amounttot= record.get('amount')+(amounttot-currentamt);
+            record.set('amount',amounttot);
+        }else{
+            store.add({
+                month:month,
+                amount:amounttot,
+                year:year
+            });
+        }
+        store.sync();
+        store.load();
+        
         this.getTotalAmtLabel().setText('Total Amount  : '+ amounttot);
     }
 });
