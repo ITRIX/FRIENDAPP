@@ -10,7 +10,7 @@ Ext.define('FRIENDAPP.model.GraphModel', {
             { name: 'id', type: 'int' },
             { name: 'month', type:'string'},
             { name: 'amount', type: 'int' },
-            { name: 'year', type: 'string'},
+            { name: 'year', type: 'string'}
             
 //            {name: 'username',type :'string'}
         ]
