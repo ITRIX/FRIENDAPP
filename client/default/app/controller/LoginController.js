@@ -28,7 +28,7 @@ Ext.define('FRIENDAPP.controller.LoginController', {
      */
     onLoginTap: function() {          
         debugger;
-        this.calculateStore();
+        //this.calculateStore();
         
         // Form Values
         var loginForm = this.getLoginFormPanel();
@@ -37,9 +37,10 @@ Ext.define('FRIENDAPP.controller.LoginController', {
         var values = loginForm.getValues();
         FRIENDAPP.services.LoginServices.loginAuthentication(values,
                 function success(Response){
-                    setIndicator(Response.message);
-                    
+                    debugger;
+                    setIndicator(Response.message);                    
                     setTimeout(function(){
+                    debugger;
                     evaluateMap();
                     setHomeScreen();
                     }, 3000); 
@@ -49,7 +50,8 @@ Ext.define('FRIENDAPP.controller.LoginController', {
                     clearPasswordField()
                 }    
       );  
-          
+          debugger;
+          this.calculateStore();
           /*
            * Todo code to calculate monthly and yearly expenses and add them to respective stores
            */
