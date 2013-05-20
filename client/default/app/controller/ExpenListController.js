@@ -96,8 +96,8 @@ Ext.define('FRIENDAPP.controller.ExpenListController', {
          * @author Neha
          */
         // Code to add data in year store
-        var month= date.getMonth();
-        var year= date.getYear();
+        var month= new Date(date).getMonth();
+        var year= new Date(date).getYear();
         store=Ext.getStore('YearStore');
         flag=store.find('year',year);
         if(flag!=-1){
