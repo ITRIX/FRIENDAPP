@@ -62,7 +62,7 @@ Ext.define('FRIENDAPP.controller.ExpenListController', {
     },
   
     calTotalAmt:function(){
-        var store=Ext.getStore('userExpenStore');
+        var store=Ext.getStore('UserExpenseStore');
         var i,amounttot,date,flag, currentamt;
         flag=false;
         i=0,amounttot=0;

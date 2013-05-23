@@ -9,7 +9,7 @@ Ext.define("FRIENDAPP.view.userExpenListView",{
    
     scrollable: false,
     requires:[
-        'FRIENDAPP.store.userExpenStore',
+        'FRIENDAPP.store.UserExpenseStore',
         'FRIENDAPP.model.userExpenModel',
         'Ext.dataview.List'
     ],
@@ -25,7 +25,7 @@ Ext.define("FRIENDAPP.view.userExpenListView",{
                 xtype:'list',
                 cls:'userExpenseList',
                 itemCls:'userExpenseItem',
-                store:'userExpenStore',
+                store:'UserExpenseStore',
                 itemTpl:'{expen}&nbsp;{amount}',
                 itemId:'expenseList',
                 onItemDisclosure:true

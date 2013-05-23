@@ -50,7 +50,7 @@ Ext.define('FRIENDAPP.controller.Main', {
      }
      this.currentDate=Ext.util.Format.date(this.getCalendar().getValue(),'d M Y');
      this.getDateLabel().setTitle(this.currentDate);
-     var store=Ext.getStore('userExpenStore');
+     var store=Ext.getStore('UserExpenseStore');
      store.load();
      store.clearFilter();
      store.filter('date',Ext.util.Format.date(this.getCalendar().getValue(),'d M Y'));

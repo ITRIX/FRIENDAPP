@@ -71,7 +71,7 @@ Ext.define('FRIENDAPP.controller.DashboardController',{
                     
         case 'report':
                     this.getMainFrame().setActiveItem(2)
-                    var store=Ext.getStore('userExpenStore');
+                    var store=Ext.getStore('UserExpenseStore');
                     store.clearFilter();
                     store.load();
                     break;

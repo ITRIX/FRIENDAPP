@@ -31,7 +31,7 @@ Ext.define('FRIENDAPP.controller.ExpenReportController', {
     },
     
     onSortChange:function(field,newValue,oldValue,eOpts){
-      var store=Ext.getStore('userExpenStore');
+      var store=Ext.getStore('UserExpenseStore');
       switch(field.getValue()){
         case 'day':
                    store.clearFilter();
@@ -60,7 +60,7 @@ Ext.define('FRIENDAPP.controller.ExpenReportController', {
     },
     
     onMonthSort:function(field,newValue,oldValue){
-        var store=Ext.getStore('userExpenStore');
+        var store=Ext.getStore('UserExpenseStore');
             store.clearFilter();
             store.filter(function(item){
             var month=new Date(item.get('date')).getMonth();
@@ -72,7 +72,7 @@ Ext.define('FRIENDAPP.controller.ExpenReportController', {
     },
     
     onYearSort:function(field,newValue,oldValue){
-      var store=Ext.getStore('userExpenStore');
+      var store=Ext.getStore('UserExpenseStore');
         store.clearFilter();
         store.filter(function(item){
             var year=new Date(item.get('date')).getYear();
@@ -82,7 +82,7 @@ Ext.define('FRIENDAPP.controller.ExpenReportController', {
         });
     },
     onDaySort:function(field,newValue,oldValue){
-      var store=Ext.getStore('userExpenStore');
+      var store=Ext.getStore('UserExpenseStore');
         store.clearFilter();
         store.filter(function(item){
             var day=new Date(item.get('date')).getDay();

@@ -60,7 +60,7 @@ Ext.define('FRIENDAPP.controller.ExpenFormController', {
             alert("eroor");
         } 
     
-    var store=Ext.getStore('userExpenStore');
+    var store=Ext.getStore('UserExpenseStore');
     store.add({amount: this.getAmountField().getValue(),
                expen: this.getExpenField().getValue(),
                date: Ext.util.Format.date(this.getDateField().getValue(),'d M Y ')
@@ -71,7 +71,7 @@ Ext.define('FRIENDAPP.controller.ExpenFormController', {
     },
     
     itemUpdate:function(){
-    var store=Ext.getStore('userExpenStore');
+    var store=Ext.getStore('UserExpenseStore');
     var selectedRec=(this.getExpenList().getSelection());
     var id = store.getById(selectedRec[0].data.id);
     id.set('date', Ext.util.Format.date(this.getDateField().getValue(),'d M Y '));
@@ -83,7 +83,7 @@ Ext.define('FRIENDAPP.controller.ExpenFormController', {
     },
     
     itemDelete:function(){
-    var store=Ext.getStore('userExpenStore');
+    var store=Ext.getStore('UserExpenseStore');
     var selectedRec=(this.getExpenList().getSelection());
     store.remove(store.getById(selectedRec[0].data.id));
     store.sync();

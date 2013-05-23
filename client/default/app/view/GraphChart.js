@@ -12,7 +12,7 @@ Ext.define("FRIENDAPP.view.GraphChart", {
   'Ext.chart.series.Line',
   'Ext.chart.series.Area',
   'Ext.draw.engine.ImageExporter',
-  'FRIENDAPP.store.userExpenStore'
+  'FRIENDAPP.store.UserExpenseStore'
   ],
   config:{
     title:'Graph',
