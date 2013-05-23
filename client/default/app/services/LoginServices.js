@@ -12,13 +12,14 @@ Ext.define('FRIENDAPP.services.LoginServices', {
         var password = parms.password;
         var userInfoData=Ext.getStore('UserDataStore');
         userInfoData.load();
-       
+        debugger;
         if(userName===userInfoData.getById(1).get('username') && password===userInfoData.getById(1).get('password'))
             {
                 var response={
                 "code":"200",
                 "message":"Right Credentials.."
                 }
+                debugger;
                 return successCb(response);
             }
          else

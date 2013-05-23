@@ -89,6 +89,7 @@ Ext.define('FRIENDAPP.controller.ExpenListController', {
         }
         store.sync();
         store.load();
+        
         /*
          * Code for calculating the total monthly and yearly expenditure
          * Will be use to display monthly and yearly graphs
@@ -96,6 +97,7 @@ Ext.define('FRIENDAPP.controller.ExpenListController', {
          * @author Neha
          */
         // Code to add data in year store
+
         var month= new Date(date).getMonth();
         var year= new Date(date).getYear();
         store=Ext.getStore('YearStore');
@@ -129,7 +131,7 @@ Ext.define('FRIENDAPP.controller.ExpenListController', {
             });
         }
         store.sync();
-        store.load();
+        store.load();*/
         
         this.getTotalAmtLabel().setText('Total Amount  : '+ amounttot);
     }
