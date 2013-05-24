@@ -22,8 +22,8 @@ Ext.define('FRIENDAPP.controller.ExpenListController', {
         },
         control: {
             expenseList:{
-                itemtap:'itemDoubleTap'
-                //refresh:'calTotalAmt' 
+                itemtap:'itemDoubleTap',
+                refresh:'calTotalAmt' 
             },
             expenAddBut:{
                 tap:'itemTap'
@@ -35,7 +35,6 @@ Ext.define('FRIENDAPP.controller.ExpenListController', {
         if(!this.getAddExpenForm()){
             var addExpenForm=Ext.create("FRIENDAPP.view.AddExpenForm");
         }
-        debugger;
         this.getAddExpenForm().reset();
         this.getDateField().setValue(new Date(this.getCalendar().getValue()));
         this.getDelButton().setHidden(true);
@@ -63,6 +62,7 @@ Ext.define('FRIENDAPP.controller.ExpenListController', {
     },
   
     calTotalAmt:function(){
+        debugger;
         var store=Ext.getStore('UserExpenseStore');
         var i,amounttot,date,flag, currentamt;
         flag=false;
@@ -70,7 +70,6 @@ Ext.define('FRIENDAPP.controller.ExpenListController', {
         while(store.getCount()>i)
         {
             amounttot=amounttot + store.getAt(i).get('amount');
-            
             i++;
         }
         date = FRIENDAPP.app.getController('Main').currentDate;

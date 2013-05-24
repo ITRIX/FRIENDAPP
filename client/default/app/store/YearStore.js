@@ -11,9 +11,9 @@ Ext.define('FRIENDAPP.store.YearStore', {
     model:'FRIENDAPP.model.YearModel',
     autoload:true,
     storeId:'YearStore',
-    proxy:{
-//            type: 'localstorage',
-            id  : 'YearData'
-         }
+//    proxy:{
+////            type: 'localstorage',
+//            id  : 'YearData'
+//         }
     }   
 })

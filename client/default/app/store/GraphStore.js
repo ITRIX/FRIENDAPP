@@ -11,9 +11,9 @@ Ext.define('FRIENDAPP.store.GraphStore', {
     model:'FRIENDAPP.model.GraphModel',
     autoload:true,
     storeId:'GraphStore',
-    proxy:{
-//            type: 'localstorage',
-            id  : 'GraphData'
-         }
+//    proxy:{
+////            type: 'localstorage',
+//            id  : 'GraphData'
+//         }
     }   
 })
