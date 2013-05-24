@@ -22,8 +22,8 @@ Ext.define('FRIENDAPP.controller.ExpenListController', {
         },
         control: {
             expenseList:{
-                itemtap:'itemDoubleTap'
-                //refresh:'calTotalAmt' 
+                itemtap:'itemDoubleTap',
+                refresh:'calTotalAmt' 
             },
             expenAddBut:{
                 tap:'itemTap'
@@ -101,38 +101,38 @@ Ext.define('FRIENDAPP.controller.ExpenListController', {
 
         var month= new Date(date).getMonth();
         var year= new Date(date).getYear();
-        store=Ext.getStore('YearStore');
-        flag=store.find('year',year);
+        var yearstore=Ext.getStore('YearStore');
+        flag=yearstore.find('year',year);
         if(flag!=-1){
-            record=store.getAt(flag);
+            record=yearstore.getAt(flag);
             amounttot= record.get('amount')+(amounttot-currentamt);
             record.set('amount',amounttot);
         }else{
-            store.add({
+            yearstore.add({
                 amount:amounttot,
                 year:year
             });
         }
-        store.sync();
-        store.load();
+        yearstore.sync();
+        yearstore.load();
         
         // Code to add data in month store
-        store=Ext.getStore('MonthStore');
-        store.filter('year',year);
-        flag=store.find('month',month);
+        var monthstore=Ext.getStore('MonthStore');
+        monthstore.filter('year',year);
+        flag=monthstore.find('month',month);
         if(flag!=-1){
-            record=store.getAt(flag);
+            record=monthstore.getAt(flag);
             amounttot= record.get('amount')+(amounttot-currentamt);
             record.set('amount',amounttot);
         }else{
-            store.add({
+            monthstore.add({
                 month:month,
                 amount:amounttot,
                 year:year
             });
         }
-        store.sync();
-        store.load();
+        monthstore.sync();
+        monthstore.load();
         
         this.getTotalAmtLabel().setText('Total Amount  : '+ amounttot);
     }

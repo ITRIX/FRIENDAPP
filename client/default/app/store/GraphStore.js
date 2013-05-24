@@ -6,13 +6,13 @@
 Ext.define('FRIENDAPP.store.GraphStore', {
     extend:'Ext.data.JsonStore',
    
-    requires: [ 'Ext.data.proxy.LocalStorage'],   
+    requires: [ 'Ext.data.proxy.Memory'],   
     config:{
     model:'FRIENDAPP.model.GraphModel',
     autoload:true,
     storeId:'GraphStore',
     proxy:{
-//            type: 'localstorage',
+            type: 'memory',
             id  : 'GraphData'
          }
     }   

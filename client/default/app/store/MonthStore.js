@@ -6,13 +6,13 @@
 Ext.define('FRIENDAPP.store.MonthStore', {
     extend:'Ext.data.JsonStore',
    
-    requires: [ 'Ext.data.proxy.LocalStorage'],   
+    requires: [ 'Ext.data.proxy.Memory'],   
     config:{
     model:'FRIENDAPP.model.GraphModel',
     autoload:true,
     storeId:'MonthStore',
     proxy:{
-//            type: 'localstorage',
+            type: 'memory',
             id  : 'MonthData'
          }
     }   
