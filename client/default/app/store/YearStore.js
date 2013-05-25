@@ -9,11 +9,11 @@ Ext.define('FRIENDAPP.store.YearStore', {
     requires: [ 'Ext.data.proxy.Memory'],   
     config:{
     model:'FRIENDAPP.model.YearModel',
-    autoload:true,
-    storeId:'YearStore',
-    proxy:{
-            type: 'memory',
-            id  : 'YearData'
-         }
+    autoload:true
+//    storeId:'YearStore',
+//    proxy:{
+//            type: 'memory',
+//            id  : 'YearData'
+//         }
     }   
 })

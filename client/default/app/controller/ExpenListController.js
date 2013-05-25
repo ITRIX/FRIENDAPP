@@ -112,8 +112,8 @@ Ext.define('FRIENDAPP.controller.ExpenListController', {
                 year:year
             });
         }
-        yearstore.sync();
-        yearstore.load();
+//        yearstore.sync();
+//        yearstore.load();
         
         // Code to add data in month store
         var monthstore=Ext.getStore('MonthStore');
@@ -130,8 +130,8 @@ Ext.define('FRIENDAPP.controller.ExpenListController', {
                 year:year
             });
         }
-        monthstore.sync();
-        monthstore.load();
+//        monthstore.sync();
+//        monthstore.load();
         
         this.getTotalAmtLabel().setText('Total Amount  : '+ amounttot);
     }

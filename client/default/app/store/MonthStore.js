@@ -9,11 +9,11 @@ Ext.define('FRIENDAPP.store.MonthStore', {
     requires: [ 'Ext.data.proxy.Memory'],   
     config:{
     model:'FRIENDAPP.model.GraphModel',
-    autoload:true,
-    storeId:'MonthStore',
-    proxy:{
-            type: 'memory',
-            id  : 'MonthData'
-         }
+    autoload:true
+//    storeId:'MonthStore',
+//    proxy:{
+//            type: 'memory',
+//            id  : 'MonthData'
+//         }
     }   
 })
