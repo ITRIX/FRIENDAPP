@@ -12,7 +12,8 @@ Ext.define("FRIENDAPP.view.GraphChart", {
   'Ext.chart.series.Line',
   'Ext.chart.series.Area',
   'Ext.draw.engine.ImageExporter',
-  'FRIENDAPP.store.DailyExpenseStore'
+  'FRIENDAPP.store.DailyExpenseStore',
+  'FRIENDAPP.store.MonthStore'
   ],
   config:{
     title:'Graph',
@@ -30,7 +31,7 @@ Ext.define("FRIENDAPP.view.GraphChart", {
       flex:1,
       animate:true,
       //      theme:'Category1',
-      store:'DailyExpenseStore',
+      store:'MonthStore',
       gradients: [
       {
         'id': 'v-0',
@@ -60,13 +61,13 @@ Ext.define("FRIENDAPP.view.GraphChart", {
       ],
       axes: [{
         type: 'Category',
-        position: 'bottom',
+        position: 'left',
         fields: ['date'],
         title: 'Date',
         minimum: 0
       }, {
         type: 'Numeric',
-        position: 'left',
+        position: 'bottom',
         label: {
           renderer: function (v) {
             return v.toFixed(0);
@@ -79,8 +80,8 @@ Ext.define("FRIENDAPP.view.GraphChart", {
       }],
  
       series: [{
-        type: 'column',
-        axis: 'left',
+        type: 'bar',
+        axis: 'bottom',
         highlight: true,
         renderer: function (sprite, storeItem, barAttr, i, store) {
           if(i%2==0){

@@ -65,7 +65,7 @@ Ext.define('FRIENDAPP.controller.DashboardController',{
                     this.getMainFrame().setActiveItem(1);
                     var store=Ext.getStore('DailyExpenseStore');
                     store.load();
-                    this.getFeeAreaChart().setData(Ext.getStore('DailyExpenseStore').getData())
+                    this.getFeeAreaChart().setData(Ext.getStore('MonthStore').getData())
                     break;
                     
         case 'report':
