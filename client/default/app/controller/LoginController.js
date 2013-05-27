@@ -53,21 +53,67 @@ Ext.define('FRIENDAPP.controller.LoginController', {
            */
   },
   calculateStore:function(){
-      var store=Ext.getStore('DailyExpenseStore');
+      var store=Ext.getStore('UserExpenseStore');
       store.load();
-      var stWindows = Ext.data.StoreManager.lookup('DailyExpenseStore');
-      var aWindows = [];
-      var vWindow;
-      var c=0;
-
-  for (var i =0; i < stWindows.getCount(); i++){ // loop through store records
-    vWindow = stWindows.getAt(i).data.date; //grab the value for the series field
-    var year=new Date(vWindow).getFullYear();
-    Ext.Array.include(aWindows,year); // populate aWindows with unique values
-  }
-  for(c=0;c<aWindows.length;c++){
-        alert(aWindows[c]);
-    }
+      var yearsArray = [];
+      var monthsArray= ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+      var yearResult;
+      for (var i =0; i < store.getCount(); i++){ // loop through store records
+        yearResult = store.getAt(i).data.date; //grab the value for the series field
+        var year=new Date(yearResult).getFullYear();
+        Ext.Array.include(yearsArray,year); // populate aWindows with unique values
+      }
+      /*
+       *Year store calculation
+       */
+      var yearstore=Ext.getStore('YearStore');
+      var monthstore=Ext.getStore('MonthStore');
+      var i,yeartot,yearcnt,monthtot,monthcnt;
+      yearcnt=0,monthcnt=0;
+      for(yearcnt=0;yearcnt<yearsArray.length;yearcnt++){
+        store.clearFilter();
+        i=0,yeartot=0,monthtot=0;
+        store.filter(function(item){
+                var year=new Date(item.get('date')).getFullYear();
+                if(year===yearsArray[yearcnt]){
+                    return true;
+                }
+            });            
+            
+        while(store.getCount()>i){
+            yeartot=yeartot + store.getAt(i).get('amount');
+            i++;
+        }
+        yearstore.add({
+                amount:yeartot,
+                year:yearsArray[yearcnt]
+        });
+      /*
+       *Month store calculation
+       */
+        for(monthcnt=0;monthcnt<monthsArray.length;monthcnt++){
+            monthtot=0,i=0;
+            store.clearFilter();
+            store.filter(function(item){
+                var year=new Date(item.get('date')).getFullYear();
+                var month=monthsArray[new Date(item.get('date')).getMonth()];
+                if(year===yearsArray[yearcnt] && month==monthsArray[monthcnt]){
+                    return true;
+                }
+            });
+         
+            while(store.getCount()>i){
+                monthtot=monthtot + store.getAt(i).get('amount');
+                i++;
+            }    
+            monthstore.add({
+                    amount:monthtot,
+                    month:monthsArray[monthcnt],
+                    year:yearsArray[yearcnt]
+            });   
+        }
+      }
+      
   }
 });
 
