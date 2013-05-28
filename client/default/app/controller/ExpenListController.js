@@ -1,6 +1,7 @@
 /* 
- * To change this template, choose Tools | Templates
- * and open the template in the editor9665251539.
+ * itrixit.com
+ * Controller to calulate total expen for that day and display on toolbar
+ * @author Neha
  */
 Ext.define('FRIENDAPP.controller.ExpenListController', {
     extend: 'Ext.app.Controller',
@@ -98,7 +99,6 @@ Ext.define('FRIENDAPP.controller.ExpenListController', {
          * @author Neha
          */
         // Code to add data in year store
-
         var month= new Date(date).getMonth();
         var year= new Date(date).getFullYear();
         var yearstore=Ext.getStore('YearStore');
@@ -113,8 +113,6 @@ Ext.define('FRIENDAPP.controller.ExpenListController', {
                 year:year
             });
         }
-//        yearstore.sync();
-//        yearstore.load();
         
         // Code to add data in month store
         var monthstore=Ext.getStore('MonthStore');
@@ -131,9 +129,5 @@ Ext.define('FRIENDAPP.controller.ExpenListController', {
                 year:year
             });
         }
-//        monthstore.sync();
-//        monthstore.load();
-        
-        
     }
 });

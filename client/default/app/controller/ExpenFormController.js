@@ -24,7 +24,8 @@ Ext.define('FRIENDAPP.controller.ExpenFormController', {
               dateField:'AddExpenForm #date',
               amountField:'AddExpenForm #amount',
               mainFrameCal:'MainFrameCalender',
-              expenField:'AddExpenForm #expen'
+              expenField:'AddExpenForm #expen',
+              formValidateMsg:'AddExpenForm #formValidateMsg'
         },
         
         control:{
@@ -48,26 +49,18 @@ Ext.define('FRIENDAPP.controller.ExpenFormController', {
     expenform.reset();
     },
     
-    itemSave:function(){
-          
-        if (!this.getAmountField().getValue() || FRIENDAPP.util.util.isBlank(this.getAmountField().getValue())) {
-            return;
-            alert("eroor");
-        } 
-        
-        if (!this.getExpenField().getValue() || FRIENDAPP.util.util.isBlank(this.getExpenField().getValue())) {
-            return;
-            alert("eroor");
-        } 
-    
-    var store=Ext.getStore('UserExpenseStore');
-    store.add({amount: this.getAmountField().getValue(),
-               expen: this.getExpenField().getValue(),
-               date: Ext.util.Format.date(this.getDateField().getValue(),'d M Y ')
-             });
-    store.sync();
-    store.load();
-    this.getMainFrameCal().setActiveItem(this.getExpenseList());
+    itemSave:function(){          
+
+    if(this.dataValidate()){
+        var store=Ext.getStore('UserExpenseStore');
+        store.add({amount: this.getAmountField().getValue(),
+                   expen: this.getExpenField().getValue(),
+                   date: Ext.util.Format.date(this.getDateField().getValue(),'d M Y ')
+                 });
+        store.sync();
+        store.load();
+        this.getMainFrameCal().setActiveItem(this.getExpenseList());
+    }
     },
     
     itemUpdate:function(){
@@ -89,6 +82,18 @@ Ext.define('FRIENDAPP.controller.ExpenFormController', {
     store.sync();
     store.load();
     this.getMainFrameCal().setActiveItem(this.getExpenseList());
+    },
+    dataValidate:function(){
+        if (!this.getAmountField().getValue() || FRIENDAPP.util.util.isBlank(this.getAmountField().getValue())) {
+            this.getFormValidateMsg().setHtml('Please Enter Amount!...');
+            return false;
+        }
+        
+        if (!this.getExpenField().getValue() || FRIENDAPP.util.util.isBlank(this.getExpenField().getValue())) {
+            this.getFormValidateMsg().setHtml('Please Enter Expen Text!...');
+            return false;
+        }
+        return true;
     }
 });
 

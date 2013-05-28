@@ -96,6 +96,12 @@ Ext.define("FRIENDAPP.view.AddExpenForm",{
       ]
     },
     {
+      xtype:'panel',
+      itemId:'formValidateMsg',
+      height:'50px',
+      width:'90%'
+    },
+    {
       xtype:'spacer'
     },
     ]
