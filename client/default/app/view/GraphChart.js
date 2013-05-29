@@ -62,7 +62,7 @@ Ext.define("FRIENDAPP.view.GraphChart", {
       axes: [{
         type: 'Category',
         position: 'left',
-        fields: ['date'],
+        fields: ['month'],
         title: 'Date',
         minimum: 0
       }, {

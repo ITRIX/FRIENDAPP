@@ -38,6 +38,8 @@ Ext.define('FRIENDAPP.controller.ExpenReportController', {
                    this.getReportYearWise().setHidden(true);
                    this.getReportMonthWise().setHidden(true);
                    this.getReportDayWise().setHidden(false);
+                   var newValue=new Date(this.getReportDayWise().getValue());
+                   this.onDaySort(field,newValue,oldValue);
                    break;
         
         case 'month':
@@ -45,6 +47,8 @@ Ext.define('FRIENDAPP.controller.ExpenReportController', {
                    this.getReportYearWise().setHidden(true);
                    this.getReportMonthWise().setHidden(false);
                    this.getReportDayWise().setHidden(true);
+                   var newValue=new Date(this.getReportMonthWise().getValue());
+                   this.onMonthSort(field,newValue,oldValue);
                    break;
           
         case 'year':
@@ -52,6 +56,8 @@ Ext.define('FRIENDAPP.controller.ExpenReportController', {
                    this.getReportYearWise().setHidden(false);
                    this.getReportMonthWise().setHidden(true);
                    this.getReportDayWise().setHidden(true);
+                   var newValue=new Date(this.getReportYearWise().getValue());
+                   this.onYearSort(field,newValue,oldValue);
                    break;
         case 'refresh':
                     store.clearFilter();
