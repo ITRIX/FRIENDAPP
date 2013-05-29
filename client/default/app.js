@@ -8,7 +8,6 @@ Ext.application({
 
     controllers: ["Main",
         "LoginController",
-        "LogoutController",
         "ExpenListController",
         "ExpenFormController",
         "DashboardController",

@@ -15,9 +15,10 @@ Ext.define('FRIENDAPP.controller.DashboardController',{
                     graphButton:'dashboard button[action=graph]',
                     reportButton:'dashboard button[action=report]',
                     settingsButton:'dashboard button[action=settings]',
+                    logoutButton:'dashboard button[action=logout]',
                     expenReportView:'ExpenReport',
                     mainFrameCal:'MainFrameCalender',
-                    mainFrame:'MainFrameview',
+                    mainPanel:'mainPanel',
                     feeAreaChart:'graphChart chart[action=chart]',
                     mainFrameLicenceView:'MainFrameLicenceView',
                     updateButton:'FormPasswordChange #btn_pass_update',
@@ -38,6 +39,9 @@ Ext.define('FRIENDAPP.controller.DashboardController',{
                           tap:'onScreenSelection'
                         },
                         settingsButton:{
+                            tap:'onScreenSelection'
+                        },
+                        logoutButton:{
                             tap:'onScreenSelection'
                         }
                   }
@@ -76,6 +80,11 @@ Ext.define('FRIENDAPP.controller.DashboardController',{
                     store.load();
                     break;
                     
+       case 'logout':
+                    this.getMainPanel().setActiveItem(0);
+                    clearPasswordField();
+                    break;             
+                    
        case 'settings':
                     this.getMainFrame().setActiveItem(3);
                     this.getMainFrameLicenceView().setActiveItem(1);
@@ -85,3 +94,10 @@ Ext.define('FRIENDAPP.controller.DashboardController',{
     }
     }
 })
+function clearPasswordField(){
+    var passwdField = Ext.getCmp('passwordid');
+    if(passwdField){
+        passwdField.reset();
+        return; 
+    }
+}
