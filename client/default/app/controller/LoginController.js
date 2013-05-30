@@ -47,7 +47,7 @@ Ext.define('FRIENDAPP.controller.LoginController', {
                     clearPasswordField()
                 }    
       );  
-          this.calculateStore();
+//          this.calculateStore();
           /*
            * Todo code to calculate monthly and yearly expenses and add them to respective stores
            */

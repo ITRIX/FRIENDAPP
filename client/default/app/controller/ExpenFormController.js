@@ -61,6 +61,8 @@ Ext.define('FRIENDAPP.controller.ExpenFormController', {
         store.load();
         this.getMainFrameCal().setActiveItem(this.getExpenseList());
     }
+    
+    FRIENDAPP.app.getController('ExpenListController').calculateOtherStores();
     },
     
     itemUpdate:function(){
@@ -73,6 +75,8 @@ Ext.define('FRIENDAPP.controller.ExpenFormController', {
     store.sync();
     store.load();
     this.getMainFrameCal().setActiveItem(this.getExpenseList());
+    
+    FRIENDAPP.app.getController('ExpenListController').calculateOtherStores();
     },
     
     itemDelete:function(){
@@ -83,6 +87,7 @@ Ext.define('FRIENDAPP.controller.ExpenFormController', {
     store.load();
     this.getMainFrameCal().setActiveItem(this.getExpenseList());
     },
+    
     dataValidate:function(){
         if (!this.getAmountField().getValue() || FRIENDAPP.util.util.isBlank(this.getAmountField().getValue())) {
             this.getFormValidateMsg().setHtml('Please Enter Amount!...');

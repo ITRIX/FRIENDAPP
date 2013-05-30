@@ -63,21 +63,28 @@ Ext.define('FRIENDAPP.controller.ExpenListController', {
     },
   
     calTotalAmt:function(){
-        debugger;
         var store=Ext.getStore('UserExpenseStore');
-        var i,amounttot,date,flag, currentamt,yeartot;
-        flag=false;
+        var i,amounttot;
         i=0,amounttot=0;
         while(store.getCount()>i)
         {
             amounttot=amounttot + store.getAt(i).get('amount');
             i++;
         }
+        this.getTotalAmtLabel().setText('Total Amount  : '+ amounttot);
+        return amounttot;
+    },
+    
+    calculateOtherStores:function(){
+        var date,flag, currentamt,yeartot, store, amounttot,record;
+        flag=false;
         date = FRIENDAPP.app.getController('Main').currentDate;
         store=Ext.getStore('DailyExpenseStore');
         flag=store.find('date',date);
         currentamt=0; 
-        var record;
+        
+        amounttot = this.calTotalAmt();
+        
         if(flag!=-1){
             record=store.getAt(flag);
             currentamt=record.get('amount');
@@ -90,7 +97,7 @@ Ext.define('FRIENDAPP.controller.ExpenListController', {
         }
         store.sync();
         store.load();
-        this.getTotalAmtLabel().setText('Total Amount  : '+ amounttot);
+        
         
         /*
          * Code for calculating the total monthly and yearly expenditure
@@ -129,5 +136,6 @@ Ext.define('FRIENDAPP.controller.ExpenListController', {
                 year:year
             });
         }
+        monthstore.clearFilter();
     }
 });
