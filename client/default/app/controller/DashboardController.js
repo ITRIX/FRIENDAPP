@@ -18,8 +18,11 @@ Ext.define('FRIENDAPP.controller.DashboardController',{
                     logoutButton:'dashboard button[action=logout]',
                     expenReportView:'ExpenReport',
                     mainFrameCal:'MainFrameCalender',
+                    mainFrame:'MainFrameview',
                     mainPanel:'mainPanel',
-                    feeAreaChart:'graphChart chart[action=chart]',
+                    monthChart:'graphChart chart[itemId=monthChart]',
+                    yearChart:'graphChart chart[itemId=yearChart]',
+                    dailyChart:'graphChart chart[itemId=dailyChart]',
                     mainFrameLicenceView:'MainFrameLicenceView',
                     updateButton:'FormPasswordChange #btn_pass_update',
                     saveButton:'FormPasswordChange #btn_pass_save'
@@ -70,7 +73,11 @@ Ext.define('FRIENDAPP.controller.DashboardController',{
                     var store=Ext.getStore('DailyExpenseStore');
                     store.load();
                     store.clearFilter();
-                    this.getFeeAreaChart().setData(Ext.getStore('MonthStore').getData())
+                    Ext.getStore('YearStore').clearFilter();
+                    Ext.getStore('MonthStore').clearFilter();
+                    this.getYearChart().setData(Ext.getStore('YearStore').getData());
+                    this.getMonthChart().setData(Ext.getStore('MonthStore').getData());
+                    this.getDailyChart().setData(Ext.getStore('DailyExpenseStore').getData());
                     break;
                     
         case 'report':

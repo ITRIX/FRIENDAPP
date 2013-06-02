@@ -27,7 +27,7 @@ Ext.define('FRIENDAPP.controller.LoginController', {
      * When login button is hit.
      */
     onLoginTap: function() {          
-        //this.calculateStore();
+        this.calculateStore();
         
         // Form Values
         var loginForm = this.getLoginFormPanel();

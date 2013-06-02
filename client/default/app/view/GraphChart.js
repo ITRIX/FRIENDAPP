@@ -25,7 +25,7 @@ Ext.define("FRIENDAPP.view.GraphChart", {
       title:'Emerging Balance',
       xtype:'chart',
       action:'chart',
-      itemId:'feeAreaChart',
+      itemId:'monthChart',
       width:'100%',
       //      theme:'Energy',
       flex:1,
@@ -102,7 +102,7 @@ Ext.define("FRIENDAPP.view.GraphChart", {
     {
       title:'Area Chart',
       xtype:'chart',
-      itemId:'feeAreaChart',
+      itemId:'dailyChart',
       renderTo: Ext.getBody(),
       
         width: '100%',
@@ -244,6 +244,84 @@ Ext.define("FRIENDAPP.view.GraphChart", {
 //      }, 
 //      
 //      ]
+    },
+    {
+      title:'Emerging Balance',
+      xtype:'chart',
+      action:'chart',
+      itemId:'yearChart',
+      width:'100%',
+      //      theme:'Energy',
+      flex:1,
+      animate:true,
+      //      theme:'Category1',
+      store:'YearStore',
+      gradients: [
+      {
+        'id': 'v-0',
+        'angle': 0,
+        stops: {
+          0: {
+            color: 'rgb(148, 148, 225)'
+          },
+          100: {
+            color: 'rgb(148, 148, 225)'
+          }
+        }
+      },
+      {
+        'id': 'v-1',
+        'angle': 0,
+        stops: {
+          0: {
+            color: 'rgb(171, 241, 219)'
+          },
+          100: {
+            color: 'rgb(171, 241, 219)'
+          }
+        }
+      },
+
+      ],
+      axes: [{
+        type: 'Category',
+        position: 'bottom',
+        fields: ['year'],
+        title: 'Date',
+        minimum: 0
+      }, {
+        type: 'Numeric',
+        position: 'left',
+        label: {
+          renderer: function (v) {
+            return v.toFixed(0);
+          }
+        },
+        maximum:1200,
+        minimum:0,
+        fields: ['amount'],
+        title: 'Amount'
+      }],
+ 
+      series: [{
+        type: 'column',
+        axis: 'left',
+        highlight: true,
+        renderer: function (sprite, storeItem, barAttr, i, store) {
+          if(i%2==0){
+            barAttr.fill = "url(#v-0)";
+          }else{
+            barAttr.fill = "url(#v-1)";
+          }
+         
+          return barAttr;
+        },  
+        xField: 'date',
+        yField: ['amount']
+
+      }, 
+      
+      ]
     },
     
     ]
