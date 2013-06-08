@@ -105,12 +105,15 @@ Ext.define('FRIENDAPP.controller.LoginController', {
             while(store.getCount()>i){
                 monthtot=monthtot + store.getAt(i).get('amount');
                 i++;
-            }    
-            monthstore.add({
+            }
+            if(monthtot>0){
+                 monthstore.add({
                     amount:monthtot,
                     month:monthsArray[monthcnt],
                     year:yearsArray[yearcnt]
             });   
+            }
+           
         }
       }
 

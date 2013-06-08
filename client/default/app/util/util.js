@@ -9,6 +9,7 @@ singleton: true,
 isBlank: function(field) {
         if (field == null || field == undefined)
             return true;
+        
         if (typeof field !== "string")
             return false;
 

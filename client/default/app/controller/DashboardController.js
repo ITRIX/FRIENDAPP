@@ -6,7 +6,7 @@
 
 Ext.define('FRIENDAPP.controller.DashboardController',{
   extend:'Ext.app.Controller',
-   
+   requires: ['FRIENDAPP.view.MainFrame'],
     config: {
               refs: {
                     dashboardButton:'MainFrameview button[action=dashboard]',

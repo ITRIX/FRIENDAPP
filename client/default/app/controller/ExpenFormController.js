@@ -6,9 +6,7 @@
 Ext.define('FRIENDAPP.controller.ExpenFormController', {
     extend: 'Ext.app.Controller',
     
-     requires:[ 
-    'FRIENDAPP.util.util',
-    ],
+     requires:['FRIENDAPP.util.util'],
     
     config: {
         refs:{
@@ -90,6 +88,11 @@ Ext.define('FRIENDAPP.controller.ExpenFormController', {
     
     dataValidate:function(){
         if (!this.getAmountField().getValue() || FRIENDAPP.util.util.isBlank(this.getAmountField().getValue())) {
+            this.getFormValidateMsg().setHtml('Please Enter Amount!...');
+            return false;
+        }
+        
+        if(this.getAmountField().getValue()<=0){
             this.getFormValidateMsg().setHtml('Please Enter Amount!...');
             return false;
         }
