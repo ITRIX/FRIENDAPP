@@ -135,7 +135,6 @@ Ext.define('Ext.chart.series.Series', {
         //new fresh object as own property.
         me.style = {};
         me.themeStyle = {};
-
         me.shadowGroups = [];
         me.markerStyle = new Ext.chart.theme.MarkerStyle();
         me.labelStyle = new Ext.chart.theme.LabelStyle();
