@@ -16,7 +16,7 @@ Ext.define('FRIENDAPP.controller.DashboardController',{
                     reportButton:'dashboard button[action=report]',
                     settingsButton:'dashboard button[action=settings]',
                     logoutButton:'dashboard button[action=logout]',
-                    expenReportView:'ExpenReport',
+                    expenReportView:'MainFrameReport',
                     mainFrameCal:'MainFrameCalender',
                     mainFrame:'MainFrameview',
                     mainPanel:'mainPanel',
@@ -81,7 +81,7 @@ Ext.define('FRIENDAPP.controller.DashboardController',{
                     break;
                     
         case 'report':
-                    this.getMainFrame().setActiveItem(2)
+                    this.getMainFrame().setActiveItem(2);
                     var store=Ext.getStore('UserExpenseStore');
                     store.clearFilter();
                     store.load();

@@ -19,7 +19,14 @@ Ext.define("FRIENDAPP.view.MainFrameReport", {
     items:[
     {
      xtype:'toolbar',
-     docked: 'top'
+     docked: 'top',
+     items:[
+         {
+          text:"Total Amount",
+          ui: 'plain',
+          itemId:'reportTotalText'
+         }
+     ]
     },
     {
       xtype:'ExpenReport'
