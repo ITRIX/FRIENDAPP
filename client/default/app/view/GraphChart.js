@@ -19,8 +19,22 @@ Ext.define("FRIENDAPP.view.GraphChart", {
         title:'Graph',
         tabBarPosition: 'top',
         width:'100%',
-
+        activeItem:1,
         items:[
+        {   
+            xtype: 'datepickerfield',
+            name: 'date',
+            itemId:'date',
+            docked:'bottom',
+            width:'100%',
+            value: new Date(),
+            dateFormat:'Y',
+            picker: {
+                yearFrom: 2011,
+                dateFormat:'Y'
+            //slotOrder: ['day', 'month', 'year']
+            }
+        },
         {
             title:'Emerging Balance',
             xtype:'chart',
