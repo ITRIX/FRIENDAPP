@@ -65,19 +65,6 @@ Ext.define("FRIENDAPP.view.AddExpenForm",{
       height :'100%',
                     
       items: [
-      {   
-        xtype: 'datepickerfield',
-        name: 'date',
-        itemId:'date',
-        label: 'Date',
-        value: new Date(),
-        dateFormat:'d/m/Y',
-        picker: {
-          yearFrom: 2011,
-          dateFormat:'d/m/Y'
-          //slotOrder: ['day', 'month', 'year']
-        }
-      },
       {
         xtype: 'numberfield',
         name: 'amount',
