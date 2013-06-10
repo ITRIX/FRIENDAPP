@@ -11,6 +11,8 @@ Ext.define('FRIENDAPP.controller.ExpenReportController', {
             reportMonthWise:'MainFrameReport #monthWise',
             reportYearWise:'MainFrameReport #yearWise',
             reportDayWise:'MainFrameReport #dayWise',
+            reportTotalText:'MainFrameReport #reportTotalText',
+            reportList:'ExpenReport #expenseListReport',
             reportSelect:'MainFrameReport #select_type'
             
         },
@@ -26,6 +28,9 @@ Ext.define('FRIENDAPP.controller.ExpenReportController', {
             },
             reportSelect:{
                 change:'onSortChange'
+            },
+            reportList:{
+                refresh:'calTotalReport'
             }
         }
     },
@@ -91,13 +96,25 @@ Ext.define('FRIENDAPP.controller.ExpenReportController', {
       var store=Ext.getStore('UserExpenseStore');
         store.clearFilter();
         store.filter(function(item){
-            var day=new Date(item.get('date')).getDay();
+            var day=new Date(item.get('date')).getDate();
             var month=new Date(item.get('date')).getMonth();
             var year=new Date(item.get('date')).getYear();
-            if(day===newValue.getDay() && month===newValue.getMonth() && year===newValue.getYear()){
+            if(day===newValue.getDate() && month===newValue.getMonth() && year===newValue.getYear()){
                 return true;
             }
         });
+    },
+    
+    calTotalReport:function(){
+        var store=Ext.getStore('UserExpenseStore');
+        var i,amounttot;
+        i=0,amounttot=0;
+        while(store.getCount()>i)
+        {
+            amounttot=amounttot + store.getAt(i).get('amount');
+            i++;
+        }
+        this.getReportTotalText().setText('Total Amount  : '+ amounttot);
     }
     
 });

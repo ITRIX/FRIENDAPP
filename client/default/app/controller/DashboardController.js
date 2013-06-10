@@ -29,6 +29,25 @@ Ext.define('FRIENDAPP.controller.DashboardController',{
             updateButton:'FormPasswordChange #btn_pass_update',
             saveButton:'FormPasswordChange #btn_pass_save'
         },
+              refs: {
+                    dashboardButton:'MainFrameview button[action=dashboard]',
+                    dashboard:'MainFrameview dashboard',
+                    calendarButton:'dashboard button[action=calendar]',
+                    graphButton:'dashboard button[action=graph]',
+                    reportButton:'dashboard button[action=report]',
+                    settingsButton:'dashboard button[action=settings]',
+                    logoutButton:'dashboard button[action=logout]',
+                    expenReportView:'MainFrameReport',
+                    mainFrameCal:'MainFrameCalender',
+                    mainFrame:'MainFrameview',
+                    mainPanel:'mainPanel',
+                    monthChart:'graphChart chart[itemId=monthChart]',
+                    yearChart:'graphChart chart[itemId=yearChart]',
+                    dailyChart:'graphChart chart[itemId=dailyChart]',
+                    mainFrameLicenceView:'MainFrameLicenceView',
+                    updateButton:'FormPasswordChange #btn_pass_update',
+                    saveButton:'FormPasswordChange #btn_pass_save'
+              },
         
         control: {
             dashboardButton:{

@@ -26,7 +26,7 @@ Ext.define("FRIENDAPP.view.ExpenReport",{
       itemCls:'userExpenseItem',
       store:'UserExpenseStore',
       itemTpl:'{expen}&nbsp;{amount}{date}',
-      itemId:'expenseList',
+      itemId:'expenseListReport',
       onItemDisclosure:true
     }]
   }
