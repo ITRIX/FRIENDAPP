@@ -117,7 +117,7 @@ Ext.define("FRIENDAPP.view.GraphChart", {
         {
             title:'Area Chart',
             xtype:'chart',
-            itemId:'dailyChart',
+            name:'dailyChart',
             renderTo: Ext.getBody(),
       
             width: '100%',
@@ -164,7 +164,7 @@ Ext.define("FRIENDAPP.view.GraphChart", {
             title:'Emerging Balance',
             xtype:'chart',
             action:'chart',
-            itemId:'monthChart',
+            name:'monthChart',
             width:'100%',
             //      theme:'Energy',
             flex:1,
@@ -242,7 +242,7 @@ Ext.define("FRIENDAPP.view.GraphChart", {
             title:'Emerging Balance',
             xtype:'chart',
             action:'chart',
-            itemId:'yearChart',
+            name:'yearChart',
             width:'100%',
             //      theme:'Energy',
             flex:1,
