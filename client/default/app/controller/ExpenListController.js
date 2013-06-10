@@ -75,14 +75,15 @@ Ext.define('FRIENDAPP.controller.ExpenListController', {
         return amounttot;
     },
     
-    calculateOtherStores:function(){
+    calculateOtherStores:function(){        
         var date,flag, currentamt,yeartot, store, amounttot,record;
         flag=false;
         date = FRIENDAPP.app.getController('Main').currentDate;
+        
         store=Ext.getStore('DailyExpenseStore');
+        store.load();
         flag=store.find('date',date);
         currentamt=0; 
-        
         amounttot = this.calTotalAmt();
         
         if(flag!=-1){
@@ -109,6 +110,7 @@ Ext.define('FRIENDAPP.controller.ExpenListController', {
         var month= new Date(date).getMonth();
         var year= new Date(date).getFullYear();
         var yearstore=Ext.getStore('YearStore');
+        store.load();
         flag=yearstore.find('year',year);
         if(flag!=-1){
             record=yearstore.getAt(flag);

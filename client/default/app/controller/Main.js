@@ -16,7 +16,7 @@ Ext.define('FRIENDAPP.controller.Main', {
             mainFrameCal:'MainFrameCalender',
             backButton:'MainFrameCalender button[action=back]',
             dateLabel:'MainFrameview toolbar[name=dateLabel]',
-            totalAmtLabel:'userExpenListView1 #totalAmtLabel',
+            totalAmtLabel:'userExpenListView1 #totalAmtLabel'
 //            graphChart:'graphChart',
 //            graphDate:'graphChart datepickerfield[name=date]'
         },
@@ -28,6 +28,9 @@ Ext.define('FRIENDAPP.controller.Main', {
             backButton:{
                 tap:'itemTap'
             },
+            mainFrameCal:{
+                initialize:'removeBackLabel'
+            }
 //            graphChart:{
 //                activeitemchange:'ónGraphChange'
 //            }

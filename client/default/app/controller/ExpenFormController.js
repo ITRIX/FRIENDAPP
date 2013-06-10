@@ -47,43 +47,44 @@ Ext.define('FRIENDAPP.controller.ExpenFormController', {
     expenform.reset();
     },
     
-    itemSave:function(){          
+    itemSave:function(){
+        if(this.dataValidate()){
+            var store=Ext.getStore('UserExpenseStore');
+            store.add({amount: this.getAmountField().getValue(),
+                       expen: this.getExpenField().getValue(),
+                       date: Ext.util.Format.date(this.getDateField().getValue(),'d M Y ')
+                     });
+            store.sync();
+            store.load();
+            this.getMainFrameCal().setActiveItem(this.getExpenseList());
+        }
 
-    if(this.dataValidate()){
-        var store=Ext.getStore('UserExpenseStore');
-        store.add({amount: this.getAmountField().getValue(),
-                   expen: this.getExpenField().getValue(),
-                   date: Ext.util.Format.date(this.getDateField().getValue(),'d M Y ')
-                 });
-        store.sync();
-        store.load();
-        this.getMainFrameCal().setActiveItem(this.getExpenseList());
-    }
-    
-    FRIENDAPP.app.getController('ExpenListController').calculateOtherStores();
+        FRIENDAPP.app.getController('ExpenListController').calculateOtherStores();
     },
     
     itemUpdate:function(){
-    var store=Ext.getStore('UserExpenseStore');
-    var selectedRec=(this.getExpenList().getSelection());
-    var id = store.getById(selectedRec[0].data.id);
-    id.set('date', Ext.util.Format.date(this.getDateField().getValue(),'d M Y '));
-    id.set('amount', this.getAmountField().getValue());
-    id.set('expen', this.getExpenField().getValue());
-    store.sync();
-    store.load();
-    this.getMainFrameCal().setActiveItem(this.getExpenseList());
-    
-    FRIENDAPP.app.getController('ExpenListController').calculateOtherStores();
+        var store=Ext.getStore('UserExpenseStore');
+        var selectedRec=(this.getExpenList().getSelection());
+        var id = store.getById(selectedRec[0].data.id);
+        id.set('date', Ext.util.Format.date(this.getDateField().getValue(),'d M Y '));
+        id.set('amount', this.getAmountField().getValue());
+        id.set('expen', this.getExpenField().getValue());
+        store.sync();
+        store.load();
+        this.getMainFrameCal().setActiveItem(this.getExpenseList());
+
+        FRIENDAPP.app.getController('ExpenListController').calculateOtherStores();
     },
     
     itemDelete:function(){
-    var store=Ext.getStore('UserExpenseStore');
-    var selectedRec=(this.getExpenList().getSelection());
-    store.remove(store.getById(selectedRec[0].data.id));
-    store.sync();
-    store.load();
-    this.getMainFrameCal().setActiveItem(this.getExpenseList());
+        var store=Ext.getStore('UserExpenseStore');
+        var selectedRec=(this.getExpenList().getSelection());
+        store.remove(store.getById(selectedRec[0].data.id));
+        store.sync();
+        store.load();
+        this.getMainFrameCal().setActiveItem(this.getExpenseList());
+
+        FRIENDAPP.app.getController('ExpenListController').calculateOtherStores();
     },
     
     dataValidate:function(){
