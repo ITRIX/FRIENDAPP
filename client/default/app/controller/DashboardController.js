@@ -29,26 +29,7 @@ Ext.define('FRIENDAPP.controller.DashboardController',{
             updateButton:'FormPasswordChange #btn_pass_update',
             saveButton:'FormPasswordChange #btn_pass_save'
         },
-              refs: {
-                    dashboardButton:'MainFrameview button[action=dashboard]',
-                    dashboard:'MainFrameview dashboard',
-                    calendarButton:'dashboard button[action=calendar]',
-                    graphButton:'dashboard button[action=graph]',
-                    reportButton:'dashboard button[action=report]',
-                    settingsButton:'dashboard button[action=settings]',
-                    logoutButton:'dashboard button[action=logout]',
-                    expenReportView:'MainFrameReport',
-                    mainFrameCal:'MainFrameCalender',
-                    mainFrame:'MainFrameview',
-                    mainPanel:'mainPanel',
-                    monthChart:'graphChart chart[itemId=monthChart]',
-                    yearChart:'graphChart chart[itemId=yearChart]',
-                    dailyChart:'graphChart chart[itemId=dailyChart]',
-                    mainFrameLicenceView:'MainFrameLicenceView',
-                    updateButton:'FormPasswordChange #btn_pass_update',
-                    saveButton:'FormPasswordChange #btn_pass_save'
-              },
-        
+              
         control: {
             dashboardButton:{
                 tap:'onDashboard'
@@ -70,6 +51,9 @@ Ext.define('FRIENDAPP.controller.DashboardController',{
             },
             graphChart:{
                 activeitemchange:'ónGraphChange'
+            },
+            graphDate:{
+                change:'onGraphFilter'
             }
         }
     },
@@ -83,27 +67,31 @@ Ext.define('FRIENDAPP.controller.DashboardController',{
         }
     },
     
-    onGraphChange:function(a,b,c,d){
-        debugger;
-        var store=this.getGraphChart().getActiveItem().getStore();
-        var self=this;
-        var datepicker = this.getGraphDate();
-        switch(store.getStoreId()){
-            case 'DailyExpenseStore':
-                datepicker.setDateFormat('Y/m');
-                datepicker.setHidden(false);
-                break;
-            case 'MonthStore':
-                datepicker.setDateFormat('Y');
-                datepicker.setHidden(false);
-                break;
-            case 'YearStore':
-                datepicker.setHidden(true);
-                break;
-                                        
-        }
+//    onGraphChange:function(a,b,c,d){
+//        debugger;
+//        var store=this.getGraphChart().getActiveItem().getStore();
+//        var self=this;
+//        var datepicker = this.getGraphDate();
+//        switch(store.getStoreId()){
+//            case 'DailyExpenseStore':
+//                datepicker.setDateFormat('Y/m');
+//                datepicker.setHidden(false);
+//                break;
+//            case 'MonthStore':
+//                datepicker.setDateFormat('Y');
+//                datepicker.setHidden(false);
+//                break;
+//            case 'YearStore':
+//                datepicker.setHidden(true);
+//                break;
+//                                        
+//        }
+//    },
+    onGraphFilter:function(datepicker, newDate, oldDate, eOpts){
+      Ext.getStore('MonthStore').clearFilter()
+      Ext.getStore('MonthStore').filter('year',newDate);
     },
-        
+    
     onScreenSelection:function(obj,e,eOpts){
         this.getDashboard().hide();
         switch(obj.action)
