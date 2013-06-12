@@ -87,6 +87,7 @@ Ext.define('FRIENDAPP.controller.Main', {
     },
     
     removeBackLabel:function(){
-        this.getBackButton().setHidden(true);
+        this.getBackButton().setHidden(true);        
+        //this.getDateLabel().setTitle(this.currentDate);
     }
 });

@@ -38,17 +38,15 @@ Styling for list
   font-style: normal;
 }
 
-
-
 .x-title .x-innerhtml{
   font-family: 'Humanist 521';
   font-size: 0.9em!important;
 }
 
-
 .formPanelCls .x-field{
     border-bottom: 1px solid lightgray
 }
+
 
 /*.addButton .x-button-icon{
 background: url('../images/document_add_small.png')no-repeat!important;

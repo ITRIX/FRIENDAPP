@@ -44,6 +44,7 @@ Ext.define('FRIENDAPP.controller.ExpenFormController', {
     
     itemReset:function(){
     var expenform=this.getAddExpenForm();
+    this.getFormValidateMsg().setHtml('');
     expenform.reset();
     },
     
@@ -89,17 +90,17 @@ Ext.define('FRIENDAPP.controller.ExpenFormController', {
     
     dataValidate:function(){
         if (!this.getAmountField().getValue() || FRIENDAPP.util.util.isBlank(this.getAmountField().getValue())) {
-            this.getFormValidateMsg().setHtml('Please Enter Amount!...');
+            this.getFormValidateMsg().setHtml('Please enter amount!...');
             return false;
         }
         
         if(this.getAmountField().getValue()<=0){
-            this.getFormValidateMsg().setHtml('Please Enter Amount!...');
+            this.getFormValidateMsg().setHtml('Please enter amount!...');
             return false;
         }
         
         if (!this.getExpenField().getValue() || FRIENDAPP.util.util.isBlank(this.getExpenField().getValue())) {
-            this.getFormValidateMsg().setHtml('Please Enter Expen Text!...');
+            this.getFormValidateMsg().setHtml('Please enter expen Text!...');
             return false;
         }
         return true;

@@ -84,6 +84,7 @@ Ext.define("FRIENDAPP.view.PasswordChange",{
       xtype:'panel',
       itemId:'formValidateMsg',
       height:'50px',
+      cls:'validatemsg',
       width:'90%'
     },
     {
