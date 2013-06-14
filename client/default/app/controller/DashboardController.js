@@ -89,7 +89,7 @@ Ext.define('FRIENDAPP.controller.DashboardController',{
 //    },
     onGraphFilter:function(datepicker, newDate, oldDate, eOpts){
       Ext.getStore('MonthStore').clearFilter()
-      Ext.getStore('MonthStore').filter('year',newDate);
+      Ext.getStore('MonthStore').filter('year',newDate.getFullYear());
     },
     
     onScreenSelection:function(obj,e,eOpts){
@@ -106,11 +106,9 @@ Ext.define('FRIENDAPP.controller.DashboardController',{
                 var store=Ext.getStore('DailyExpenseStore');
                 store.load();
                 store.clearFilter();
-                Ext.getStore('YearStore').clearFilter();
                 Ext.getStore('MonthStore').clearFilter();
-                this.getYearChart().setData(Ext.getStore('YearStore').getData());
+                this.onGraphFilter(null,new Date());
                 this.getMonthChart().setData(Ext.getStore('MonthStore').getData());
-                this.getDailyChart().setData(Ext.getStore('DailyExpenseStore').getData());
                 break;
                     
             case 'report':
