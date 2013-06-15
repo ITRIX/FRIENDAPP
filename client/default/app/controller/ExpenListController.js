@@ -44,6 +44,7 @@ Ext.define('FRIENDAPP.controller.ExpenListController', {
         this.getSaveButton().setHidden(false);
         this.getResetButton().setHidden(false);
         this.getMainFrameCal().setActiveItem(this.getAddExpenForm());
+        this.getFormValidateMsg().setHtml('');
     },
     
     itemDoubleTap:function(dataview,index,target,record,e,eOpts){
