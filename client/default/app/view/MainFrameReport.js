@@ -29,6 +29,13 @@ Ext.define("FRIENDAPP.view.MainFrameReport", {
      ]
     },
     {
+       xtype:'panel',
+       height:5,
+       cls:'ribbonCls',
+       width:'100%',
+       docked:'top'
+    },
+    {
       xtype:'ExpenReport'
     },
     {
