@@ -46,11 +46,8 @@
   text-shadow: #333 1px 1px 2px;
   -webkit-box-shadow: inset 0px 0px 8px #000;
   border: 1px solid black;
-  background: transparent;
-  background-color: #44566f;
-  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #313d4f), color-stop(10%, #3a4a5f), color-stop(65%, #44566f), color-stop(100%, #455771));
-  background-image: -webkit-linear-gradient(#313d4f, #3a4a5f 10%, #44566f 65%, #455771);
-  background-image: linear-gradient(#313d4f, #3a4a5f 10%, #44566f 65%, #455771);
+  background-color: #3AC1F8;
+  
 }
 /* line 82, ../scss/Ext.ux.TouchCalendar.scss */
 .touch-calendar-view td.unselectable {
@@ -67,9 +64,14 @@
   border: 1px solid black;
   background: #1980e5;
   background-color: #4699eb;
-  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #8bbff2), color-stop(50%, #5da6ed), color-stop(51%, #4699eb), color-stop(100%, #2f8de8));
-  background-image: -webkit-linear-gradient(#8bbff2, #5da6ed 50%, #4699eb 51%, #2f8de8);
-  background-image: linear-gradient(#8bbff2, #5da6ed 50%, #4699eb 51%, #2f8de8);
+  background-image: -webkit-gradient(
+	linear,
+	left bottom,
+	left top,
+	color-stop(0.24, rgb(68,76,184)),
+	color-stop(0.62, rgb(104,111,209)),
+	color-stop(0.81, rgb(113,120,222))
+);
 }
 /* line 98, ../scss/Ext.ux.TouchCalendar.scss */
 .touch-calendar-view td.today.selected {
