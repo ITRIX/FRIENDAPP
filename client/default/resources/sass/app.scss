@@ -1,7 +1,8 @@
 $base-color:#274581;
-$base-gradient:'bevel';
+$base-gradient:'matte';
 $active-color:#274581;
 @import 'sencha-touch/default/all';
+$toolbar-base-color:#474747;
 $sheet-bg-color :rgba(0,0,0,0); 
 // You may remove any of the following modules that you
 // do not use in order to create a smaller css file.
@@ -34,8 +35,14 @@ border-radius:0px;
 */
 
 .loginview{
-  background:url("../images/gray_fibers.png") no-repeat;
+  //background:url("../images/background_tablet.png") no-repeat;
+  background-color:#222930;
   background-size:100% 100%;
+}
+
+.ribbonCls{
+    background:url("../images/color_strip.png") center center no-repeat; 
+    background-size:100% 100%
 }
 
 .headerUser {
@@ -82,13 +89,15 @@ border-radius:0px;
 
 //Styling for form
 .formPanelStyle{
-  background:url("../images/background.png") no-repeat ;
+  //background:url("../images/background.png") no-repeat ;
+  background-color:#222930;
   background-size: 100% 100%;
 }
 
 //Styling for List
 .listCls .x-body{
-  background:url("../images/gray_fibers.png") no-repeat ;
+  //background:url("../images/background_tablet.png") no-repeat ;
+  background-color:#222930;
   background-size: 100% 100%;
 }
 

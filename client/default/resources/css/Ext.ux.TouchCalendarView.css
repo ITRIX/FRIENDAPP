@@ -6,9 +6,9 @@
   table-layout: fixed;
   font-size: 20px;
   color: #7D94C2;
-  background:url("../images/gray_fibers.png") no-repeat; /* replace with your background picture */
+/*  background:url("../images/background_tablet.png") no-repeat;  replace with your background picture */
   background-size:100% 100%;
-  background-color: transparent;
+  background-color:#222930;
 }
 /* line 28, ../scss/Ext.ux.TouchCalendar.scss */
 .touch-calendar-view table.week td {

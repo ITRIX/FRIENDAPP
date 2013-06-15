@@ -41,6 +41,13 @@ Ext.define("FRIENDAPP.view.MainFrameCalender", {
       }
       ]
     },
+    {
+       xtype:'panel',
+       height:5,
+       cls:'ribbonCls',
+       width:'100%',
+       docked:'top'
+    },
     {               
       xtype:'touchcalendar',
       title:'Calendar',
