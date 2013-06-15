@@ -32,6 +32,13 @@ Ext.define("FRIENDAPP.view.LicenceView", {
       }
       ]
     },
+    {
+       xtype:'panel',
+       height:5,
+       cls:'ribbonCls',
+       width:'100%',
+       docked:'top'
+    },
     {               
       xtype:'FrameLicence'
     },

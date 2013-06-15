@@ -47,14 +47,7 @@ Ext.define("FRIENDAPP.view.PasswordChange",{
         itemId:'btn_pass_reset'
       }
       ]
-    },
-    {
-       xtype:'panel',
-       height:5,
-       cls:'ribbonCls',
-       width:'100%',
-       docked:'top'
-    },
+    },    
     {
       xtype:'spacer'
     },
