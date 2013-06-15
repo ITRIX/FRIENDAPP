@@ -115,29 +115,29 @@ Ext.define("FRIENDAPP.view.Licence", {
             xtype: 'panel',
             width:'100%',
             layout:{
-                type:'vbox',
+                type:'hbox',
                 align:'middle'
             },
             docked:'bottom',
             items:[
-            {
-                xtype:'fieldset',
-                width:'80%',
-                items:[
+
                 {
                     xtype: 'radiofield',
                     name : 'allow',
                     value:'true',
+                    width:'50%',
+                    labelWidth:'60%',
                     label:'I Accept'
                 },
                 {
                     xtype: 'radiofield',
                     name : 'allow',
                     value:'false',
+                    width:'50%',
+                    labelWidth:'60%',
                     label:'I Decline'
                 }
-                ]
-            }
+                
              
             ]
         },
