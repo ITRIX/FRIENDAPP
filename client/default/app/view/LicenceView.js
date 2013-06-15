@@ -18,15 +18,16 @@ Ext.define("FRIENDAPP.view.LicenceView", {
       docked: 'top',
       itemId:'dateLabel',
       name:'dateLabel',
+      title:'Pocket Finder App',
       items:[  
       {
         xtype:'spacer'
       },    
-      {
-       text:'Pocket Finder App',
-        iconMask: true, 
-        ui: 'plain'   
-      },
+//      {
+//       text:'Pocket Finder App',
+//        iconMask: true, 
+//        ui: 'plain'   
+//      },
       {
         xtype:'spacer'
       }

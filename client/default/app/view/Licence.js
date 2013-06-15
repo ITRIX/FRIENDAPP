@@ -4,37 +4,38 @@
  */
 
 Ext.define("FRIENDAPP.view.Licence", {
-  extend: 'Ext.Panel',
-  requires: ['Ext.field.Radio'],
+    extend: 'Ext.Panel',
+    requires: ['Ext.field.Radio'],
 
-  xtype: 'FrameLicence',
-  config: {
-    scrollable:true,  
-    fullscreen: true,
-    layout: {
-      type:"vbox",
-      align:'middle'
-    },
-     title: 'Email',
-    activeItem: 0,
-    items:[
-    {
-      xtype:'toolbar',
-      docked:'bottom',
-      items:[
-      {
-          xtype:'spacer'
-      },
-      {
-        text:"Next",
-        itemId:'btn_licence_next',
-        hidden:true
-      },
-      ]
-    },
-    {               
-      xtype:'panel',
-      html:'<body style=\'text-align: justify;\'><div> \n\
+    xtype: 'FrameLicence',
+    config: {
+        scrollable:true,  
+        fullscreen: true,
+        cls:'graphPanelCls',
+        layout: {
+            type:"vbox",
+            align:'middle'
+        },
+        title: 'Email',
+        activeItem: 0,
+        items:[
+        {
+            xtype:'toolbar',
+            docked:'bottom',
+            items:[
+            {
+                xtype:'spacer'
+            },
+            {
+                text:"Next",
+                itemId:'btn_licence_next',
+                hidden:true
+            },
+            ]
+        },
+        {               
+            xtype:'panel',
+            html:'<body style=\'text-align: justify;\'><div> \n\
     <strong>Software license terms and conditions</strong> \n\
 </div>\n\
 <div>\n\
@@ -109,25 +110,37 @@ Ext.define("FRIENDAPP.view.Licence", {
     non-public technical and business information (“Confidential Information”).\n\
 </div><body>\n\ '
      
-    },
-    {
-         xtype: 'panel',
-         width:'100%',
-         items:[
-             {
-                xtype: 'radiofield',
-                name : 'allow',
-                value:'true',
-                label:'I Accept'
-             },
-             {
-                 xtype: 'radiofield',
-                 name : 'allow',
-                 value:'false',
-                 label:'I Decline'
-             }
-         ]
-    },
-]
-}
+        },
+        {
+            xtype: 'panel',
+            width:'100%',
+            layout:{
+                type:'vbox',
+                align:'middle'
+            },
+            docked:'bottom',
+            items:[
+            {
+                xtype:'fieldset',
+                width:'80%',
+                items:[
+                {
+                    xtype: 'radiofield',
+                    name : 'allow',
+                    value:'true',
+                    label:'I Accept'
+                },
+                {
+                    xtype: 'radiofield',
+                    name : 'allow',
+                    value:'false',
+                    label:'I Decline'
+                }
+                ]
+            }
+             
+            ]
+        },
+        ]
+    }
 });
