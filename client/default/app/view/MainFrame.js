@@ -26,7 +26,7 @@ Ext.define("FRIENDAPP.view.MainFrame",{
 //      text:'DASHBOARD',
       ui:'dashboard',
       action:'dashboard',
-      width:'10%',
+      width:'100%',
       itemId:'dashboardButton',
       docked:'bottom'
     },
