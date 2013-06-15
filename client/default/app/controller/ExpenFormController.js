@@ -57,13 +57,13 @@ Ext.define('FRIENDAPP.controller.ExpenFormController', {
                      });
             store.sync();
             store.load();
-            this.getMainFrameCal().setActiveItem(this.getExpenseList());
-        }
-
-        FRIENDAPP.app.getController('ExpenListController').calculateOtherStores();
+            this.getMainFrameCal().setActiveItem(this.getExpenseList());     
+            FRIENDAPP.app.getController('ExpenListController').calculateOtherStores();
+         }
     },
     
     itemUpdate:function(){
+        if(this.dataValidate()){
         var store=Ext.getStore('UserExpenseStore');
         var selectedRec=(this.getExpenList().getSelection());
         var id = store.getById(selectedRec[0].data.id);
@@ -73,8 +73,8 @@ Ext.define('FRIENDAPP.controller.ExpenFormController', {
         store.sync();
         store.load();
         this.getMainFrameCal().setActiveItem(this.getExpenseList());
-
         FRIENDAPP.app.getController('ExpenListController').calculateOtherStores();
+        }
     },
     
     itemDelete:function(){
