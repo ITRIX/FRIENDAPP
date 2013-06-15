@@ -1,3 +1,4 @@
+$base-color:#474747;
 $base-gradient:'matte';
 $active-color:#686FD1;
 //$active-color:#3AC1F8;
@@ -43,6 +44,18 @@ border-radius:0px;
 .ribbonCls{
     background:url("../images/color-strip.png") center center no-repeat; 
     background-size:100% 100%
+}
+
+// Css to make card bacground 
+.x-layout-card-item {
+background:#222930;
+}
+
+.graphPanelCls{
+    color:#fff;
+    .x-legend-item {
+            color: #fff;
+        }
 }
 
 .headerUser {
