@@ -11,7 +11,6 @@ Ext.define("FRIENDAPP.view.Licence", {
     config: {
         scrollable:true,  
         fullscreen: true,
-        cls:'graphPanelCls',
         layout: {
             type:"vbox",
             align:'middle'
@@ -35,6 +34,7 @@ Ext.define("FRIENDAPP.view.Licence", {
         },
         {               
             xtype:'panel',
+            cls:'graphPanelCls',
             html:'<body style=\'text-align: justify;\'><div> \n\
     <strong>Software license terms and conditions</strong> \n\
 </div>\n\
