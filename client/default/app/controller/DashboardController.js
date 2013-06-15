@@ -3,7 +3,6 @@
  * and open the template in the editor.
  */
 
-
 Ext.define('FRIENDAPP.controller.DashboardController',{
     extend:'Ext.app.Controller',
     requires: ['FRIENDAPP.view.MainFrame'],

@@ -107,6 +107,7 @@ Ext.define('FRIENDAPP.controller.ExpenListController', {
          * @author Neha
          */
         // Code to add data in year store
+        var monthsArray= ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
         var month= new Date(date).getMonth();
         var year= new Date(date).getFullYear();
         var yearstore=Ext.getStore('YearStore');
@@ -126,18 +127,19 @@ Ext.define('FRIENDAPP.controller.ExpenListController', {
         // Code to add data in month store
         var monthstore=Ext.getStore('MonthStore');
         monthstore.filter('year',year);
-        flag=monthstore.find('month',month);
+        flag=monthstore.find('month',monthsArray[month]);
         if(flag!=-1){
             record=monthstore.getAt(flag);
             amounttot= record.get('amount')+(amounttot-currentamt);
             record.set('amount',amounttot);
         }else{
             monthstore.add({
-                month:month,
+                month:monthsArray[month],
                 amount:amounttot,
                 year:year
             });
         }
+        debugger;
         monthstore.clearFilter();
     }
 });
