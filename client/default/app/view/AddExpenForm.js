@@ -2,7 +2,6 @@
  * @author Prakash
  * company Itrix Inc.
  * Login for User
- * 
  */
 
 Ext.define("FRIENDAPP.view.AddExpenForm",{

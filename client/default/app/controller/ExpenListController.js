@@ -19,7 +19,8 @@ Ext.define('FRIENDAPP.controller.ExpenListController', {
             expenAddBut:'userExpenListView1 #expenAdd',
             mainFrameCal:'MainFrameCalender',
             calendar:'MainFrameview touchcalendar[title=Calendar]',
-            totalAmtLabel:'userExpenListView1 #totalAmtLabel'
+            totalAmtLabel:'userExpenListView1 #totalAmtLabel',
+            formValidateMsg:'AddExpenForm #formValidateMsg'
         },
         control: {
             expenseList:{
@@ -59,6 +60,7 @@ Ext.define('FRIENDAPP.controller.ExpenListController', {
         this.getUpdateButton().setHidden(false);
         this.getSaveButton().setHidden(true);
         this.getResetButton().setHidden(true);
+        this.getFormValidateMsg().setHtml('');
         this.getMainFrameCal().setActiveItem(this.getAddExpenForm());
     },
   

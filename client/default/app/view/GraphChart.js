@@ -237,7 +237,13 @@ Ext.define("FRIENDAPP.view.GraphChart", {
             }, 
       
             ]
-        },
+        },{
+       xtype:'panel',
+       height:5,
+       cls:'ribbonCls',
+       width:'100%',
+       docked:'top'
+    },
 //        {
 //            title:'Emerging Balance',
 //            xtype:'chart',
