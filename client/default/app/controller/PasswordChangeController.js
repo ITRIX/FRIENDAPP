@@ -73,21 +73,21 @@ Ext.define('FRIENDAPP.controller.PasswordChangeController', {
     
     dataValidate:function(){
         if (!this.getUsernameField().getValue() || FRIENDAPP.util.util.isBlank(this.getUsernameField().getValue())) {
-            this.getFormValidateMsg().setHtml('Please enter username!...');
+            this.getFormValidateMsg().setHtml('Please enter username !...');
             return false;
         } 
         
         if (!this.getPasswordField().getValue() || FRIENDAPP.util.util.isBlank(this.getPasswordField().getValue())) {
-            this.getFormValidateMsg().setHtml('Please enter password!...');
+            this.getFormValidateMsg().setHtml('Please enter password !...');
             return false;
         }
         if (!this.getCpasswordField().getValue() || FRIENDAPP.util.util.isBlank(this.getCpasswordField().getValue())) {
-            this.getFormValidateMsg().setHtml('Please enter confirm password!...');
+            this.getFormValidateMsg().setHtml('Please enter confirm password !...');
             return;
         }
         
         if(this.getPasswordField().getValue()!==this.getCpasswordField().getValue()){
-            this.getFormValidateMsg().setHtml('Password confirm password not match!...');
+            this.getFormValidateMsg().setHtml('Password confirm password not match !...');
             return false;
         }
         return true;

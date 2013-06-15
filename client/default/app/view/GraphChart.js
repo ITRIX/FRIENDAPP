@@ -213,7 +213,6 @@ Ext.define("FRIENDAPP.view.GraphChart", {
                         return v.toFixed(0);
                     }
                 },
-                maximum:1200,
                 minimum:0,
                 fields: ['amount'],
                 title: 'Amount'
