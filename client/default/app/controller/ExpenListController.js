@@ -132,8 +132,6 @@ Ext.define('FRIENDAPP.controller.ExpenListController', {
         monthstore.clearFilter();
         monthstore.filter('year',year);
         flag=monthstore.find('month',monthsArray[month]);
-        alert(monthsArray[month]);
-        alert(flag);
         if(flag!=-1){
             record=monthstore.getAt(flag);
             amounttot= record.get('amount')+(amounttot-currentamt);
