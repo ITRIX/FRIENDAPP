@@ -7,120 +7,126 @@ Ext.define('FRIENDAPP.view.Dashboard',{
   
     config:{
         layout:{
-            type:'hbox'
+            type:'vbox'
         },
         enter:'bottom',
         exit:'bottom',
         width:'100%',
-        height:'100%',
+        height:'50%',
         zIndex:90,
         title:'Dashboard',
         items:[
         {
             xtype:'panel',
-            width:'49%',
-            //            height:'100%',
-            docked:'left',
+            width:'100%',
+            height:'50%',
+//            docked:'bottom',
             layout:{
-                type:'vbox',
-                align:'right',
-                pack:'center'
+                type:'hbox'
+//                align:'right',
+//                pack:'center'
             },
             items:[
-            {
-                xtype:'spacer',
-                height:'10px'
-            },
+//            {
+//                xtype:'spacer',
+//                height:'10px'
+//            },
             {      
                 xtype: 'button',
                 height: '100%',
-                width:'70%',
+                flex:1,
+//                width:'70%',
                 cls:'toolbarButton',
                 iconCls:'calendarCls',
                 action:'calendar'
             }, 
-            {
-                xtype:'spacer',
-                height:'10px'
-            },
+//            {
+//                xtype:'spacer',
+//                height:'10px'
+//            },
             {
                 xtype :'button',
                 height: '100%',
-                width:'70%',
+                flex:1,
+//                width:'70%',
                 id: "logoutButtonHit",
                 cls:'toolbarButton',
                 iconCls:'logoutCls',
                 action:'logout'
             },
-            {
-                xtype:'spacer',
-                height:'10px'
-            },
+//            {
+//                xtype:'spacer',
+//                height:'10px'
+//            },
             {
                 xtype: 'button',
                 height: '100%',
-                width:'70%',
+                flex:1,
+//                width:'70%',
                 cls:'toolbarButton',
                 iconCls:'graphCls',
                 action:'graph'
             },
-            {
-                xtype:'spacer',
-                height:'10px'
-            },
+//            {
+//                xtype:'spacer',
+//                height:'10px'
+//            },
             ]
         },
         {
             xtype:'panel',
-            width:'49%',
-            //            height:'100%',
-            docked:'right',
+            width:'100%',
+            height:'50%',
+//            docked:'right',
             layout:{
-                type:'vbox',
-                align:'left',
-                pack:'center'
+                type:'hbox'
+//                align:'left',
+//                pack:'center'
             },
             items:[
-            {
-                xtype:'spacer',
-                height:'10px'
-            },
+//            {
+//                xtype:'spacer',
+//                height:'10px'
+//            },
             {
                 xtype: 'button',
-                //                height: '100%',
-                width:'70%',
+                height: '100%',
+                flex:1,
+//                width:'70%',
                 cls:'toolbarButton',
                 iconCls:'reportCls',
                 action:'report'
             },
-            {
-                xtype:'spacer',
-                height:'10px'
-            },
+//            {
+//                xtype:'spacer',
+//                height:'10px'
+//            },
             {
                 xtype: 'button',
-                //                height: '100%',
-                width:'70%',
+                height: '100%',
+                flex:1,
+//                width:'70%',
                 cls:'toolbarButton',
                 iconCls:'settingsCls',
                 action:'settings'
             },
-            {
-                xtype:'spacer',
-                height:'10px'
-            },
+//            {
+//                xtype:'spacer',
+//                height:'10px'
+//            },
             {
                 xtype: 'button',
-                //                height: '100%',
-                width:'70%',
+                height: '100%',
+                flex:1,
+//                width:'70%',
                 cls:'toolbarButton',
                 iconCls:'aboutusCls',
                 action:'aboutus'
             },
-            {
-                xtype:'spacer',
-                height:'10px'
-            },
+//            {
+//                xtype:'spacer',
+//                height:'10px'
+//            },
             ]
         }
     
