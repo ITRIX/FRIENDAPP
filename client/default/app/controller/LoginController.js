@@ -26,10 +26,7 @@ Ext.define('FRIENDAPP.controller.LoginController', {
     /**
      * When login button is hit.
      */
-    onLoginTap: function() {          
-        this.calculateStore();
-        
-        // Form Values
+    onLoginTap: function() {         
         var loginForm = this.getLoginFormPanel();
         var errorString = this.getErrorMsg();
         errorString.setHtml("");
@@ -45,15 +42,17 @@ Ext.define('FRIENDAPP.controller.LoginController', {
                 function failure(Response){
                     errorString.setHtml('<font color="white" size="2"><center>'+Response.message+'</center></font>');
                     clearPasswordField()
-                }    
+                }   
       );  
-          this.calculateStore();
+          this.calculateStore();    
           /*
            * Todo code to calculate monthly and yearly expenses and add them to respective stores
            */
   },
   calculateStore:function(){
-      var store=Ext.getStore('UserExpenseStore');
+    
+      var store=Ext.getStore('DailyExpenseStore');
+      store.clearFilter();
       store.load();
       var yearsArray = [];
       var monthsArray= ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
@@ -68,6 +67,8 @@ Ext.define('FRIENDAPP.controller.LoginController', {
        */
       var yearstore=Ext.getStore('YearStore');
       var monthstore=Ext.getStore('MonthStore');
+      monthstore.removeAll(true);
+      yearstore.removeAll(true);
       var i,yeartot,yearcnt,monthtot,monthcnt;
       yearcnt=0,monthcnt=0;
       for(yearcnt=0;yearcnt<yearsArray.length;yearcnt++){

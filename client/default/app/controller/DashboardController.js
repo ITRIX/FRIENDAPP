@@ -118,6 +118,9 @@ Ext.define('FRIENDAPP.controller.DashboardController',{
                 break;
                     
             case 'logout':
+                this.getDashboard().hide();
+                this.getMainFrame().setActiveItem(0);
+                this.getMainFrameCal().setActiveItem(0);
                 this.getMainPanel().setActiveItem(0);
                 clearPasswordField();
                 break;             

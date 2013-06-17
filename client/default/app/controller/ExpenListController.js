@@ -1,7 +1,7 @@
 /* 
  * itrixit.com
  * Controller to calulate total expen for that day and display on toolbar
- * @author Neha
+ * @author Neha @Modify By Prakash
  */
 Ext.define('FRIENDAPP.controller.ExpenListController', {
     extend: 'Ext.app.Controller',
@@ -78,17 +78,17 @@ Ext.define('FRIENDAPP.controller.ExpenListController', {
         return amounttot;
     },
     
-    calculateOtherStores:function(){        
+    calculateOtherStores:function(){     
         var date,flag, currentamt,yeartot, store, amounttot,record;
         flag=false;
         date = FRIENDAPP.app.getController('Main').currentDate;
         
         store=Ext.getStore('DailyExpenseStore');
+        store.clearFilter();
         store.load();
         flag=store.find('date',date);
         currentamt=0; 
         amounttot = this.calTotalAmt();
-        
         if(flag!=-1){
             record=store.getAt(flag);
             currentamt=record.get('amount');
@@ -107,14 +107,14 @@ Ext.define('FRIENDAPP.controller.ExpenListController', {
          * Code for calculating the total monthly and yearly expenditure
          * Will be use to display monthly and yearly graphs
          * TO DO optimize and test this code later
-         * @author Neha
+         * @author Neha @Modify By Prakash
          */
         // Code to add data in year store
         var monthsArray= ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-        var month= new Date(date).getMonth();
-        var year= new Date(date).getFullYear();
+        var month = new Date(date).getMonth();
+        var year = new Date(date).getFullYear();
         var yearstore=Ext.getStore('YearStore');
-        store.load();
+        yearstore.clearFilter();
         flag=yearstore.find('year',year);
         if(flag!=-1){
             record=yearstore.getAt(flag);
@@ -129,8 +129,11 @@ Ext.define('FRIENDAPP.controller.ExpenListController', {
         
         // Code to add data in month store
         var monthstore=Ext.getStore('MonthStore');
+        monthstore.clearFilter();
         monthstore.filter('year',year);
         flag=monthstore.find('month',monthsArray[month]);
+        alert(monthsArray[month]);
+        alert(flag);
         if(flag!=-1){
             record=monthstore.getAt(flag);
             amounttot= record.get('amount')+(amounttot-currentamt);

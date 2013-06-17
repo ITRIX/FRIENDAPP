@@ -22,7 +22,7 @@ Ext.define("FRIENDAPP.view.MainFrameCalender", {
       cls: 'mainToolbar',
       docked: 'top',
       itemId:'dateLabel',
-      title:'Pocket-Finder',
+      title:'My Pocket Finder',
       name:'dateLabel',
       items:[  
       {
