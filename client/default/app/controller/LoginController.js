@@ -113,7 +113,7 @@ Ext.define('FRIENDAPP.controller.LoginController', {
                     month:monthsArray[monthcnt],
                     year:yearsArray[yearcnt]
             });   
-            }
+          }
         }
       }
   }

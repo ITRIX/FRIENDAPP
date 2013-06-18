@@ -22,6 +22,13 @@ Ext.define("FRIENDAPP.view.Login",{
         scrollable:false,
         items:[
         {
+           xtype:'panel',
+           height:5,
+           cls:'ribbonCls',
+           width:'100%',
+           docked:'top'
+        },
+        {
             xtype: 'spacer'
         },   
         {
@@ -77,7 +84,15 @@ Ext.define("FRIENDAPP.view.Login",{
         },
         {
             xtype: "spacer"
-        }]
+        },
+        {
+           xtype:'panel',
+           height:5,
+           cls:'ribbonCls',
+           width:'100%',
+           docked:'bottom'
+        },
+       ]
     }
     
 });
