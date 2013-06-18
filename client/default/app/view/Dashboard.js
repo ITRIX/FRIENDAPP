@@ -2,17 +2,20 @@
 
 Ext.define('FRIENDAPP.view.Dashboard',{
     xtype:'dashboard',
-    extend:'Ext.Sheet',
+    extend:'Ext.Panel',
     requires:[],
   
     config:{
         layout:{
-            type:'vbox'
+            type:'vbox',
+            align:'middle'
+//            pack:''
         },
-        enter:'bottom',
-        exit:'bottom',
+        cls:'dashboardPanelCls',
+        //        enter:'bottom',
+        //        exit:'bottom',
         width:'100%',
-        height:'50%',
+        height:192,
         zIndex:90,
         title:'Dashboard',
         items:[
@@ -20,115 +23,113 @@ Ext.define('FRIENDAPP.view.Dashboard',{
             xtype:'panel',
             width:'100%',
             height:'50%',
-//            docked:'bottom',
+            //            docked:'bottom',
             layout:{
                 type:'hbox'
-//                align:'right',
-//                pack:'center'
+            //                align:'right',
+            //                pack:'center'
             },
             items:[
-//            {
-//                xtype:'spacer',
-//                height:'10px'
-//            },
+            
             {      
                 xtype: 'button',
                 height: '100%',
                 flex:1,
-//                width:'70%',
+                //                width:'70%',
                 cls:'toolbarButton',
                 iconCls:'calendarCls',
                 action:'calendar'
             }, 
-//            {
-//                xtype:'spacer',
-//                height:'10px'
-//            },
+            //            {
+            //                xtype:'spacer',
+            //                height:'10px'
+            //            },
             {
                 xtype :'button',
                 height: '100%',
                 flex:1,
-//                width:'70%',
+                //                width:'70%',
                 id: "logoutButtonHit",
                 cls:'toolbarButton',
                 iconCls:'logoutCls',
                 action:'logout'
             },
-//            {
-//                xtype:'spacer',
-//                height:'10px'
-//            },
+            //            {
+            //                xtype:'spacer',
+            //                height:'10px'
+            //            },
             {
                 xtype: 'button',
                 height: '100%',
                 flex:1,
-//                width:'70%',
+                //                width:'70%',
                 cls:'toolbarButton',
                 iconCls:'graphCls',
                 action:'graph'
             },
-//            {
-//                xtype:'spacer',
-//                height:'10px'
-//            },
+            //            {
+            //                xtype:'spacer',
+            //                height:'10px'
+            //            },
             ]
         },
         {
             xtype:'panel',
             width:'100%',
             height:'50%',
-//            docked:'right',
+            //            docked:'right',
             layout:{
                 type:'hbox'
-//                align:'left',
-//                pack:'center'
+            //                align:'left',
+            //                pack:'center'
             },
             items:[
-//            {
-//                xtype:'spacer',
-//                height:'10px'
-//            },
+            //            {
+            //                xtype:'spacer',
+            //                height:'10px'
+            //            },
             {
                 xtype: 'button',
                 height: '100%',
                 flex:1,
-//                width:'70%',
+                //                width:'70%',
                 cls:'toolbarButton',
                 iconCls:'reportCls',
                 action:'report'
             },
-//            {
-//                xtype:'spacer',
-//                height:'10px'
-//            },
+            //            {
+            //                xtype:'spacer',
+            //                height:'10px'
+            //            },
             {
                 xtype: 'button',
                 height: '100%',
                 flex:1,
-//                width:'70%',
+                //                width:'70%',
                 cls:'toolbarButton',
                 iconCls:'settingsCls',
                 action:'settings'
             },
-//            {
-//                xtype:'spacer',
-//                height:'10px'
-//            },
+            //            {
+            //                xtype:'spacer',
+            //                height:'10px'
+            //            },
             {
                 xtype: 'button',
                 height: '100%',
                 flex:1,
-//                width:'70%',
+                //                width:'70%',
                 cls:'toolbarButton',
                 iconCls:'aboutusCls',
                 action:'aboutus'
             },
-//            {
-//                xtype:'spacer',
-//                height:'10px'
-//            },
+            //            {
+            //                xtype:'spacer',
+            //                height:'10px'
+            //            },
             ]
-        }
+        },
+        
     
         //        {      
         //            xtype: 'button',

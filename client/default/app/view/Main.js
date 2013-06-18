@@ -6,24 +6,30 @@
  */
 
 Ext.define("FRIENDAPP.view.Main", {
-  extend: 'Ext.Panel',
-  xtype: 'mainPanel',
-  id : 'MainPanel',
-  config: {
+    extend: 'Ext.Panel',
+    requires:['FRIENDAPP.view.Dashboard'],
+    xtype: 'mainPanel',
+    id : 'MainPanel',
+    config: {
         
-    fullscreen: true,
-    layout: 'card',
-    activeItem: 0,
+        fullscreen: true,
+        layout: 'card',
+        activeItem: 0,
         
-    items:[
-    {
-      xtype: 'loginview'
-    },
-    {
-      xtype: 'MainFrameview'  
+        items:[
+        {
+            xtype: 'loginview'
+        },
+        {
+            xtype: 'MainFrameview'  
+        },
+        {
+            xtype:'dashboard',
+            docked:'bottom',
+            hidden:true
+        },
+        ]
     }
-    ]
-  }
         
     
 });

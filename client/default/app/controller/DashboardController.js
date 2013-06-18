@@ -9,7 +9,7 @@ Ext.define('FRIENDAPP.controller.DashboardController',{
     config: {
         refs: {
             dashboardButton:'MainFrameview button[action=dashboard]',
-            dashboard:'MainFrameview dashboard',
+            dashboard:'mainPanel dashboard',
             calendarButton:'dashboard button[action=calendar]',
             graphButton:'dashboard button[action=graph]',
             reportButton:'dashboard button[action=report]',
