@@ -22,7 +22,7 @@ $sheet-bg-color :rgba(0,0,0,0);
 //@include sencha-msgbox;
 
 // Your custom code goes here..
-
+@include sencha-loading-spinner;
 @include sencha-button-ui('login', #274581, 'bevel');
 @include sencha-button-ui('dashboard', #CDD1DA, 'bevel');
 //@include sencha-button-ui('login2', #1957AD, 'glossy');

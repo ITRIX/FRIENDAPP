@@ -127,9 +127,8 @@ function setIndicator(Response){
       Ext.Viewport.setMasked({
       xtype: 'loadmask',
       cls:'maskCls',
-      html: '<img src="resources/images/loading.gif"/>',
       message: Response,
-      indicator: false
+      indicator: true
     });
     
 }
