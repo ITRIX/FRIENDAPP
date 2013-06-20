@@ -15,7 +15,7 @@ Ext.define('FRIENDAPP.view.Dashboard',{
         //        enter:'bottom',
         //        exit:'bottom',
         width:'100%',
-        height:192,
+        height:135,
         zIndex:90,
         title:'Dashboard',
         items:[
