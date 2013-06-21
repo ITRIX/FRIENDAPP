@@ -45,7 +45,6 @@ Ext.define("FRIENDAPP.view.Login",{
         {
             xtype: "fieldset",
             name: "loginForm",
-            //      title: '<div class="headerUser" align="center">Friend App Login</div>',
             width :'90%',
       
             items: [
@@ -62,7 +61,14 @@ Ext.define("FRIENDAPP.view.Login",{
                 id :'passwordid',
                 placeHolder: "Password",
                 required: true
-            }]          
+            },
+            {
+                xtype: 'checkboxfield',
+                label: 'Stay Signed In?',
+                labelWidth: '75%',
+                itemId: 'rememberPassword'
+            }
+        ]
         },
         {
             xtype: "button",

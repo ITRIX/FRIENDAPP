@@ -12,6 +12,7 @@ Ext.define('FRIENDAPP.controller.LoginController', {
               refs: {
                   loginFormPanel: 'loginview',
                   loginButton: 'loginview #loginButton',
+                  rememberPassword: 'loginview #rememberPassword',
                   errorMsg: 'loginview #validateMessage'
             
               },
@@ -19,7 +20,14 @@ Ext.define('FRIENDAPP.controller.LoginController', {
               control: {
                   loginButton: {
                   tap: "onLoginTap"
-                  }      
+                  },
+                  loginFormPanel:{
+                      activate:"onSignedIn"
+                  },
+                  rememberPassword:{
+                      uncheck:"onSignedChange",
+                      check:"onSignedChange"
+                  }
                   }
     },
     
@@ -49,6 +57,35 @@ Ext.define('FRIENDAPP.controller.LoginController', {
            * Todo code to calculate monthly and yearly expenses and add them to respective stores
            */
   },
+  
+  onSignedIn:function(){
+       var userInfoData=Ext.getStore('UserDataStore');
+        userInfoData.load();
+        if(userInfoData.getById(1).get('status')==='yes'){
+            this.getRememberPassword().setChecked(true);
+        }else if(userInfoData.getById(1).get('status')==='no'){
+             this.getRememberPassword().setChecked(false);
+        }
+  },
+  
+  onSignedChange:function(){
+        var value='';
+        if(this.getRememberPassword().getChecked()){
+                debugger;
+                value='yes';
+                alert(value);
+        }else{
+                debugger;
+                value='no';
+                alert(value);
+        }
+        var store=Ext.getStore('UserDataStore');
+        var id=store.getById(1);
+        id.set('status', value);
+        store.sync();
+        store.load();
+  },
+  
   calculateStore:function(){
     
       var store=Ext.getStore('DailyExpenseStore');

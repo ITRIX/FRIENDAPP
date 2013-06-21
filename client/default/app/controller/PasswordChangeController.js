@@ -44,7 +44,8 @@ Ext.define('FRIENDAPP.controller.PasswordChangeController', {
             var store=Ext.getStore('UserDataStore');
             store.add({
                 username: this.getUsernameField().getValue(),
-                password: this.getPasswordField().getValue()
+                password: this.getPasswordField().getValue(),
+                status: 'no'
             });
             store.sync();
             store.load();
@@ -59,7 +60,6 @@ Ext.define('FRIENDAPP.controller.PasswordChangeController', {
                 this.getFormValidateMsg().setHtml('Username with existing username not match!...');
                 return;
             }else{
-                var store=Ext.getStore('UserDataStore');
                 var id=store.getById(1);
                     id.set('username',this.getUsernameField().getValue());
                     id.set('password', this.getPasswordField().getValue());
