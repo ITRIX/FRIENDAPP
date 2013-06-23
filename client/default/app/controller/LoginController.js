@@ -168,6 +168,9 @@ function setIndicator(Response){
  */
 function setHomeScreen(){
     var main = Ext.getCmp('MainPanel');
+    var calendarButton = FRIENDAPP.app.getController('DashboardController').getCalendarButton();
+    calendarButton.addCls('activeCls');
+    FRIENDAPP.app.getController('DashboardController').activeButton = calendarButton;
     main.setActiveItem(1);
     return;
  }
