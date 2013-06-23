@@ -26,7 +26,8 @@ Ext.define('FRIENDAPP.controller.DashboardController',{
             graphDate:'graphChart datepickerfield[name=date]',
             mainFrameLicenceView:'MainFrameLicenceView',
             updateButton:'FormPasswordChange #btn_pass_update',
-            saveButton:'FormPasswordChange #btn_pass_save'
+            saveButton:'FormPasswordChange #btn_pass_save',
+            rememberPassword: 'loginview #rememberPassword'
         },
               
         control: {
@@ -119,10 +120,17 @@ Ext.define('FRIENDAPP.controller.DashboardController',{
                     
             case 'logout':
                 this.getDashboard().hide();
+                var store=Ext.getStore('UserDataStore');
+                var id=store.getById(1);
+                id.set('status', 'no');
+                store.sync();
+                store.load();
+                this.getRememberPassword().enable();
                 this.getMainFrame().setActiveItem(0);
                 this.getMainFrameCal().setActiveItem(0);
                 this.getMainPanel().setActiveItem(0);
                 clearPasswordField();
+                
                 break;             
                     
             case 'settings':

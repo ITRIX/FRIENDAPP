@@ -23,10 +23,6 @@ Ext.define('FRIENDAPP.controller.LoginController', {
                   },
                   loginFormPanel:{
                       activate:"onSignedIn"
-                  },
-                  rememberPassword:{
-                      uncheck:"onSignedChange",
-                      check:"onSignedChange"
                   }
                   }
     },
@@ -41,18 +37,19 @@ Ext.define('FRIENDAPP.controller.LoginController', {
         var values = loginForm.getValues();
         FRIENDAPP.services.LoginServices.loginAuthentication(values,
                 function success(Response){
-                    setIndicator(Response.message);                    
+                    setIndicator(Response.message);
+                    FRIENDAPP.app.getController('LoginController').onSignedChange();
                     setTimeout(function(){
                     evaluateMap();
                     setHomeScreen();
-                    }, 3000); 
+                    }, 2000); 
                 },
                 function failure(Response){
                     errorString.setHtml('<font color="white" size="2"><center>'+Response.message+'</center></font>');
                     clearPasswordField()
                 }   
       );  
-          this.calculateStore();    
+          this.calculateStore();
           /*
            * Todo code to calculate monthly and yearly expenses and add them to respective stores
            */
@@ -62,6 +59,11 @@ Ext.define('FRIENDAPP.controller.LoginController', {
        var userInfoData=Ext.getStore('UserDataStore');
         userInfoData.load();
         if(userInfoData.getById(1).get('status')==='yes'){
+            setIndicator('Loading...');                    
+            setTimeout(function(){
+            evaluateMap();
+            setHomeScreen();
+            }, 3000);
             this.getRememberPassword().setChecked(true);
         }else if(userInfoData.getById(1).get('status')==='no'){
              this.getRememberPassword().setChecked(false);
@@ -69,21 +71,13 @@ Ext.define('FRIENDAPP.controller.LoginController', {
   },
   
   onSignedChange:function(){
-        var value='';
         if(this.getRememberPassword().getChecked()){
-                debugger;
-                value='yes';
-                alert(value);
-        }else{
-                debugger;
-                value='no';
-                alert(value);
+            var store=Ext.getStore('UserDataStore');
+            var id=store.getById(1);
+            id.set('status', 'yes');
+            store.sync();
+            store.load();
         }
-        var store=Ext.getStore('UserDataStore');
-        var id=store.getById(1);
-        id.set('status', value);
-        store.sync();
-        store.load();
   },
   
   calculateStore:function(){
