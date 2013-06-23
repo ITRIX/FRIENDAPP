@@ -247,3 +247,34 @@ font-size: small;
 text-align: center;
 }
 
+// Styling for active dashboard button
+
+.activeCls{
+background-color:#333 !important;
+box-shadow: inset 0px 0px 20px 30px rgba(0,0,0, 0.3)!important;
+}
+
+.activeCls .settingsCls{
+background-image: url("../images/white_settitngs.png");
+background-size: 100% 100%;
+}
+
+.activeCls .calendarCls{
+background-image: url("../images/calendar_white.png");
+background-size: 100% 100%;
+}
+
+.activeCls .graphCls{
+background-image: url("../images/white_bar.png");
+background-size: 100%;
+}
+
+.activeCls .logoutCls{
+background-image: url("../images/exit_white.png");
+background-size: 96%;
+}
+
+.activeCls .reportCls{
+background-image: url("../images/report_white.png");
+background-size: 100%;
+}

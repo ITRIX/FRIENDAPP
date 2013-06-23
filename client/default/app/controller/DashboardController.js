@@ -6,6 +6,7 @@
 Ext.define('FRIENDAPP.controller.DashboardController',{
     extend:'Ext.app.Controller',
     requires: ['FRIENDAPP.view.MainFrame'],
+    activeButton:null,
     config: {
         refs: {
             dashboardButton:'MainFrameview button[action=dashboard]',
@@ -91,9 +92,14 @@ Ext.define('FRIENDAPP.controller.DashboardController',{
       Ext.getStore('MonthStore').filter('year',newDate.getFullYear());
     },
     
-    onScreenSelection:function(obj,e,eOpts){
+    onScreenSelection:function(button,e,eOpts){
         this.getDashboard().hide();
-        switch(obj.action)
+        if(this.activeButton!== null){
+            this.activeButton.removeCls('activeCls');
+        }
+        this.activeButton=button;
+        button.addCls('activeCls');
+        switch(button.action)
         {
             case 'calendar':
                 this.getMainFrame().setActiveItem(0);
