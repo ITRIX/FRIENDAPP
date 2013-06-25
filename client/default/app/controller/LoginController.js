@@ -59,11 +59,12 @@ Ext.define('FRIENDAPP.controller.LoginController', {
        var userInfoData=Ext.getStore('UserDataStore');
         userInfoData.load();
         if(userInfoData.getById(1).get('status')==='yes'){
-            setIndicator('Loading...');                    
+            setIndicator('Loading...');
             setTimeout(function(){
             evaluateMap();
             setHomeScreen();
             }, 3000);
+            this.calculateStore();
             this.getRememberPassword().setChecked(true);
         }else if(userInfoData.getById(1).get('status')==='no'){
              this.getRememberPassword().setChecked(false);

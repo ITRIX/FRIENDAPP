@@ -9,11 +9,15 @@ Ext.define("FRIENDAPP.view.GraphChart", {
     requires: ['Ext.chart.Panel',
     'Ext.chart.axis.Numeric',
     'Ext.chart.axis.Category',
-    'Ext.chart.series.Line',
-    'Ext.chart.series.Area',
+    'Ext.chart.series.Bar',
     'Ext.draw.engine.ImageExporter',
     'FRIENDAPP.store.DailyExpenseStore',
-    'FRIENDAPP.store.MonthStore'
+    'FRIENDAPP.store.MonthStore',
+    'Ext.chart.interactions.ItemHighlight',
+    'Ext.chart.interactions.Manager',
+    'Ext.chart.interactions.ItemInfo',
+    'Ext.chart.interactions.ItemCompare'
+    
     ],
     config:{
         title:'Graph',
@@ -28,7 +32,7 @@ Ext.define("FRIENDAPP.view.GraphChart", {
             docked:'bottom',
             layout:{
                 type:'vbox',
-                align:'middle',
+                align:'middle'
 //                pack:'center'
             },
             items:[
@@ -198,6 +202,7 @@ Ext.define("FRIENDAPP.view.GraphChart", {
             animate:true,
             //      theme:'Category1',
             store:'MonthStore',
+            
             gradients: [
             {
                 'id': 'v-0',
@@ -260,9 +265,31 @@ Ext.define("FRIENDAPP.view.GraphChart", {
                 xField: 'date',
                 yField: ['amount']
 
-            }, 
-      
-            ]
+            }],
+            
+          interactions: [{
+    type: 'iteminfo',
+    gesture: 'tap',
+    listeners: {
+        show: function(interaction, item, panel) {
+            panel.setTop(0);
+            panel.setCentered(true);
+            panel.setZIndex(90);
+            panel.setWidth('70%');
+            panel.setHeight('40%');
+            var record = item.storeItem;
+            panel.update(
+                '<ul>' +
+                    '<li><b>Month:</b> ' + record.data.month + '</li>' +
+                    '<li><b>Year: </b>' + record.data.year + '</li>' +
+                    '<li><b>Amount: </b>' + record.data.amount + '</li>' +
+                '</ul>'
+            );
+            
+        }
+    }
+}]
+
         },{
             xtype:'panel',
             height:5,

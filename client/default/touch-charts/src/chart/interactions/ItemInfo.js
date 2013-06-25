@@ -47,7 +47,8 @@ Ext.define('Ext.chart.interactions.ItemInfo', {
          * displayed. This object will be merged with the default panel configuration.
          */
         panel: {
-            floating: true,
+            //floating: true,
+            top:0,
             modal: true,
             centered: true,
             width: 250,

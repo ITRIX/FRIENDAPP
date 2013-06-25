@@ -125,6 +125,7 @@ Ext.define('FRIENDAPP.controller.DashboardController',{
                 break;
                     
             case 'logout':
+                this.activeButton.removeCls('activeCls');
                 this.getDashboard().hide();
                 var store=Ext.getStore('UserDataStore');
                 var id=store.getById(1);
