@@ -39,29 +39,3 @@ Styling for list
 .formPanelCls .x-field{
     border-bottom: 1px solid lightgray
 }
-
-
-/*.addButton .x-button-icon{
-background: url('../images/document_add_small.png')no-repeat!important;
-background-size: 100%;
-background-color: transparent!important;
-background-image: none;
-}*/
-
-/*.addButton.x-button-plain .x-button-icon.x-icon-mask{
-    width:1.7em!important;
-    height:1.7em!important;
-}*/
-
-/*.backButton{
-background: url('../images/backButton_small.png')no-repeat!important;
-background-size: 100%;
-background-color: transparent!important;
-background-image: none;
-display:-webkit-box!important
-}*/
-
-/*.mainToolbar .x-button{
-    padding:0;
-    overflow: visible!important;
-}*/

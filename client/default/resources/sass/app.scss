@@ -1,10 +1,5 @@
-$base-color:#474747;
-$base-gradient:'matte';
-$active-color:#686FD1;
-//$active-color:#3AC1F8;
-@import 'sencha-touch/default/all';
-$toolbar-base-color:#474747;
 $sheet-bg-color :rgba(0,0,0,0); 
+@import 'sencha-touch/default/all';
 // You may remove any of the following modules that you
 // do not use in order to create a smaller css file.
 @include sencha-panel;
@@ -23,9 +18,6 @@ $sheet-bg-color :rgba(0,0,0,0);
 
 // Your custom code goes here..
 @include sencha-loading-spinner;
-@include sencha-button-ui('login', #274581, 'bevel');
-@include sencha-button-ui('dashboard', #CDD1DA, 'bevel');
-//@include sencha-button-ui('login2', #1957AD, 'glossy');
 
 .x-button-dashboard{
 border-radius:0px;
@@ -35,30 +27,12 @@ border-radius:0px;
     Login screen Styling
 */
 
-.loginview{
-  //background:url("../images/background_tablet.png") no-repeat;
-  background-color:#222930;
-  background-size:100% 100%;
-}
-
 .ribbonCls{
     background:url("../images/color-strip.png") center center no-repeat; 
     background-size:100% 100%
 }
 
 // Css to make card bacground 
-.x-layout-card-item {
-background:#222930;
-}
-
-.graphPanelCls{
-    color:#fff;
-    font-size:0.8em;
-    padding:1em;
-    .x-legend-item {
-            color: #fff;
-        }
-}
 
 .headerUser {
   width: 100%;
@@ -102,22 +76,6 @@ background:#222930;
   background: rgba(0,0,0,0.7)!important;
 }
 
-//Styling for form
-.formPanelStyle{
-  //background:url("../images/background.png") no-repeat ;
-  background-color:#222930;
-  background-size: 100% 100%;
-}
-
-.x-docking-vertical{
-    background-color:#222930;
-}
-//Styling for List
-.listCls .x-body{
-  //background:url("../images/background_tablet.png") no-repeat ;
-  background-color:#222930;
-  background-size: 100% 100%;
-}
 
 .listCls .x-scroll-container {
   background-color: transparent;
@@ -157,12 +115,9 @@ background:#222930;
 
 //Styling for Dashboard Buttons
 .toolbarButton{
-  //webkit-border-radius: 0.2em!important;
   border-radius: 0em!important;
-  //box-shadow: inset 1px 1px 20px 10px rgba(0, 0, 0, 0.5);
   background-color: transparent!important;
   background-image: none !important;
-  //background: -webkit-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(10,81,153,0.65) 100%)!important; 
   color:#fff;
   z-index: 100!important;
 }
