@@ -136,7 +136,7 @@ Ext.define('FRIENDAPP.controller.DashboardController',{
                 this.getMainFrame().setActiveItem(0);
                 this.getMainFrameCal().setActiveItem(0);
                 this.getMainPanel().setActiveItem(0);
-                clearPasswordField();
+                clearLoginFields();
                 
                 break;             
                     
@@ -149,12 +149,15 @@ Ext.define('FRIENDAPP.controller.DashboardController',{
         }
     }
 })
-function clearPasswordField(){
+function clearLoginFields(){
     var passwdField = Ext.getCmp('passwordid');
-    if(passwdField){
+    var usernameField = Ext.getCmp('usernameid');
+    if(passwdField || usernameField){
         passwdField.reset();
+        usernameField.reset();
         return; 
     }
+        
 }
 
 
