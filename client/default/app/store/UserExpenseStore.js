@@ -12,7 +12,12 @@ Ext.define('FRIENDAPP.store.UserExpenseStore', {
      model:'FRIENDAPP.model.userExpenModel',
      autoload:true,
      storeId:'UserExpenseStore',
-     //groupField:"date",
+     sorters: 'date',
+     grouper: {
+       groupFn: function(record) {
+           return record.get('date');
+       }
+     },
      proxy: {
             type: 'localstorage',
             id  : 'Expen'

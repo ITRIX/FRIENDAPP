@@ -24,7 +24,7 @@ Ext.define('FRIENDAPP.controller.DashboardController',{
             monthChart:'graphChart chart[name=monthChart]',
             yearChart:'graphChart chart[name=yearChart]',
             dailyChart:'graphChart chart[name=dailyChart]',
-            graphDate:'graphChart datepickerfield[name=date]',
+            
             mainFrameLicenceView:'MainFrameLicenceView',
             updateButton:'FormPasswordChange #btn_pass_update',
             saveButton:'FormPasswordChange #btn_pass_save',
@@ -52,10 +52,8 @@ Ext.define('FRIENDAPP.controller.DashboardController',{
             },
             graphChart:{
                 activeitemchange:'ónGraphChange'
-            },
-            graphDate:{
-                change:'onGraphFilter'
             }
+            
         }
     },
       

@@ -13,7 +13,8 @@ Ext.application({
         "DashboardController",
         "ExpenReportController",
         "LicenceController",
-        "PasswordChangeController"
+        "PasswordChangeController",
+        "GraphController"
     ],
     stores: ["UserExpenseStore",'DailyExpenseStore','UserDataStore','MonthStore','YearStore'],
      models: ["userExpenModel","UserDataModel",'GraphModel','YearModel'],
