@@ -12,6 +12,6 @@ app.rar
 bin/
 gen/
 resources/sass/.sass-cache
-
+resources/theme/.sass-cache
 # Local configuration file (sdk path, etc)
 local.properties
