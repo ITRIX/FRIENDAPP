@@ -26,7 +26,7 @@ Ext.define("FRIENDAPP.view.userExpenListView",{
                 cls:'userExpenseList',
                 itemCls:'userExpenseItem',
                 store:'UserExpenseStore',
-                itemTpl:'{expen}&nbsp;{amount}',
+                itemTpl:'<div class="amountCls">Amount:&nbsp;{amount}</div><div class="expenseCls">{expen}</div>',
                 itemId:'expenseList',
                 onItemDisclosure:true
                          

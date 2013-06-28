@@ -39,3 +39,29 @@ Styling for list
 .formPanelCls .x-field{
     border-bottom: 1px solid lightgray
 }
+
+// Styling for expenselist
+
+.userExpenseList .x-list-disclosure{
+  background: url("../images/arrow.png") center center no-repeat!important;
+  -webkit-mask: 0 !important;
+  margin-right:4px;
+  width: 0.8em!important;
+  height: 0.8em!important;
+  background-size:100% 100%!important ;
+  bottom: 1.4em;
+}
+
+.expenseCls{
+    width:90%;
+    max-width:90%;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size:0.9em;
+}
+
+.amountCls{
+    width:90%;
+    max-width:90%;
+}
