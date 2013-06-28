@@ -12,7 +12,10 @@ Ext.define('FRIENDAPP.store.UserExpenseStore', {
      model:'FRIENDAPP.model.userExpenModel',
      autoload:true,
      storeId:'UserExpenseStore',
-     sorters: 'date',
+     sorters:{
+         property:'amount',
+         direction: 'ASC'
+     },
      grouper: {
        groupFn: function(record) {
            return record.get('date');
