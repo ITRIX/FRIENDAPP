@@ -22,7 +22,6 @@ $sheet-bg-color :rgba(0,0,0,0);
 .x-button-dashboard{
 border-radius:0px;
 }
-
 /*
     Login screen Styling
 */
@@ -101,16 +100,6 @@ border-radius:0px;
 .userExpenseItem .x-list-item-label{
   border-top: 1px solid white;
   border-bottom: 1px solid #DEDEDE;
-}
-
-.userExpenseList .x-list-disclosure{
-  background: url("../images/arrow.png") center center no-repeat!important;
-  -webkit-mask: 0 !important;
-  margin-right:4px;
-  width: 0.8em!important;
-  height: 0.8em!important;
-  background-size:100% 100%!important ;
-  bottom: 0.9em;
 }
 
 //Styling for Dashboard Buttons
