@@ -1,7 +1,15 @@
-$sheet-bg-color :rgba(0,0,0,0); 
+$base-color:#474747;
+$base-gradient:'matte';
+$active-color:#686FD1;
+//$active-color:#3AC1F8;
 @import 'sencha-touch/default/all';
-// You may remove any of the following modules that you
-// do not use in order to create a smaller css file.
+$toolbar-base-color:#474747;
+
+// Your custom code goes here..
+@include sencha-button-ui('login', #274581, 'bevel');
+@include sencha-button-ui('dashboard', #CDD1DA, 'bevel');
+//@include sencha-button-ui('login2', #1957AD, 'glossy');
+
 @include sencha-panel;
 @include sencha-buttons;
 @include sencha-sheet;
@@ -17,100 +25,63 @@ $sheet-bg-color :rgba(0,0,0,0);
 //@include sencha-msgbox;
 
 // Your custom code goes here..
-@include sencha-loading-spinner;
+@include sencha-loading-spinner; 
 
-.x-button-dashboard{
-border-radius:0px;
-}
+
 /*
     Login screen Styling
 */
 
-.ribbonCls{
-    background:url("../images/color-strip.png") center center no-repeat; 
-    background-size:100% 100%
+.loginview{
+  background-color:#222930;
+  background-size:100% 100%;
 }
 
 // Css to make card bacground 
-
-.headerUser {
-  width: 100%;
-  font-size: 1.3em;
-  display: block;
-  float: left;
-  text-align: center;
-  color: white;
-  font-family:'Lucida Handwriting';
+.x-layout-card-item {
+background:#222930;
 }
 
-.loginview .x-input-el{
-  font-size: 0.8em
+.graphPanelCls{
+    color:#fff;
+    font-size:0.8em;
+    padding:1em;
+    .x-legend-item {
+            color: #fff;
+        }
 }
 
-.loginview .x-button-label{
-  font-family: 'GOTHIC';
-  font-size: 0.8em;
+//Styling for form
+.formPanelStyle{
+  background-color:#222930;
+  background-size: 100% 100%;
 }
 
-.listbutton.x-button{
-  -webkit-border-radius: 0em;
+.x-docking-vertical{
+    background-color:#222930;
 }
-
-.userExpenListView .x-inner.x-list-inner.x-scroll-scroller{
-  padding: 0em;
+//Styling for List
+.listCls .x-body{
+  background-color:#222930;
+  background-size: 100% 100%;
 }
-
-//Styling for mask
-.x-scroll-container > .x-inner {
-  padding: 0em;
-}
-
-.maskCls.x-mask .x-mask-inner{
-  background: transparent;
-  margin-bottom: 100px;
-
-}
-
-.x-mask{
-  background: rgba(0,0,0,0.7)!important;
-}
-
 
 .listCls .x-scroll-container {
   background-color: transparent;
 }
 
-.listCls .x-inner{
-  padding: 0em!important;
-}
 
-.userExpenseItem{
-  color: #13172C;
-  font-family: 'Humanist 521';
-  font-size: 1em;
-  background-image: -webkit-gradient( 
-    linear,
-    left bottom,
-    left top,
-    color-stop(0, #F7F7F7),
-    color-stop(0.1, #EDEDED),
-    color-stop(1, #F7F7F7) );
-}
-
-.userExpenseItem .x-list-item-label{
-  border-top: 1px solid white;
-  border-bottom: 1px solid #DEDEDE;
+.userExpenseList .x-list-disclosure{
+  background: url("../images/arrow.png") center center no-repeat!important;
+  -webkit-mask: 0 !important;
+  margin-right:4px;
+  width: 0.8em!important;
+  height: 0.8em!important;
+  background-size:100% 100%!important ;
+  bottom: 0.9em;
 }
 
 //Styling for Dashboard Buttons
-.toolbarButton{
-  border-radius: 0em!important;
-  background-color: transparent!important;
-  background-image: none !important;
-  color:#fff;
-  z-index: 100!important;
-}
-
 // Styling for dashboard
 .dashboardPanelCls{
 background-image: -webkit-gradient(
@@ -190,36 +161,3 @@ color: rgb(255, 255, 255);
 font-size: small;
 text-align: center;
 }
-
-// Styling for active dashboard button
-
-.activeCls{
-background-color:#333 !important;
-box-shadow: inset 0px 0px 20px 30px rgba(0,0,0, 0.3)!important;
-}
-
-.activeCls .settingsCls{
-background-image: url("../images/white_settitngs.png");
-background-size: 100% 100%;
-}
-
-.activeCls .calendarCls{
-background-image: url("../images/calendar_white.png");
-background-size: 100% 100%;
-}
-
-.activeCls .graphCls{
-background-image: url("../images/white_bar.png");
-background-size: 100%;
-}
-
-.activeCls .logoutCls{
-background-image: url("../images/exit_white.png");
-background-size: 96%;
-}
-
-.activeCls .reportCls{
-background-image: url("../images/report_white.png");
-background-size: 100%;
-}
-
