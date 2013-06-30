@@ -6,7 +6,7 @@ $sheet-bg-color :rgba(0,0,0,0);
 @include sencha-panel;
 @include sencha-buttons;
 @include sencha-sheet;
-@include sencha-picker;
+//@include sencha-picker;
 @include sencha-tabs;
 @include sencha-toolbar;
 @include sencha-toolbar-forms;
@@ -158,19 +158,19 @@ border-radius:0px;
   color: #13172C;
   font-family: 'Humanist 521';
   font-size: 1em;
-  background-image: -webkit-gradient( 
+ /* background-image: -webkit-gradient( 
     linear,
     left bottom,
     left top,
     color-stop(0, #F7F7F7),
     color-stop(0.1, #EDEDED),
-    color-stop(1, #F7F7F7) );
+    color-stop(1, #F7F7F7) );*/
 }
 
-.userExpenseItem .x-list-item-label{
+/*.userExpenseItem .x-list-item-label{
   border-top: 1px solid white;
   border-bottom: 1px solid #DEDEDE;
-}
+}*/
 
 //Styling for Dashboard Buttons
 .toolbarButton{

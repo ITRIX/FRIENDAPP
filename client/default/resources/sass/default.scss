@@ -1,0 +1,102 @@
+$base-color:#000;
+$base-gradient:'glossy';
+$active-color:#329BFC;
+//$active-color:#3AC1F8;
+@import 'sencha-touch/default/all';
+$toolbar-base-color:#000;
+$list-bg-color:transparentize(#fff,0.9);
+$list-color:#eee;
+// Your custom code goes here..
+@include sencha-button-ui('login', #274581, 'bevel');
+@include sencha-button-ui('dashboard', #CDD1DA, 'bevel');
+//@include sencha-button-ui('login2', #1957AD, 'glossy');
+
+@include sencha-panel;
+@include sencha-buttons;
+@include sencha-sheet;
+@include sencha-picker;
+@include sencha-tabs;
+@include sencha-toolbar;
+@include sencha-toolbar-forms;
+//@include sencha-indexbar;
+@include sencha-list;
+@include sencha-layout;
+//@include sencha-carousel;
+@include sencha-form;
+//@include sencha-msgbox;
+
+// Your custom code goes here..
+@include sencha-loading-spinner; 
+
+
+/*
+    Login screen Styling
+*/
+
+.loginview{
+  background-color:#222930;
+  background-size:100% 100%;
+}
+
+// Css to make card bacground 
+.x-layout-card-item {
+background:#000;
+}
+
+.graphPanelCls{
+    color:#fff;
+    font-size:0.8em;
+    padding:1em;
+    .x-legend-item {
+            color: #fff;
+        }
+}
+
+//Styling for form
+.formPanelStyle{
+  background-color:#000;
+  background-size: 100% 100%;
+}
+
+.x-docking-vertical{
+    background-color:#000;
+}
+//Styling for List
+.listCls .x-body{
+  background-color:#000;
+  background-size: 100% 100%;
+}
+
+.listCls .x-scroll-container {
+  background-color: transparent;
+}
+
+
+//Styling for Dashboard Buttons
+// Styling for dashboard
+.dashboardPanelCls{
+background-image: -webkit-gradient(
+	linear,
+	left bottom,
+	left top,
+	color-stop(0.15, rgb(189,189,189)),
+	color-stop(0.49, rgb(230,223,230)),
+	color-stop(0.85, rgb(189,189,189))
+);
+}
+
+.x-docking-vertical{
+    background-color:transparent;
+}
+
+.x-panel.x-floating>.x-panel-inner, 
+.x-panel.x-floating .x-scroll-view,
+ .x-panel.x-floating .x-body,
+ .x-msgbox.x-floating>.x-panel-inner,
+ .x-msgbox.x-floating .x-scroll-view,
+ .x-msgbox.x-floating .x-body,
+ .x-form.x-floating>.x-panel-inner,
+ .x-form.x-floating .x-scroll-view,
+ .x-form.x-floating .x-body{
+    background-color:#000;
+}
