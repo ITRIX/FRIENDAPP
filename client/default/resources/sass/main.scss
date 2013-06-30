@@ -20,6 +20,8 @@ $sheet-bg-color :rgba(0,0,0,0);
 // Your custom code goes here..
 @include sencha-loading-spinner; 
 
+@include sencha-button-ui('login', #274581, 'bevel');
+@include sencha-button-ui('dashboard', #CDD1DA, 'bevel');
 
 
 /*    Styling applied to Login page.*/
@@ -89,9 +91,6 @@ Styling for list
     max-width:90%;
 }
 
-.x-button-dashboard{
-border-radius:0px;
-}
 /*
     Login screen Styling
 */
@@ -158,19 +157,7 @@ border-radius:0px;
   color: #13172C;
   font-family: 'Humanist 521';
   font-size: 1em;
- /* background-image: -webkit-gradient( 
-    linear,
-    left bottom,
-    left top,
-    color-stop(0, #F7F7F7),
-    color-stop(0.1, #EDEDED),
-    color-stop(1, #F7F7F7) );*/
 }
-
-/*.userExpenseItem .x-list-item-label{
-  border-top: 1px solid white;
-  border-bottom: 1px solid #DEDEDE;
-}*/
 
 //Styling for Dashboard Buttons
 .toolbarButton{
@@ -182,6 +169,7 @@ border-radius:0px;
 }
 
 // Styling for dashboard
+
 .dashboardPanelCls{
 background-image: -webkit-gradient(
 	linear,
@@ -203,7 +191,7 @@ background-image: -webkit-gradient(
   height: 6em!important;
 }
 
-.x-button-dashboard {
+.x-button.x-button-dashboard {
 border-radius: 0px;
 //margin-left: 44%;
 border-top-right-radius: 5em;
