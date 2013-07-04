@@ -1,0 +1,153 @@
+$base-color:#F9F9F9;
+$base-gradient:'matte';
+$active-color:#ED396D;
+//$active-color:#3AC1F8;
+@import 'sencha-touch/default/all';
+//$toolbar-base-color:#F1EFEE;
+$list-bg-color:transparentize(#fff,0.9);
+// Your custom code goes here..
+//@include sencha-button-ui('login2', #F5486C, 'glossy');
+
+@include sencha-panel;
+@include sencha-buttons;
+@include sencha-sheet;
+@include sencha-picker;
+@include sencha-tabs;
+@include sencha-toolbar;
+@include sencha-toolbar-forms;
+//@include sencha-indexbar;
+@include sencha-list;
+@include sencha-layout;
+//@include sencha-carousel;
+@include sencha-form;
+//@include sencha-msgbox;
+
+// Your custom code goes here..
+@include sencha-loading-spinner; 
+
+// List item selected color
+
+.x-list .x-list-item.x-item-selected .x-list-item-label{
+    color:#fff;
+}
+
+
+/*
+    Login screen Styling
+*/
+
+.loginview{
+  background-color:#1A1A1A;
+  background-size:100% 100%;
+}
+
+// Css to make card background 
+.x-layout-card-item {
+background:#1A1A1A;
+}
+
+.graphPanelCls{
+    color:#fff;
+    font-size:0.8em;
+    padding:1em;
+    .x-legend-item {
+            color: #fff;
+        }
+}
+
+//Styling for form
+.formPanelStyle{
+  background-color:#1A1A1A;
+  background-size: 100% 100%;
+}
+
+.x-docking-vertical{
+    background-color:#1A1A1A;
+}
+//Styling for List
+.listCls .x-body{
+  background-color:#1A1A1A;
+  background-size: 100% 100%;
+}
+
+.listCls .x-scroll-container {
+  background-color: transparent;
+}
+
+.userExpenseItem{
+  background-image: -webkit-gradient( 
+    linear,
+    left bottom,
+    left top,
+    color-stop(0, #F7F7F7),
+    color-stop(0.1, #EDEDED),
+    color-stop(1, #F7F7F7) );
+}
+
+.userExpenseItem .x-list-item-label{
+  border-top: 1px solid white;
+  border-bottom: 1px solid #DEDEDE;
+}
+
+
+//Styling for Dashboard Buttons
+// Styling for dashboard
+.dashboardPanelCls{
+background-image: -webkit-gradient(
+	linear,
+	left bottom,
+	left top,
+	color-stop(0.15, rgb(189,189,189)),
+	color-stop(0.49, rgb(230,223,230)),
+	color-stop(0.85, rgb(189,189,189))
+);
+}
+
+// Fix for picker
+.x-docking-vertical{
+    background-color:transparent;
+}
+
+// Fix for floating panel and select field
+.x-panel.x-floating>.x-panel-inner, 
+.x-panel.x-floating .x-scroll-view,
+ .x-panel.x-floating .x-body,
+ .x-msgbox.x-floating>.x-panel-inner,
+ .x-msgbox.x-floating .x-scroll-view,
+ .x-msgbox.x-floating .x-body,
+ .x-form.x-floating>.x-panel-inner,
+ .x-form.x-floating .x-scroll-view,
+ .x-form.x-floating .x-body{
+    background-color:#1A1A1A;
+}
+
+// Calendar related css
+
+
+// Calendar background
+.touch-calendar-view table {
+  width: 100%;
+  border-collapse: separate;
+  table-layout: fixed;
+  font-size: 20px;
+  color: #7D94C2;
+  background-size:100% 100%;
+  background-color:#1A1A1A;
+}
+// Current date
+.touch-calendar-view td.today {
+  color: #FFFFFF;
+  text-shadow: #333 1px 1px 2px;
+  -webkit-box-shadow: inset 0px 0px 8px #000;
+  border: 1px solid black;
+  background-color: #FB3E3E;
+}
+// Selected date
+.touch-calendar-view td.selected {
+  color: #FFFFFF;
+  text-shadow: #333 1px 1px 0px;
+  border: 1px solid black;
+  background: #1980e5;
+  background-color: #4699eb;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #fac5d4), color-stop(2%, #f05a85), color-stop(100%, #ea1855));
+}
