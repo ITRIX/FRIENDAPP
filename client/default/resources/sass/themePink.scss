@@ -46,6 +46,11 @@ $list-bg-color:transparentize(#fff,0.9);
 background:#1A1A1A;
 }
 
+html,body{
+    background-color:#1A1A1A;
+    background-image: url("../images/logo.png") center center no-repeat;
+}
+
 .graphPanelCls{
     color:#fff;
     font-size:0.8em;

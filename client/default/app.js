@@ -1,9 +1,3 @@
-//<debug>
-//Ext.Loader.setPath({
-    //'Ext': 'sdk/src'
-//});
-//</debug>
-
 Ext.application({
 
     controllers: ["Main",
@@ -43,7 +37,7 @@ Ext.application({
 
     launch: function() {
         // Destroy the #appLoadingIndicator element
-        Ext.fly('appLoadingIndicator').destroy();
+        //Ext.fly('appLoadingIndicator').destroy();
         
         // Initialize the main view
         var userInfoData=Ext.getStore('UserDataStore');

@@ -41,6 +41,11 @@ $list-color:#eee;
 background:#000;
 }
 
+html,body{
+    background-color:#000;
+    background-image: url("../images/logo.png") center center no-repeat;
+}
+
 .graphPanelCls{
     color:#fff;
     font-size:0.8em;

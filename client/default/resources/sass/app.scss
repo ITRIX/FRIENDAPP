@@ -41,6 +41,12 @@ $toolbar-base-color:#474747;
 background:#222930;
 }
 
+html,body{
+    background-color:#222930;
+    background-image: url("../images/logo.png")center center;
+    background-repeat:no-repeat;
+}
+
 .graphPanelCls{
     color:#fff;
     font-size:0.8em;
