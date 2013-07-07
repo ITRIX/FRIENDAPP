@@ -41,7 +41,7 @@ Ext.define("FRIENDAPP.view.GraphChart", {
                 items:[
                 {   
                     xtype: 'datepickerfield',
-                    name: 'date',
+                    name: 'graphdate',
                     label:'Select Year',
                     labelWidth:'60%',
                     itemId:'date',

@@ -24,7 +24,7 @@ Ext.define('FRIENDAPP.controller.DashboardController',{
             monthChart:'graphChart chart[name=monthChart]',
             yearChart:'graphChart chart[name=yearChart]',
             dailyChart:'graphChart chart[name=dailyChart]',
-            
+
             mainFrameLicenceView:'MainFrameLicenceView',
             updateButton:'FormPasswordChange #btn_pass_update',
             saveButton:'FormPasswordChange #btn_pass_save',
@@ -53,7 +53,7 @@ Ext.define('FRIENDAPP.controller.DashboardController',{
             graphChart:{
                 activeitemchange:'ónGraphChange'
             }
-            
+                  
         }
     },
       
@@ -86,11 +86,7 @@ Ext.define('FRIENDAPP.controller.DashboardController',{
 //                                        
 //        }
 //    },
-    onGraphFilter:function(datepicker, newDate, oldDate, eOpts){
-      Ext.getStore('MonthStore').clearFilter()
-      Ext.getStore('MonthStore').filter('year',newDate.getFullYear());
-    },
-    
+
     onScreenSelection:function(button,e,eOpts){
         this.getDashboard().hide();
         if(this.activeButton!== null){
@@ -111,8 +107,23 @@ Ext.define('FRIENDAPP.controller.DashboardController',{
                 store.load();
                 store.clearFilter();
                 Ext.getStore('MonthStore').clearFilter();
-                this.onGraphFilter(null,new Date());
+                FRIENDAPP.app.getController('GraphController').onGraphFilter(null,new Date());
                 this.getMonthChart().setData(Ext.getStore('MonthStore').getData());
+                
+               Ext.Viewport.add({
+                  xtype: 'panel',
+                  layout: 'vbox',
+                  html:'<center><small>Tap any bar to show total information<small><center>',
+                  height:'10%',
+                  width:'80%',
+                  //modal: true,
+                  bottom:'10%',
+                  left:'10%',
+                  floating: true
+
+             });
+ 
+                
                 break;
                     
             case 'report':
