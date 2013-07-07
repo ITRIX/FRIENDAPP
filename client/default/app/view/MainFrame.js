@@ -10,7 +10,8 @@ Ext.define("FRIENDAPP.view.MainFrame",{
     
     "FRIENDAPP.view.MainFrameCalender",
     "FRIENDAPP.view.MainFrameChart",
-    "FRIENDAPP.view.MainFrameReport"
+    "FRIENDAPP.view.MainFrameReport",
+    "FRIENDAPP.view.Theme"
     ],
     xtype: 'MainFrameview',
     //id:'MainFrameview',
@@ -46,6 +47,10 @@ Ext.define("FRIENDAPP.view.MainFrame",{
         {
             xtype:'MainFrameLicenceView',
             action:'settings'
+        },
+        {
+           xtype:'themePanel',
+           action:'theme'
         }
         ]
     }

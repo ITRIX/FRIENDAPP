@@ -16,6 +16,7 @@ Ext.define('FRIENDAPP.controller.DashboardController',{
             reportButton:'dashboard button[action=report]',
             settingsButton:'dashboard button[action=settings]',
             logoutButton:'dashboard button[action=logout]',
+            themeButton:'dashboard button[action=theme]',
             expenReportView:'ExpenReport',
             mainFrameCal:'MainFrameCalender',
             mainFrame:'MainFrameview',
@@ -50,6 +51,9 @@ Ext.define('FRIENDAPP.controller.DashboardController',{
             logoutButton:{
                 tap:'onScreenSelection'
             },
+            themeButton:{
+                tap:'onScreenSelection'
+            },
             graphChart:{
                 activeitemchange:'ónGraphChange'
             }
@@ -66,29 +70,29 @@ Ext.define('FRIENDAPP.controller.DashboardController',{
         }
     },
     
-//    onGraphChange:function(a,b,c,d){
-//        debugger;
-//        var store=this.getGraphChart().getActiveItem().getStore();
-//        var self=this;
-//        var datepicker = this.getGraphDate();
-//        switch(store.getStoreId()){
-//            case 'DailyExpenseStore':
-//                datepicker.setDateFormat('Y/m');
-//                datepicker.setHidden(false);
-//                break;
-//            case 'MonthStore':
-//                datepicker.setDateFormat('Y');
-//                datepicker.setHidden(false);
-//                break;
-//            case 'YearStore':
-//                datepicker.setHidden(true);
-//                break;
-//                                        
-//        }
-//    },
+    //    onGraphChange:function(a,b,c,d){
+    //        debugger;
+    //        var store=this.getGraphChart().getActiveItem().getStore();
+    //        var self=this;
+    //        var datepicker = this.getGraphDate();
+    //        switch(store.getStoreId()){
+    //            case 'DailyExpenseStore':
+    //                datepicker.setDateFormat('Y/m');
+    //                datepicker.setHidden(false);
+    //                break;
+    //            case 'MonthStore':
+    //                datepicker.setDateFormat('Y');
+    //                datepicker.setHidden(false);
+    //                break;
+    //            case 'YearStore':
+    //                datepicker.setHidden(true);
+    //                break;
+    //                                        
+    //        }
+    //    },
     onGraphFilter:function(datepicker, newDate, oldDate, eOpts){
-      Ext.getStore('MonthStore').clearFilter()
-      Ext.getStore('MonthStore').filter('year',newDate.getFullYear());
+        Ext.getStore('MonthStore').clearFilter()
+        Ext.getStore('MonthStore').filter('year',newDate.getFullYear());
     },
     
     onScreenSelection:function(button,e,eOpts){
@@ -143,6 +147,10 @@ Ext.define('FRIENDAPP.controller.DashboardController',{
                 this.getMainFrameLicenceView().setActiveItem(1);
                 this.getUpdateButton().setHidden(false);
                 this.getSaveButton().setHidden(true);
+                break;
+                
+            case 'theme':
+                this.getMainFrame().setActiveItem(4);
                 break;
         }
     }
