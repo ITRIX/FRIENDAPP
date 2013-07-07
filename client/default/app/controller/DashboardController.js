@@ -25,6 +25,7 @@ Ext.define('FRIENDAPP.controller.DashboardController',{
             monthChart:'graphChart chart[name=monthChart]',
             yearChart:'graphChart chart[name=yearChart]',
             dailyChart:'graphChart chart[name=dailyChart]',
+            hintPanel:'panel[name=hint]',
 
             mainFrameLicenceView:'MainFrameLicenceView',
             updateButton:'FormPasswordChange #btn_pass_update',
@@ -134,19 +135,24 @@ Ext.define('FRIENDAPP.controller.DashboardController',{
                 Ext.getStore('MonthStore').clearFilter();
                 FRIENDAPP.app.getController('GraphController').onGraphFilter(null,new Date());
                 this.getMonthChart().setData(Ext.getStore('MonthStore').getData());
-                
-               Ext.Viewport.add({
-                  xtype: 'panel',
+                var hint = Ext.create('Ext.Panel',{
                   layout: 'vbox',
+                  name:'hint',
                   html:'<center><small>Tap any bar to show total information<small><center>',
-                  height:'10%',
+                  height:50,
                   width:'80%',
                   //modal: true,
                   bottom:'10%',
                   left:'10%',
                   floating: true
 
-             });
+             })
+               
+               Ext.Viewport.add(hint);
+               setTimeout(function(){
+                   hint.setHidden(true);
+                   hint.destroy();
+               },2000)
  
                 
                 break;
