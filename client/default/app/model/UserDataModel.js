@@ -11,6 +11,7 @@ Ext.define('FRIENDAPP.model.UserDataModel', {
             {name: 'username',type :'string'},
             {name: 'password',type :'string'},
             {name:'status',type:'string'},
+            {name:'theme',type:'string'},
         ]
     }
 });

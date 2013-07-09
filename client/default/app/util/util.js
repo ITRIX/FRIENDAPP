@@ -17,6 +17,18 @@ isBlank: function(field) {
             return true;
 
         return false;
+ },
+ 
+ themeSelector:function(){
+     var i, a, url, btn;
+        for(i=0; (a = document.getElementsByTagName("link")[i]); i++) {
+            if(a.getAttribute("rel").indexOf("style") != -1) {
+                url = a.href;
+                if(url.lastIndexOf('main.css') === -1  && url.lastIndexOf('Ext.ux.TouchCalendarView.css')===-1 ) {
+                return a;
+                }
+            } 
+        }
  }
  
 });

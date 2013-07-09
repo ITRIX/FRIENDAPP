@@ -45,7 +45,8 @@ Ext.define('FRIENDAPP.controller.PasswordChangeController', {
             store.add({
                 username: this.getUsernameField().getValue(),
                 password: this.getPasswordField().getValue(),
-                status: 'no'
+                status: 'no',
+                theme:'resources/css/app.css'
             });
             store.sync();
             store.load();

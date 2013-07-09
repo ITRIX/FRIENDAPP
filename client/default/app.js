@@ -43,6 +43,9 @@ Ext.application({
         var userInfoData=Ext.getStore('UserDataStore');
         userInfoData.load();
         if(null!=userInfoData.getById(1)){
+            var id=userInfoData.getById(1);
+            var a=FRIENDAPP.util.util.themeSelector();
+            a.href=id.get('theme');
             Ext.Viewport.add(Ext.create('FRIENDAPP.view.Main'));
         }
         else{

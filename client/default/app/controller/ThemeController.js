@@ -27,28 +27,28 @@ Ext.define('FRIENDAPP.controller.ThemeController', {
     },
     
     onThemeSelect:function(button,e,eOpts){
-        var i, a, url, btn;
-        for(i=0; (a = document.getElementsByTagName("link")[i]); i++) {
-            if(a.getAttribute("rel").indexOf("style") != -1) {
-                url = a.href;
-                if(url.lastIndexOf('main.css') === -1  && url.lastIndexOf('Ext.ux.TouchCalendarView.css')===-1 ) {
-                break;
-                }
-            } 
-        }
+        var store=Ext.getStore('UserDataStore');
+        store.load();
+        var id=store.getById(1);
+        var a=FRIENDAPP.util.util.themeSelector();
         switch(button.getText())
         {
             case 'Default':
                     a.href = 'resources/css/app.css';
+                    id.set('theme','resources/css/app.css');
                     break;
                             
             case 'Pink':
                     a.href = 'resources/css/themePink.css';
+                    id.set('theme','resources/css/themePink.css');
                     break;
 
             case 'Black':
                     a.href = 'resources/css/default.css';
+                    id.set('theme','resources/css/default.css');
                     break
         }
+        store.sync();
+        store.load();
     }
 })
