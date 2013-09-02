@@ -4,7 +4,7 @@
  * @author Neha
  */
 Ext.define("FRIENDAPP.view.GraphChart", {
-    extend:'Ext.tab.Panel',
+    extend:'Ext.Panel',
     xtype:'graphChart',
     requires: ['Ext.chart.Panel',
     'Ext.chart.axis.Numeric',
@@ -20,11 +20,16 @@ Ext.define("FRIENDAPP.view.GraphChart", {
     
     ],
     config:{
-        title:'Graph',
-        tabBarPosition: 'top',
         width:'100%',
+        layout:'card',
         activeItem:1,
         items:[
+        {
+            xtype:'toolbar',
+            title:'Balance Graph',
+            width:'100%',
+            docked:'top'
+        },
         {
             xtype:'panel',
             width:'100%',
@@ -136,28 +141,28 @@ Ext.define("FRIENDAPP.view.GraphChart", {
 
             }],
             
-          interactions: [{
-    type: 'iteminfo',
-    gesture: 'tap',
-    listeners: {
-        show: function(interaction, item, panel) {
-            panel.setTop(0);
-            panel.setCentered(true);
-            panel.setZIndex(90);
-            panel.setWidth('70%');
-            panel.setHeight('40%');
-            var record = item.storeItem;
-            panel.update(
-                '<ul>' +
-                    '<li><b>Month:</b> ' + record.data.month + '</li>' +
-                    '<li><b>Year: </b>' + record.data.year + '</li>' +
-                    '<li><b>Amount: </b>' + record.data.amount + '</li>' +
-                '</ul>'
-            );
+            interactions: [{
+                type: 'iteminfo',
+                gesture: 'tap',
+                listeners: {
+                    show: function(interaction, item, panel) {
+                        panel.setTop(0);
+                        panel.setCentered(true);
+                        panel.setZIndex(90);
+                        panel.setWidth('70%');
+                        panel.setHeight('40%');
+                        var record = item.storeItem;
+                        panel.update(
+                            '<ul>' +
+                            '<li><b>Month:</b> ' + record.data.month + '</li>' +
+                            '<li><b>Year: </b>' + record.data.year + '</li>' +
+                            '<li><b>Amount: </b>' + record.data.amount + '</li>' +
+                            '</ul>'
+                            );
             
-        }
-    }
-}]
+                    }
+                }
+            }]
 
         },{
             xtype:'panel',
