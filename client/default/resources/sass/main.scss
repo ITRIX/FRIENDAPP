@@ -234,6 +234,11 @@ background-image: url("../images/money.png");
 background-size: 100% 100%;
 }
 
+.themeCls{
+background-image: url("../images/paintpallet.png");
+background-size: 100% 100%;
+}
+
 //Styling for toolbar buttons
 .addButton .x-button-icon.addIconCls.x-icon-mask{
 background: url('../images/document_add_small.png')no-repeat!important;
@@ -281,3 +286,7 @@ background-image: url("../images/report_white.png");
 background-size: 100%;
 }
 
+.activeCls .themeCls{
+background-image: url("../images/paintpalletselected.png");
+background-size: 100%;
+}
