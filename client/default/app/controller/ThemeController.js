@@ -45,7 +45,7 @@ Ext.define('FRIENDAPP.controller.ThemeController', {
 
             case 'Black':
                     a.href = './resources/css/default.css';
-                    id.set('theme','resources/css/default.css');
+                    id.set('theme','./resources/css/default.css');
                     break
         }
         store.sync();

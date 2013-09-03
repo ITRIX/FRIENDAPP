@@ -13,6 +13,8 @@ Ext.define('FRIENDAPP.controller.LoginController', {
                   loginFormPanel: 'loginview',
                   loginButton: 'loginview #loginButton',
                   rememberPassword: 'loginview #rememberPassword',
+                  usernameField:'loginview textfield[name=username]',
+                  passwordField:'loginview textfield[name=password]',
                   errorMsg: 'loginview #validateMessage'
             
               },
@@ -60,6 +62,8 @@ Ext.define('FRIENDAPP.controller.LoginController', {
         userInfoData.load();
         if(userInfoData.getById(1).get('status')==='yes'){
             setIndicator('Loading...');
+            this.getUsernameField().setValue(userInfoData.getById(1).get('username'));
+            this.getPasswordField().setValue(userInfoData.getById(1).get('password'));
             setTimeout(function(){
             evaluateMap();
             setHomeScreen();
