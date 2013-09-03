@@ -135,13 +135,19 @@ Styling for list
 }
 
 .maskCls.x-mask .x-mask-inner{
-  background: transparent;
+  background: rgba(0,0,0,0.7)!important;
   margin-bottom: 100px;
 
 }
 
 .x-mask{
   background: rgba(0,0,0,0.7)!important;
+    .x-mask-inner{
+        height:7em;
+        .x-loading-spinner-outer{
+            height:4.5em;
+        }
+    }
 }
 
 
