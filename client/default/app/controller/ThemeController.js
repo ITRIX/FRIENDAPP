@@ -34,18 +34,18 @@ Ext.define('FRIENDAPP.controller.ThemeController', {
         switch(button.getText())
         {
             case 'Default':
-                    a.href = 'resources/css/app.css';
-                    id.set('theme','resources/css/app.css');
+                    a.href = './resources/css/app.css';
+                    id.set('theme','./resources/css/app.css');
                     break;
                             
             case 'Pink':
-                    a.href = 'resources/css/themePink.css';
-                    id.set('theme','resources/css/themePink.css');
+                    a.href = './resources/css/themePink.css';
+                    id.set('theme','./resources/css/themePink.css');
                     break;
 
             case 'Black':
-                    a.href = 'resources/css/default.css';
-                    id.set('theme','resources/css/default.css');
+                    a.href = './resources/css/default.css';
+                    id.set('theme','./resources/css/default.css');
                     break
         }
         store.sync();

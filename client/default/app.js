@@ -20,6 +20,9 @@ Ext.application({
     requires: [
         'Ext.MessageBox',
         'Ext.ux.TouchCalendar',
+        'Ext.mixin.Mixin',
+        'Ext.module.FileSystem',
+        'Ext.module.Application',
         'Ext.ux.TouchCalendarView'
     ],
 
@@ -36,23 +39,19 @@ Ext.application({
     tabletStartupScreen: 'resources/loading/Homescreen~ipad.jpg',
 
     launch: function() {
-        // Destroy the #appLoadingIndicator element
-        //Ext.fly('appLoadingIndicator').destroy();
-        
-        // Initialize the main view
+       // Initialize the main view
         var userInfoData=Ext.getStore('UserDataStore');
         userInfoData.load();
         if(null!=userInfoData.getById(1)){
-            var id=userInfoData.getById(1);
-            var a=FRIENDAPP.util.util.themeSelector();
-            a.href=id.get('theme');
+            //var id=userInfoData.getById(1);
+            //var a=FRIENDAPP.util.util.themeSelector();
+            //a.href=id.get('theme');
             Ext.Viewport.add(Ext.create('FRIENDAPP.view.Main'));
         }
         else{
             Ext.Viewport.add(Ext.create('FRIENDAPP.view.LicenceView'));
-       }
-        
-        Ext.Viewport.add(Ext.create('FRIENDAPP.view.LicenceView'));
+       }     
+       
     },
 
     onUpdated: function() {
