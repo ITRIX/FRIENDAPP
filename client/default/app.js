@@ -20,9 +20,9 @@ Ext.application({
     requires: [
         'Ext.MessageBox',
         'Ext.ux.TouchCalendar',
-        'Ext.mixin.Mixin',
-        'Ext.module.FileSystem',
-        'Ext.module.Application',
+//        'Ext.mixin.Mixin',
+//        'Ext.module.FileSystem',
+//        'Ext.module.Application',
         'Ext.ux.TouchCalendarView'
     ],
 
