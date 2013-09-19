@@ -6,7 +6,8 @@
 Ext.define("FRIENDAPP.view.GraphChart", {
     extend:'Ext.Panel',
     xtype:'graphChart',
-    requires: ['Ext.chart.Panel',
+    requires: [
+//        'Ext.chart.Panel',
     'Ext.chart.axis.Numeric',
     'Ext.chart.axis.Category',
     'Ext.chart.series.Bar',
@@ -152,7 +153,7 @@ Ext.define("FRIENDAPP.view.GraphChart", {
                         panel.setWidth('70%');
                         panel.setHeight('40%');
                         var record = item.storeItem;
-                        panel.update(
+                        panel.setHtml(
                             '<ul>' +
                             '<li><b>Month:</b> ' + record.data.month + '</li>' +
                             '<li><b>Year: </b>' + record.data.year + '</li>' +
