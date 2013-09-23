@@ -1,17 +1,43 @@
 //<debug>
 Ext.Loader.setPath({
-    'Ext': 'sdk/src'
+    'Ext': 'sdk/src',
+
+   'Ext.chart': 'touch-charts/src/chart'
+//    'Ext.draw': 'touch-charts/src/draw',
+//    'Ext.fx': 'touch-charts/src/fx'
 });
 //</debug>
 
 Ext.application({
-    name: 'MyApp',
 
+    controllers: ["Main",
+        "LoginController",
+        "ExpenListController",
+        "ExpenFormController",
+        "DashboardController",
+        "ExpenReportController",
+        "LicenceController",
+        "PasswordChangeController",
+        "GraphController",
+        "ThemeController"
+    ],
+    stores: ["UserExpenseStore",'DailyExpenseStore','UserDataStore','MonthStore','YearStore'],
+     models: ["userExpenModel","UserDataModel",'GraphModel','YearModel'],
+    name: 'FRIENDAPP',
+
+    /*
+     * external libraries
+     **/
     requires: [
-        'Ext.MessageBox'
+        'Ext.MessageBox',
+        'Ext.ux.TouchCalendar',
+        'Ext.Img',
+        'Ext.ux.TouchCalendarView',
+        'Ext.util',
+        'Ext.draw'
     ],
 
-    views: ['Main'],
+    views: ['Main','Login','MainFrame','LicenceView','Licence','PasswordChange'],
 
     icon: {
         57: 'resources/icons/Icon.png',
@@ -24,11 +50,19 @@ Ext.application({
     tabletStartupScreen: 'resources/loading/Homescreen~ipad.jpg',
 
     launch: function() {
-        // Destroy the #appLoadingIndicator element
-        Ext.fly('appLoadingIndicator').destroy();
-
-        // Initialize the main view
-        Ext.Viewport.add(Ext.create('MyApp.view.Main'));
+       // Initialize the main view
+        var userInfoData=Ext.getStore('UserDataStore');
+        userInfoData.load();
+        if(null!=userInfoData.getById(1)){
+            //var id=userInfoData.getById(1);
+            //var a=FRIENDAPP.util.util.themeSelector();
+            //a.href=id.get('theme');
+            Ext.Viewport.add(Ext.create('FRIENDAPP.view.Main'));
+        }
+        else{
+            Ext.Viewport.add(Ext.create('FRIENDAPP.view.LicenceView'));
+       }     
+       
     },
 
     onUpdated: function() {
