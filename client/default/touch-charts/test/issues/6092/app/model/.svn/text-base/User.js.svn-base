@@ -1,4 +1,0 @@
-Ext.define('SPECTRUM.model.User', {
-    extend: 'Ext.data.Model',
-    fields: ['id', 'name', 'password']
-});
