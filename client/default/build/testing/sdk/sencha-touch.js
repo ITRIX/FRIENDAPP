@@ -567,36 +567,6 @@ If you are unsure which license is appropriate for your use, please contact the 
             })();
         },
 
-        /**
-         * @private
-         * @property
-         */
-        Logger: {
-            log: function(message, priority) {
-                if ('console' in global) {
-                    if (!priority || !(priority in global.console)) {
-                        priority = 'log';
-                    }
-                    message = '[' + priority.toUpperCase() + '] ' + message;
-                    global.console[priority](message);
-                }
-            },
-            verbose: function(message) {
-                this.log(message, 'verbose');
-            },
-            info: function(message) {
-                this.log(message, 'info');
-            },
-            warn: function(message) {
-                this.log(message, 'warn');
-            },
-            error: function(message) {
-                throw new Error(message);
-            },
-            deprecate: function(message) {
-                this.log(message, 'warn');
-            }
-        }
     });
 
     /**
@@ -8321,20 +8291,6 @@ function(el){
             }
         },
 
-        logger: {
-            enabled: true,
-            xclass: 'Ext.log.Logger',
-            minPriority: 'deprecate',
-            writers: {
-                console: {
-                    xclass: 'Ext.log.writer.Console',
-                    throwOnErrors: true,
-                    formatter: {
-                        xclass: 'Ext.log.formatter.Default'
-                    }
-                }
-            }
-        },
 
         animator: {
             xclass: 'Ext.fx.Runner'
