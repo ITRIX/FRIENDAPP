@@ -63,11 +63,17 @@ Ext.define('FRIENDAPP.controller.DashboardController',{
     },
       
     onDashboard:function(){
-        if(this.getDashboard().getHidden()==true){
+        if(this.getDashboard().getHidden() == true){
             this.getDashboard().show();
+//            this.getDashboard().removeCls('slidedown');
+//            this.getDashboard().addCls('slideup');
+//            this.getDashboard().config.expand = true;
         }
         else{
             this.getDashboard().hide();
+//            this.getDashboard().removeCls('slideup');
+//            this.getDashboard().addCls('slidedown');
+//            this.getDashboard().config.expand = false;
         }
     },
 

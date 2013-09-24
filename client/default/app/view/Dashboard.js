@@ -2,7 +2,7 @@
 
 Ext.define('FRIENDAPP.view.Dashboard',{
     xtype:'dashboard',
-    extend:'Ext.Panel',
+    extend:'Ext.Sheet',
     requires:[],
   
     config:{
@@ -11,11 +11,20 @@ Ext.define('FRIENDAPP.view.Dashboard',{
             align:'middle'
         },
         cls:'dashboardPanelCls',
+        centered:false,
+        //stretchY:true,
+//        fullscreen:false,
+//        enter:'bottom',
+//        exit:'bottom',
+//        bottom:0,
+        modal:false,
         width:'100%',
         height:135,
-        zIndex:90,
+//        zIndex:90,
+        expand:false,
         title:'Dashboard',
         items:[
+            
         {
             xtype:'panel',
             width:'100%',

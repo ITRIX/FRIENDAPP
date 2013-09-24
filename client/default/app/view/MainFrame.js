@@ -30,8 +30,7 @@ Ext.define("FRIENDAPP.view.MainFrame",{
             width:'100%',
             itemId:'dashboardButton',
             docked:'bottom'
-        },
-        
+        },      
         {               
             xtype:'MainFrameCalender',
             action:'calendar'
