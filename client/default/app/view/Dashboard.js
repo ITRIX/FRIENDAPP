@@ -2,7 +2,7 @@
 
 Ext.define('FRIENDAPP.view.Dashboard',{
     xtype:'dashboard',
-    extend:'Ext.Sheet',
+    extend:'Ext.Panel',
     requires:[],
   
     config:{
@@ -11,16 +11,28 @@ Ext.define('FRIENDAPP.view.Dashboard',{
             align:'middle'
         },
         cls:'dashboardPanelCls',
-        centered:false,
+//        showAnimation: 
+//        {
+//            type: 'slideIn',
+//            duration: 150,
+//            direction: 'up'
+//        },  
+//        hideAnimation: 
+//        {
+//            type: 'slideOut',
+//            duration: 250,
+//            direction: 'down'
+//        },  
+        //centered:false,
         //stretchY:true,
-//        fullscreen:false,
-//        enter:'bottom',
-//        exit:'bottom',
-//        bottom:0,
-        modal:false,
+        //        fullscreen:false,
+        //        enter:'bottom',
+        //        exit:'bottom',
+        //        bottom:0,
+        //        modal:false,
         width:'100%',
-        height:135,
-//        zIndex:90,
+        height:10,
+        //        zIndex:90,
         expand:false,
         title:'Dashboard',
         items:[
@@ -42,14 +54,13 @@ Ext.define('FRIENDAPP.view.Dashboard',{
                 iconCls:'calendarCls',
                 action:'calendar'
             }, 
-            {
-                xtype :'button',
+             {
+                xtype: 'button',
                 height: '100%',
                 flex:1,
-                id: "logoutButtonHit",
                 cls:'toolbarButton',
-                iconCls:'logoutCls',
-                action:'logout'
+                iconCls:'reportCls',
+                action:'report'
             },
             {
                 xtype: 'button',
@@ -69,14 +80,7 @@ Ext.define('FRIENDAPP.view.Dashboard',{
                 type:'hbox'
             },
             items:[
-            {
-                xtype: 'button',
-                height: '100%',
-                flex:1,
-                cls:'toolbarButton',
-                iconCls:'reportCls',
-                action:'report'
-            },
+           
             {
                 xtype: 'button',
                 height: '100%',
@@ -92,6 +96,15 @@ Ext.define('FRIENDAPP.view.Dashboard',{
                 cls:'toolbarButton',
                 iconCls:'themeCls',
                 action:'theme'
+            },
+            {
+                xtype :'button',
+                height: '100%',
+                flex:1,
+                id: "logoutButtonHit",
+                cls:'toolbarButton',
+                iconCls:'logoutCls',
+                action:'logout'
             },
             ]
         },

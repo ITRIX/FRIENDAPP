@@ -153,7 +153,7 @@ Ext.define("FRIENDAPP.view.GraphChart", {
                         panel.setWidth('70%');
                         panel.setHeight('40%');
                         var record = item.storeItem;
-                        panel.update(
+                        panel.setHtml(
                             '<ul>' +
                             '<li><b>Month:</b> ' + record.data.month + '</li>' +
                             '<li><b>Year: </b>' + record.data.year + '</li>' +

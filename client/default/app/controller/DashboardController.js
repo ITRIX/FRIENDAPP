@@ -64,39 +64,74 @@ Ext.define('FRIENDAPP.controller.DashboardController',{
       
     onDashboard:function(){
         if(this.getDashboard().getHidden() == true){
+            debugger;
+            //            this.getDashboard().getLayout().setAnimation('slideup');
             this.getDashboard().show();
-//            this.getDashboard().removeCls('slidedown');
-//            this.getDashboard().addCls('slideup');
-//            this.getDashboard().config.expand = true;
+            //this.getDashboard().setHeight(135);
+
+            this.growDashboard();
+        //            this.getDashboard().removeCls('slidedown');
+        //            this.getDashboard().addCls('slideup');
+        //            this.getDashboard().config.expand = true;
         }
         else{
-            this.getDashboard().hide();
-//            this.getDashboard().removeCls('slideup');
-//            this.getDashboard().addCls('slidedown');
-//            this.getDashboard().config.expand = false;
+            this.shrinkDashboard();
+            
+//            this.getDashboard().setHeight(10);
+            
+        //            this.getDashboard().removeCls('slideup');
+        //            this.getDashboard().addCls('slidedown');
+        //            this.getDashboard().config.expand = false;
         }
     },
-
-//    onGraphChange:function(a,b,c,d){
-//        debugger;
-//        var store=this.getGraphChart().getActiveItem().getStore();
-//        var self=this;
-//        var datepicker = this.getGraphDate();
-//        switch(store.getStoreId()){
-//            case 'DailyExpenseStore':
-//                datepicker.setDateFormat('Y/m');
-//                datepicker.setHidden(false);
-//                break;
-//            case 'MonthStore':
-//                datepicker.setDateFormat('Y');
-//                datepicker.setHidden(false);
-//                break;
-//            case 'YearStore':
-//                datepicker.setHidden(true);
-//                break;
-//                                        
-//        }
-//    },
+    
+    growDashboard:function(){
+        debugger;
+        var self=this;
+        setTimeout(function(){
+            var height = self.getDashboard().getHeight()+15;
+            if(height < 135){
+                self.getDashboard().setHeight(height);
+                self.growDashboard();
+            }
+                
+        },5)
+    },
+    
+    shrinkDashboard:function(){
+        debugger;
+         var self=this;
+        setTimeout(function(){
+            var height = self.getDashboard().getHeight()-15;
+            if(height > 0){
+                self.getDashboard().setHeight(height);
+                self.shrinkDashboard();
+            }else{
+                self.getDashboard().hide();
+            }
+                
+        },5)
+    },
+    //    onGraphChange:function(a,b,c,d){
+    //        debugger;
+    //        var store=this.getGraphChart().getActiveItem().getStore();
+    //        var self=this;
+    //        var datepicker = this.getGraphDate();
+    //        switch(store.getStoreId()){
+    //            case 'DailyExpenseStore':
+    //                datepicker.setDateFormat('Y/m');
+    //                datepicker.setHidden(false);
+    //                break;
+    //            case 'MonthStore':
+    //                datepicker.setDateFormat('Y');
+    //                datepicker.setHidden(false);
+    //                break;
+    //            case 'YearStore':
+    //                datepicker.setHidden(true);
+    //                break;
+    //                                        
+    //        }
+    //    },
 
     //    onGraphChange:function(a,b,c,d){
     //        debugger;
@@ -142,23 +177,23 @@ Ext.define('FRIENDAPP.controller.DashboardController',{
                 FRIENDAPP.app.getController('GraphController').onGraphFilter(null,new Date());
                 this.getMonthChart().setData(Ext.getStore('MonthStore').getData());
                 var hint = Ext.create('Ext.Panel',{
-                  layout: 'vbox',
-                  name:'hint',
-                  html:'<center><small>Tap any bar to show total information<small><center>',
-                  height:50,
-                  width:'80%',
-                  //modal: true,
-                  bottom:'10%',
-                  left:'10%',
-                  floating: true
+                    layout: 'vbox',
+                    name:'hint',
+                    html:'<center><small>Tap any bar to show total information<small><center>',
+                    height:50,
+                    width:'80%',
+                    //modal: true,
+                    bottom:'10%',
+                    left:'10%',
+                    floating: true
 
-             })
+                })
                
-               Ext.Viewport.add(hint);
-               setTimeout(function(){
-                   hint.setHidden(true);
-                   hint.destroy();
-               },2000)
+                Ext.Viewport.add(hint);
+                setTimeout(function(){
+                    hint.setHidden(true);
+                    hint.destroy();
+                },2000)
  
                 
                 break;
