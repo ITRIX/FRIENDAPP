@@ -1,3 +1,7 @@
+/*
+        BLACK THEME
+*/
+
 $base-color:#000;
 $base-gradient:'glossy';
 $active-color:#329BFC;
@@ -104,6 +108,8 @@ background-image: -webkit-gradient(
  .x-form.x-floating .x-scroll-view,
  .x-form.x-floating .x-body{
     background-color:#000;
+    color:#eee;
+    border:1px solid #222;
 }
 
 // Calendar related css

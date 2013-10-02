@@ -22,6 +22,9 @@ Ext.define("FRIENDAPP.view.ExpenReport",{
     items:[
     {
       xtype:'list',
+      scrollable:{
+                outOfBoundRestrictFactor:0
+            },
       cls:'userExpenseList',
       itemCls:'userExpenseItem',
       grouped: true,

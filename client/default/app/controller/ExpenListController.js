@@ -143,7 +143,6 @@ Ext.define('FRIENDAPP.controller.ExpenListController', {
                 year:year
             });
         }
-        debugger;
         monthstore.clearFilter();
     }
 });

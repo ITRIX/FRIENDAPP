@@ -297,15 +297,11 @@ background-image: url("../images/paintpalletselected.png");
 background-size: 100%;
 }
 
-/*
-    Transformation styling for ActionPanel
-*/
-.slideup {
-  -webkit-transition: -webkit-transform 250ms ease-in 0ms !important;
-  -webkit-transform: translateX(0px) translateY(0px) translateZ(0px) rotate(0deg) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skewX(0deg) skewY(0deg) scaleX(1) scaleY(1) scaleZ(1) !important;
+// To fix the dark colors on pickers
+.x-docking-vertical{
+    background-color:transparent!important;
 }
 
-.slidedown {
-  -webkit-transition: -webkit-transform 250ms ease-out 0ms !important;
-  -webkit-transform: translateX(0%) translateY(129px) translateZ(0px) rotate(0deg) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skewX(0deg) skewY(0deg) scaleX(1) scaleY(1) scaleZ(1) !important;
+center {
+padding: 0.5%;
 }

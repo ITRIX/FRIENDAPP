@@ -19,6 +19,9 @@ Ext.define('FRIENDAPP.controller.DashboardController',{
             themeButton:'dashboard button[action=theme]',
             expenReportView:'ExpenReport',
             mainFrameCal:'MainFrameCalender',
+            mainFrameChart:'MainFrameChart',
+            mainFrameReport:'MainFrameReport',
+            themePanel:'themePanel',
             mainFrame:'MainFrameview',
             mainPanel:'mainPanel',
             graphChart:'graphChart',
@@ -57,14 +60,27 @@ Ext.define('FRIENDAPP.controller.DashboardController',{
             },
             graphChart:{
                 activeitemchange:'ónGraphChange'
+            },
+            mainFrameCal:{
+                initialize:'onPanelInit'
+            },
+            mainFrameChart:{
+                initialize:'onPanelInit'
+            },
+            mainFrameReport:{
+                initialize:'onPanelInit'
+            },
+            themePanel:{
+                initialize:'onPanelInit'
+            },
+            mainFrameLicenceView:{
+                initialize:'onPanelInit'
             }
-                  
         }
     },
       
     onDashboard:function(){
         if(this.getDashboard().getHidden() == true){
-            debugger;
             //            this.getDashboard().getLayout().setAnimation('slideup');
             this.getDashboard().show();
             //this.getDashboard().setHeight(135);
@@ -77,7 +93,7 @@ Ext.define('FRIENDAPP.controller.DashboardController',{
         else{
             this.shrinkDashboard();
             
-//            this.getDashboard().setHeight(10);
+        //            this.getDashboard().setHeight(10);
             
         //            this.getDashboard().removeCls('slideup');
         //            this.getDashboard().addCls('slidedown');
@@ -86,23 +102,21 @@ Ext.define('FRIENDAPP.controller.DashboardController',{
     },
     
     growDashboard:function(){
-        debugger;
         var self=this;
         setTimeout(function(){
-            var height = self.getDashboard().getHeight()+15;
+            var height = self.getDashboard().getHeight()+20;
             if(height < 135){
                 self.getDashboard().setHeight(height);
                 self.growDashboard();
             }
                 
-        },5)
+        },1)
     },
     
     shrinkDashboard:function(){
-        debugger;
-         var self=this;
+        var self=this;
         setTimeout(function(){
-            var height = self.getDashboard().getHeight()-15;
+            var height = self.getDashboard().getHeight()-20;
             if(height > 0){
                 self.getDashboard().setHeight(height);
                 self.shrinkDashboard();
@@ -110,128 +124,101 @@ Ext.define('FRIENDAPP.controller.DashboardController',{
                 self.getDashboard().hide();
             }
                 
-        },5)
+        },1)
     },
-    //    onGraphChange:function(a,b,c,d){
-    //        debugger;
-    //        var store=this.getGraphChart().getActiveItem().getStore();
-    //        var self=this;
-    //        var datepicker = this.getGraphDate();
-    //        switch(store.getStoreId()){
-    //            case 'DailyExpenseStore':
-    //                datepicker.setDateFormat('Y/m');
-    //                datepicker.setHidden(false);
-    //                break;
-    //            case 'MonthStore':
-    //                datepicker.setDateFormat('Y');
-    //                datepicker.setHidden(false);
-    //                break;
-    //            case 'YearStore':
-    //                datepicker.setHidden(true);
-    //                break;
-    //                                        
-    //        }
-    //    },
-
-    //    onGraphChange:function(a,b,c,d){
-    //        debugger;
-    //        var store=this.getGraphChart().getActiveItem().getStore();
-    //        var self=this;
-    //        var datepicker = this.getGraphDate();
-    //        switch(store.getStoreId()){
-    //            case 'DailyExpenseStore':
-    //                datepicker.setDateFormat('Y/m');
-    //                datepicker.setHidden(false);
-    //                break;
-    //            case 'MonthStore':
-    //                datepicker.setDateFormat('Y');
-    //                datepicker.setHidden(false);
-    //                break;
-    //            case 'YearStore':
-    //                datepicker.setHidden(true);
-    //                break;
-    //                                        
-    //        }
-    //    },
+   
+   /*
+    * Initialize tap event to handle dashboard
+    */
+   onPanelInit:function(panel){
+       var self = this;
+       panel.element.on('tap',function(){
+           self.getDashboard().hide();
+       });
+   },
 
     onScreenSelection:function(button,e,eOpts){
-        this.getDashboard().hide();
+        this.onDashboard();
         if(this.activeButton!== null){
             this.activeButton.removeCls('activeCls');
         }
         this.activeButton=button;
         button.addCls('activeCls');
-        switch(button.config.action)
-        {
-            case 'calendar':
-                this.getMainFrame().setActiveItem(0);
-                this.getMainFrameCal().setActiveItem(0);
-                break;
         
-            case 'graph':
-                this.getMainFrame().setActiveItem(1);
-                var store=Ext.getStore('DailyExpenseStore');
-                store.load();
-                store.clearFilter();
-                Ext.getStore('MonthStore').clearFilter();
-                FRIENDAPP.app.getController('GraphController').onGraphFilter(null,new Date());
-                this.getMonthChart().setData(Ext.getStore('MonthStore').getData());
-                var hint = Ext.create('Ext.Panel',{
-                    layout: 'vbox',
-                    name:'hint',
-                    html:'<center><small>Tap any bar to show total information<small><center>',
-                    height:50,
-                    width:'80%',
-                    //modal: true,
-                    bottom:'10%',
-                    left:'10%',
-                    floating: true
+        var self = this;
+        
+        setTimeout(function(){
+            switch(button.config.action)
+            {
+                case 'calendar':
+                    self.getMainFrame().setActiveItem(0);
+                    self.getMainFrameCal().setActiveItem(0);
+                    break;
+        
+                case 'graph':
+                    self.getMainFrame().setActiveItem(1);
+                    var store=Ext.getStore('DailyExpenseStore');
+                    store.load();
+                    store.clearFilter();
+                    Ext.getStore('MonthStore').clearFilter();
+                    FRIENDAPP.app.getController('GraphController').onGraphFilter(null,new Date());
+                    self.getMonthChart().setData(Ext.getStore('MonthStore').getData());
+                    var hint = Ext.create('Ext.Panel',{
+                        layout: 'vbox',
+                        name:'hint',
+                        html:'<center><small>Tap any bar to show total information<small><center>',
+                        height:50,
+                        width:'80%',
+                        //modal: true,
+                        bottom:'10%',
+                        left:'10%',
+                        floating: true
 
-                })
+                    });
                
-                Ext.Viewport.add(hint);
-                setTimeout(function(){
-                    hint.setHidden(true);
-                    hint.destroy();
-                },2000)
- 
-                
-                break;
+                    Ext.Viewport.add(hint);
+                    setTimeout(function(){
+                        hint.setHidden(true);
+                        hint.destroy();
+                    },100000);
+                    break;
                     
-            case 'report':
-                this.getMainFrame().setActiveItem(2)
-                var store=Ext.getStore('UserExpenseStore');
-                store.clearFilter();
-                store.load();
-                break;
+                case 'report':
+                    self.getMainFrame().setActiveItem(2)
+                    var store=Ext.getStore('UserExpenseStore');
+                    store.clearFilter();
+                    store.load();
+                    break;
                     
-            case 'logout':
-                this.activeButton.removeCls('activeCls');
-                this.getDashboard().hide();
-                var store=Ext.getStore('UserDataStore');
-                var id=store.getById(1);
-                id.set('status', 'no');
-                store.sync();
-                store.load();
-                this.getRememberPassword().enable();
-                this.getMainFrame().setActiveItem(0);
-                this.getMainFrameCal().setActiveItem(0);
-                this.getMainPanel().setActiveItem(0);
-                clearLoginFields();
+                case 'logout':
+                    self.activeButton.removeCls('activeCls');
+                    self.getDashboard().hide();
+                    var store=Ext.getStore('UserDataStore');
+                    var id=store.getById(1);
+                    id.set('status', 'no');
+                    store.sync();
+                    store.load();
+                    self.getRememberPassword().enable();
+                    self.getMainFrame().setActiveItem(0);
+                    self.getMainFrameCal().setActiveItem(0);
+                    self.getMainPanel().setActiveItem(0);
+                    clearLoginFields();
                 
-                break;             
+                    break;             
                     
-            case 'settings':
-                this.getMainFrame().setActiveItem(3);
-                this.getMainFrameLicenceView().setActiveItem(1);
-                this.getUpdateButton().setHidden(false);
-                this.getSaveButton().setHidden(true);
-                break;
+                case 'settings':
+                    self.getMainFrame().setActiveItem(3);
+                    self.getMainFrameLicenceView().setActiveItem(1);
+                    self.getUpdateButton().setHidden(false);
+                    self.getSaveButton().setHidden(true);
+                    break;
                 
-            case 'theme':
-                this.getMainFrame().setActiveItem(4);
-                break;
-        }
+                case 'theme':
+                    self.getMainFrame().setActiveItem(4);
+                    break;
+            }
+        },200)
+
     }
 })
 function clearLoginFields(){
