@@ -104,7 +104,7 @@ Ext.define('FRIENDAPP.controller.DashboardController',{
     growDashboard:function(){
         var self=this;
         setTimeout(function(){
-            var height = self.getDashboard().getHeight()+20;
+            var height = self.getDashboard().getHeight()+40;
             if(height < 135){
                 self.getDashboard().setHeight(height);
                 self.growDashboard();
@@ -116,7 +116,7 @@ Ext.define('FRIENDAPP.controller.DashboardController',{
     shrinkDashboard:function(){
         var self=this;
         setTimeout(function(){
-            var height = self.getDashboard().getHeight()-20;
+            var height = self.getDashboard().getHeight()-40;
             if(height > 0){
                 self.getDashboard().setHeight(height);
                 self.shrinkDashboard();
@@ -163,24 +163,6 @@ Ext.define('FRIENDAPP.controller.DashboardController',{
                     Ext.getStore('MonthStore').clearFilter();
                     FRIENDAPP.app.getController('GraphController').onGraphFilter(null,new Date());
                     self.getMonthChart().setData(Ext.getStore('MonthStore').getData());
-                    var hint = Ext.create('Ext.Panel',{
-                        layout: 'vbox',
-                        name:'hint',
-                        html:'<center><small>Tap any bar to show total information<small><center>',
-                        height:50,
-                        width:'80%',
-                        //modal: true,
-                        bottom:'10%',
-                        left:'10%',
-                        floating: true
-
-                    });
-               
-                    Ext.Viewport.add(hint);
-                    setTimeout(function(){
-                        hint.setHidden(true);
-                        hint.destroy();
-                    },100000);
                     break;
                     
                 case 'report':

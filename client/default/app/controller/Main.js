@@ -9,6 +9,7 @@ Ext.define('FRIENDAPP.controller.Main', {
     config: {
         currentDate:'',
         refs: {
+            mainFrameview:'MainFrameview',
             calendar:'MainFrameview touchcalendar[title=Calendar]',
             expenseList:'userExpenListView1',
             expenList:'userExpenListView1 #expenseList',
@@ -17,8 +18,8 @@ Ext.define('FRIENDAPP.controller.Main', {
             backButton:'MainFrameCalender button[action=back]',
             dateLabel:'MainFrameview toolbar[name=dateLabel]',
             totalAmtLabel:'userExpenListView1 #totalAmtLabel'
-//            graphChart:'graphChart',
-//            graphDate:'graphChart datepickerfield[name=date]'
+        //            graphChart:'graphChart',
+        //            graphDate:'graphChart datepickerfield[name=date]'
         },
         control: {
             calendar:{
@@ -31,31 +32,11 @@ Ext.define('FRIENDAPP.controller.Main', {
             mainFrameCal:{
                 initialize:'removeBackLabel'
             }
-//            graphChart:{
-//                activeitemchange:'ónGraphChange'
-//            }
+        //            graphChart:{
+        //                activeitemchange:'ónGraphChange'
+        //            }
         }
     },
-    
-//    onGraphChange:function(){
-//        var store=this.getGraphChart().getActiveItem().getStore();
-//        var self=this;
-//        var datepicker = this.getGraphDate();
-//        switch(store.getStoreId()){
-//            case 'DailyExpenseStore':
-//                datepicker.setDateFormat('Y/m');
-//                datepicker.setHidden(false);
-//                break;
-//            case 'MonthStore':
-//                datepicker.setDateFormat('Y');
-//                datepicker.setHidden(false);
-//                break;
-//            case 'YearStore':
-//                datepicker.setHidden(true);
-//                break;
-//                                        
-//        }
-//    },
     
     itemTap:function(){
         var mainview=this.getMainFrameCal();
@@ -88,6 +69,31 @@ Ext.define('FRIENDAPP.controller.Main', {
     
     removeBackLabel:function(){
         this.getBackButton().setHidden(true);        
-        //this.getDateLabel().setTitle(this.currentDate);
+    //this.getDateLabel().setTitle(this.currentDate);
     }
 });
+
+document.addEventListener("backbutton", function(){
+    var mainController = FRIENDAPP.app.getController('Main');
+    var mainFrame = mainController.getMainFrameview();
+    
+    if(mainFrame.getActiveItem().xtype == 'MainFrameCalender'){
+        var mainFrameCal = FRIENDAPP.app.getController('Main').getMainFrameCal();
+        
+        if(mainFrameCal.getActiveItem().xtype !== 'touchcalendar'){
+            mainController.itemTap();
+            return;
+        }else{
+            Ext.Msg.confirm("", "Do you really want to exit?", function(res){
+                res = res.toLowerCase();
+                if(res == "yes")
+                    navigator.app.exitApp();
+            });
+        }
+    }
+    Ext.Msg.confirm("", "Do you really want to exit?", function(res){
+        res = res.toLowerCase();
+        if(res == "yes")
+            navigator.app.exitApp();
+    });
+},false);
