@@ -29,19 +29,6 @@ Ext.define("FRIENDAPP.view.AddExpenForm",{
       docked:'bottom',
       items:[
       {
-        text:"Save",
-        itemId:'expenseFormSave',
-        hidden:true
-      },
-      {
-        text:"Update",
-        itemId:'expenseFormUpdate',
-        hidden:true                  
-      },
-      {
-        xtype:'spacer'
-      },
-      {
         text:"Reset",
         itemId:'expenseFormReset',
         hidden:true
@@ -50,6 +37,19 @@ Ext.define("FRIENDAPP.view.AddExpenForm",{
         text:"Delete",
         itemId:'expenseFormDelete',
         hidden:true
+      },
+      {
+        xtype:'spacer'
+      },
+      {
+        text:"Save",
+        itemId:'expenseFormSave',
+        hidden:true
+      },
+      {
+        text:"Update",
+        itemId:'expenseFormUpdate',
+        hidden:true                  
       },
       ]
     },

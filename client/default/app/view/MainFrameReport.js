@@ -43,14 +43,14 @@ Ext.define("FRIENDAPP.view.MainFrameReport", {
       cls:'formPanelCls',
       width:'100%',
       docked:'bottom',
-      layout:'vbox',
+      layout:'hbox',
      items:[
        {   
         xtype: 'datepickerfield',
         name: 'dayWise',
         hidden:false,
         itemId:'dayWise',
-        width:'100%',
+        width:'50%',
         value: new Date(),
         dateFormat:'d-M-Y',
         picker: {
@@ -65,7 +65,7 @@ Ext.define("FRIENDAPP.view.MainFrameReport", {
         name: 'monthWise',
         itemId:'monthWise',
         hidden:true,
-        width:'100%',
+        width:'50%',
         value: new Date(),
         dateFormat:'M-Y',
         picker: {
@@ -80,6 +80,7 @@ Ext.define("FRIENDAPP.view.MainFrameReport", {
         name: 'yearWise',
         itemId:'yearWise',
         hidden:true,
+        width:'50%',
         value: new Date(),
         dateFormat:'Y',
         picker: {
@@ -92,6 +93,7 @@ Ext.define("FRIENDAPP.view.MainFrameReport", {
       {
         xtype:'selectfield',
         name:'select_type',
+        width:'50%',
         itemId:'select_type',
         options: [
             {text: 'Day Wise',  value: 'day'},
