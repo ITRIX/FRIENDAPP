@@ -45,6 +45,7 @@ Ext.define("FRIENDAPP.view.AddExpenForm",{
         iconMask: true,
         itemId:'expenseFormUpdate',
         hidden:true                  
+
       },
       {
         xtype:'spacer'
@@ -63,6 +64,7 @@ Ext.define("FRIENDAPP.view.AddExpenForm",{
         iconCls:'cancelIconCls',
         itemId:'expenseFormDelete',
         hidden:true
+
       },
       ]
     },
