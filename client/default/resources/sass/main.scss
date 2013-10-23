@@ -246,8 +246,35 @@ background-size: 100% 100%;
 }
 
 //Styling for toolbar buttons
+.x-toolbar .x-button.x-button-plain .x-button-icon{
+-webkit-mask-size: 1.8em!important;
+width: 1.8em!important;
+height: 1.8em!important;  
+}
+
 .addButton .x-button-icon.addIconCls.x-icon-mask{
-background: url('../images/document_add_small.png')no-repeat!important;
+background: url('../images/addIcon.png')no-repeat!important;
+background-size: 100%;
+background-color: transparent!important;
+background-image: none;
+}
+
+.cancelButton .x-button-icon.cancelIconCls.x-icon-mask{
+background: url('../images/cancelIcon.png')no-repeat!important;
+background-size: 100%;
+background-color: transparent!important;
+background-image: none;
+}
+
+.editButton .x-button-icon.editIconCls.x-icon-mask{
+background: url('../images/editIcon.png')no-repeat!important;
+background-size: 100%;
+background-color: transparent!important;
+background-image: none;
+}
+
+.saveButton .x-button-icon.saveIconCls.x-icon-mask{
+background: url('../images/saveIcon.png')no-repeat!important;
 background-size: 100%;
 background-color: transparent!important;
 background-image: none;

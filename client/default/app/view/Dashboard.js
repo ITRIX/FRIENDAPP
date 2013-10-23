@@ -2,7 +2,7 @@
 
 Ext.define('FRIENDAPP.view.Dashboard',{
     xtype:'dashboard',
-    extend:'Ext.Panel',
+    extend:'Ext.ActionSheet',
     requires:[],
   
     config:{
@@ -11,6 +11,11 @@ Ext.define('FRIENDAPP.view.Dashboard',{
             align:'middle'
         },
         cls:'dashboardPanelCls',
+         enter:'bottom',
+         exit:'bottom',
+         hideOnMaskTap :true,
+         bottom:0,
+
 //        showAnimation: 
 //        {
 //            type: 'slideIn',
@@ -31,9 +36,9 @@ Ext.define('FRIENDAPP.view.Dashboard',{
         //        bottom:0,
         //        modal:false,
         width:'100%',
-        height:10,
+        height:135,
         //        zIndex:90,
-        expand:false,
+        // expand:false,
         title:'Dashboard',
         items:[
             
