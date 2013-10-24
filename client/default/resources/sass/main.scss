@@ -20,6 +20,8 @@ $sheet-bg-color :rgba(0,0,0,0);
 // Your custom code goes here..
 @include sencha-loading-spinner; 
 
+@include pictos-iconmask('back_arrow');
+
 @include sencha-button-ui('login', #274581, 'bevel');
 @include sencha-button-ui('dashboard', #CDD1DA, 'bevel');
 
@@ -275,6 +277,13 @@ background-image: none;
 
 .saveButton .x-button-icon.saveIconCls.x-icon-mask{
 background: url('../images/saveIcon.png')no-repeat!important;
+background-size: 100%;
+background-color: transparent!important;
+background-image: none;
+}
+
+.resetButton .x-button-icon.resetIconCls.x-icon-mask{
+background: url('../images/reset.png')no-repeat!important;
 background-size: 100%;
 background-color: transparent!important;
 background-image: none;

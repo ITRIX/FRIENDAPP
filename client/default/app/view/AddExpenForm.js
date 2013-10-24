@@ -51,7 +51,10 @@ Ext.define("FRIENDAPP.view.AddExpenForm",{
         xtype:'spacer'
       },
       {
-        text:"Reset",
+        // text:"Reset",
+        ui:'plain',
+        cls:'resetButton',
+        iconCls:'resetIconCls',
         iconMask: true,
         itemId:'expenseFormReset',
         hidden:true

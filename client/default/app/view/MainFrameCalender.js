@@ -28,11 +28,11 @@ Ext.define("FRIENDAPP.view.MainFrameCalender", {
       {
         xtype:'button',
         iconMask: true, 
-        ui: 'back',
-//        cls:'backButton',
-//        iconCls: 'reply',
+        ui: 'plain',
+       cls:'backButton',
+       iconCls: 'back_arrow',
         action:'back',
-        width:60,
+        width:90,
 //        height:30,
         text:'BACK',
         itemId:'backButton'
