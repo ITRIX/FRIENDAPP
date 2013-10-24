@@ -10,20 +10,20 @@ xtype: 'AddExpenForm',
 requires: ['Ext.form.FieldSet','Ext.field.Text','Ext.field.DatePicker','Ext.field.Number'],
 
 config:{
-        iconMask: true,
-        ui: 'confirm-round',
-        iconCls: 'compose',
-        title:'Add Expen',
-        styleHtmlContent: true,
-        scrollable:false,
-        cls: 'loginview',
-        height: '100%',
-        width: '100%',
-        layout: {
-        type:"vbox",
-        align:'middle'
-        },
-        items:[
+    iconMask: true,
+    ui: 'confirm-round',
+    iconCls: 'compose',
+    title:'Add Expen',
+    styleHtmlContent: true,
+    scrollable:false,
+    cls: 'loginview',
+    height: '100%',
+    width: '100%',
+    layout: {
+    type:"vbox",
+    align:'middle'
+    },
+    items:[
         {
         xtype:'toolbar',
         docked:'bottom',
@@ -74,7 +74,9 @@ config:{
         {
         xtype:'spacer'
         },
-
+        {
+        xtype:'spacer'
+        },
         {
         xtype: "fieldset",
         width :'100%',

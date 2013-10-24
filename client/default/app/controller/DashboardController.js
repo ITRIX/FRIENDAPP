@@ -91,7 +91,7 @@ Ext.define('FRIENDAPP.controller.DashboardController',{
         //            this.getDashboard().config.expand = true;
         }
         else{
-            this.shrinkDashboard();
+            //this.shrinkDashboard();
              this.getDashboard().hide();
         //            this.getDashboard().setHeight(10);
             
