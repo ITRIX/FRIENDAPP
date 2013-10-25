@@ -10,7 +10,7 @@ Ext.define('FRIENDAPP.controller.DashboardController',{
     config: {
         refs: {
             dashboardButton:'MainFrameview button[action=dashboard]',
-            dashboard:'mainPanel dashboard',
+            dashboard:'dashboard',
             calendarButton:'dashboard button[action=calendar]',
             graphButton:'dashboard button[action=graph]',
             reportButton:'dashboard button[action=report]',
@@ -91,7 +91,7 @@ Ext.define('FRIENDAPP.controller.DashboardController',{
         //            this.getDashboard().config.expand = true;
         }
         else{
-            this.shrinkDashboard();
+            // this.shrinkDashboard();
              this.getDashboard().hide();
         //            this.getDashboard().setHeight(10);
             
