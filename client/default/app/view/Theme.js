@@ -25,6 +25,13 @@ Ext.define("FRIENDAPP.view.Theme", {
                 docked:'top'
             },
             {
+               xtype:'panel',
+               height:5,
+               cls:'ribbonCls',
+               width:'100%',
+               docked:'top'
+            },
+            {
                 xtype:'spacer'
             },
             {
