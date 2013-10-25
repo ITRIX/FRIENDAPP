@@ -29,29 +29,44 @@ Ext.define("FRIENDAPP.view.PasswordChange",{
       xtype:'toolbar',
       docked:'bottom',
       items:[
+      
       {
-        text:"Save",
-        itemId:'btn_pass_save'
-       
-      },
-      {
-        text:"Update",
-        itemId:'btn_pass_update',
-        hidden:true
-      },
+        //text:"Reset",
+        ui:'plain',
+        cls:'resetButton',
+        iconCls:'resetIconCls',
+        iconMask: true,
+        itemId:'btn_pass_reset'
+      },      
       {
           xtype:'spacer'
       },
       {
-        text:"Reset",
-        itemId:'btn_pass_reset'
+        //text:"Save",
+        cls:'saveButton',
+        iconCls:'saveIconCls',
+        ui:'plain',
+        iconMask: true,
+        itemId:'btn_pass_save'
+       
+      },
+      {
+        //text:"Update",
+        cls:'editButton',
+        ui:'plain',
+        iconCls:'editIconCls',
+        iconMask: true,
+        itemId:'btn_pass_update',
+        hidden:true
       }
       ]
     },    
     {
       xtype:'spacer'
     },
-                             
+    {
+      xtype:'spacer'  
+    },                             
     {
       xtype: "fieldset",
       width :'100%',
