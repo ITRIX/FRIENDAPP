@@ -21,6 +21,7 @@ $sheet-bg-color :rgba(0,0,0,0);
 @include sencha-loading-spinner; 
 
 @include pictos-iconmask('back_arrow');
+@include pictos-iconmask('dashboard_icon');
 
 @include sencha-button-ui('login', #274581, 'bevel');
 @include sencha-button-ui('dashboard', #CDD1DA, 'bevel');
@@ -197,6 +198,29 @@ background-image: -webkit-gradient(
 .calendarButton .x-button-icon{
   width: 5em!important;
   height: 6em!important;
+}
+
+// Fix for dashboard button
+.x-button.x-button-plain .x-button-icon{
+-webkit-mask-size: 2.1em!important;
+width: 2.1em!important;
+height: 1.4em!important;
+}
+
+.x-button .x-button-icon.dashboard_icon.x-icon-mask{
+  background-image: -webkit-gradient(
+  linear,
+  left bottom,
+  left top,
+  color-stop(0.42, rgb(222,222,222)),
+  color-stop(0.71, rgb(245,242,245))
+);
+
+}
+
+.x-button.x-button-plain.x-button-pressing{
+  background-image: radial-gradient(closest-side circle at center center, rgba(133, 198, 224, 0.856) 0%, rgba(61, 136, 184, 0) 100%)!important;
+
 }
 
 .x-button.x-button-dashboard {
