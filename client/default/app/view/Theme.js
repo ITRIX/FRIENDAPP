@@ -37,6 +37,7 @@ Ext.define("FRIENDAPP.view.Theme", {
             {
                xtype:'button',
                text:'Default',
+               ui:'default-button',
                itemId:'defaultThemeButton',
                width:'80%',
                height:50
@@ -47,6 +48,7 @@ Ext.define("FRIENDAPP.view.Theme", {
             {
                xtype:'button',
                text:'Black',
+               ui:'black-button',
                itemId:'blackThemeButton',
                width:'80%',
                height:50
@@ -57,6 +59,7 @@ Ext.define("FRIENDAPP.view.Theme", {
             {
                xtype:'button',
                text:'Pink',
+               ui:'pink-button',
                itemId:'pinkThemeButton',
                width:'80%',
                height:50

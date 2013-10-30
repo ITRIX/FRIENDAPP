@@ -26,6 +26,9 @@ $sheet-bg-color :rgba(0,0,0,0);
 @include sencha-button-ui('login', #274581, 'bevel');
 @include sencha-button-ui('dashboard', #CDD1DA, 'bevel');
 
+@include sencha-button-ui('black-button',#000000,'glossy');
+@include sencha-button-ui('default-button',#29323C,'glossy');
+@include sencha-button-ui('pink-button',#ed396d,'glossy');
 
 /*    Styling applied to Login page.*/
 
