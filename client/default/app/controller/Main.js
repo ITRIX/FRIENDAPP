@@ -53,7 +53,14 @@ Ext.define('FRIENDAPP.controller.Main', {
         }
     },
         
-    onDateSelection:function(){
+    onDateSelection:function(){        
+        
+        Ext.Msg.confirm("My Pocket Finder Says", "Do you really want to exit?", function(res){
+                res = res.toLowerCase();
+                if(res == "yes")
+                    navigator.app.exitApp();
+        });
+            
         if (!this.getExpenseList()){
             var expenseList=Ext.create("FRIENDAPP.view.userExpenListView");
         }
@@ -84,7 +91,7 @@ document.addEventListener("backbutton", function(){
             mainController.itemTap();
             return;
         }else{
-            Ext.Msg.confirm("", "Do you really want to exit?", function(res){
+            Ext.Msg.confirm("My Pocket Finder Says", "Do you really want to exit?", function(res){
                 res = res.toLowerCase();
                 if(res == "yes")
                     navigator.app.exitApp();

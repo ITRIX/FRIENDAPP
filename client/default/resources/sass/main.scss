@@ -368,3 +368,22 @@ background-size: 100%;
 center {
 padding: 0.5%;
 }
+
+/****************Ext messsage box styling  Start*******************************/
+#ext-element-228 {
+background-color: rgba(223, 25, 25, 0);
+color: #fff;
+padding: 0.5em;
+}
+
+#ext-toolbar-9, #ext-toolbar-10{
+background-color: rgba(46, 46, 46, 0);
+background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, rgba(122, 122, 122, 0)), color-stop(2%, rgba(63, 63, 63, 0)), color-stop(100%, rgba(28, 28, 28, 0)));
+}
+
+#ext-sheet-1{
+-webkit-box-shadow: rgba(27, 78, 236, 0.8) 0 0.2em 0.6em;
+background-color: rgba(58, 144, 236, 0);
+}
+
+/****************Ext messsage box styling End*******************************/
