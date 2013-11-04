@@ -27,8 +27,12 @@ $list-bg-color:transparentize(#fff,0.9);
 
 // List item selected color
 
-.x-list .x-list-item.x-item-selected .x-list-item-label{
+.x-list .x-list-item.x-item-selected .x-list-item-label,.x-list-label{
     color:#fff;
+}
+
+.x-select-overlay .x-list-item-label,.x-select-overlay .x-list-label{
+  color:#fff!important;
 }
 
 
