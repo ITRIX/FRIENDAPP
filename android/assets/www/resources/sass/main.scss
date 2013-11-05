@@ -1,0 +1,417 @@
+$sheet-bg-color :rgba(0,0,0,0); 
+
+@import 'sencha-touch/default/all';
+// You may remove any of the following modules that you
+// do not use in order to create a smaller css file.
+@include sencha-panel;
+@include sencha-buttons;
+@include sencha-sheet;
+//@include sencha-picker;
+@include sencha-tabs;
+@include sencha-toolbar;
+@include sencha-toolbar-forms;
+//@include sencha-indexbar;
+@include sencha-list;
+@include sencha-layout;
+//@include sencha-carousel;
+@include sencha-form;
+//@include sencha-msgbox;
+
+// Your custom code goes here..
+@include sencha-loading-spinner; 
+
+@include pictos-iconmask('back_arrow');
+@include pictos-iconmask('dashboard_icon');
+
+@include sencha-button-ui('login', #274581, 'bevel');
+@include sencha-button-ui('dashboard', #CDD1DA, 'bevel');
+
+@include sencha-button-ui('black-button',#000000,'glossy');
+@include sencha-button-ui('default-button',#29323C,'glossy');
+@include sencha-button-ui('pink-button',#ed396d,'glossy');
+
+/*    Styling applied to Login page.*/
+
+
+/*.loginview .expenfieldcls .x-form-fieldset-inner{
+  background:rgba(247, 242, 242, 0.51);
+}*/
+/* FOnt Styling for fieldset header*/
+/*
+Styling for list
+*/
+
+@font-face {
+  font-family: 'Lucida Handwriting';
+  src: url('../fonts/LHANDW.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'GOTHIC';
+  src: url('../fonts/GOTHIC.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Humanist 521';
+  src: url('../fonts/hum521n.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.x-title .x-innerhtml{
+  font-family: 'Humanist 521';
+  font-size: 0.9em!important;
+}
+
+.formPanelCls .x-field{
+    border-bottom: 1px solid lightgray
+}
+
+// Styling for expenselist
+
+.userExpenseList .x-list-disclosure{
+  background: url("../images/arrow.png") center center no-repeat!important;
+  -webkit-mask: 0 !important;
+  margin-right:4px;
+  width: 0.8em!important;
+  height: 0.8em!important;
+  background-size:100% 100%!important ;
+  bottom: 1.4em !important;
+}
+
+.expenseCls{
+    width:90%;
+    max-width:90%;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size:0.9em;
+}
+
+.amountCls{
+    width:90%;
+    max-width:90%;
+}
+
+/*
+    Login screen Styling
+*/
+
+.ribbonCls{
+    background:url("../images/color-strip.png") center center no-repeat; 
+    background-size:100% 100%
+}
+
+// Css to make card bacground 
+
+.headerUser {
+  width: 100%;
+  font-size: 1.3em;
+  display: block;
+  float: left;
+  text-align: center;
+  color: white;
+  font-family:'Lucida Handwriting';
+}
+
+.loginview .x-input-el{
+  font-size: 0.8em
+}
+
+.loginview .x-button-label{
+  font-family: 'GOTHIC';
+  font-size: 0.8em;
+}
+
+.listbutton.x-button{
+  -webkit-border-radius: 0em;
+}
+
+.userExpenListView .x-inner.x-list-inner.x-scroll-scroller{
+  padding: 0em;
+}
+
+//Styling for mask
+.x-scroll-container > .x-inner {
+  padding: 0em;
+}
+
+.maskCls.x-mask .x-mask-inner{
+  background: rgba(0,0,0,0.7)!important;
+  margin-bottom: 100px;
+
+}
+
+.x-mask{
+  background: rgba(0,0,0,0.7)!important;
+    .x-mask-inner{
+        height:7em;
+        .x-loading-spinner-outer{
+            height:4.5em;
+        }
+    }
+}
+
+
+.listCls .x-scroll-container {
+  background-color: transparent;
+}
+
+.listCls .x-inner{
+  padding: 0em!important;
+}
+
+.userExpenseItem{
+  color: #13172C;
+  font-family: 'Humanist 521';
+  font-size: 1em;
+}
+
+//Styling for Dashboard Buttons
+.toolbarButton{
+  border-radius: 0em!important;
+  background-color: transparent!important;
+  background-image: none !important;
+  color:#fff;
+  z-index: 100!important;
+}
+
+// Styling for dashboard
+
+.dashboardPanelCls{
+background-image: -webkit-gradient(
+	linear,
+	left bottom,
+	left top,
+	color-stop(0.15, rgb(189,189,189)),
+	color-stop(0.49, rgb(230,223,230)),
+	color-stop(0.85, rgb(189,189,189))
+);
+}
+
+.toolbarButton .x-button-icon{
+  width: 3em!important;
+  height: 3em!important;
+}
+
+.calendarButton .x-button-icon{
+  width: 5em!important;
+  height: 6em!important;
+}
+
+// Fix for dashboard button
+.x-button.x-button-plain .x-button-icon{
+-webkit-mask-size: 2.1em!important;
+width: 2.1em!important;
+height: 1.4em!important;
+}
+
+.x-button .x-button-icon.dashboard_icon.x-icon-mask{
+  background-image: -webkit-gradient(
+  linear,
+  left bottom,
+  left top,
+  color-stop(0.42, rgb(222,222,222)),
+  color-stop(0.71, rgb(245,242,245))
+);
+
+}
+
+.x-button.x-button-plain.x-button-pressing{
+  background-image: radial-gradient(closest-side circle at center center, rgba(133, 198, 224, 0.856) 0%, rgba(61, 136, 184, 0) 100%)!important;
+
+}
+
+.x-button.x-button-dashboard {
+border-radius: 0px;
+//margin-left: 44%;
+border-top-right-radius: 5em;
+border-top-left-radius: 5em;
+}
+
+.dashboardIconCls{
+background-image: url("../images/arrow_up.png")!important;
+background-color:transparent!important;
+background-size: 100% 100%;
+}
+
+.calendarCls{
+background-image: url("../images/calendar2.png");
+background-size: 100% 100%;
+}
+
+.graphCls{
+background-image: url("../images/graph.png");
+background-size: 100%;
+}
+
+.logoutCls{
+background-image: url("../images/exit.png");
+background-size: 96%;
+}
+
+.reportCls{
+background-image: url("../images/report.png");
+background-size: 100%;
+}
+
+.settingsCls{
+background-image: url("../images/settings.png");
+background-size: 100% 100%;
+}
+
+.aboutusCls{
+background-image: url("../images/money.png");
+background-size: 100% 100%;
+}
+
+.themeCls{
+background-image: url("../images/paintpallet.png");
+background-size: 100% 100%;
+}
+
+//Styling for toolbar buttons
+.x-toolbar .x-button.x-button-plain .x-button-icon{
+-webkit-mask-size: 1.8em!important;
+width: 1.8em!important;
+height: 1.8em!important;  
+}
+
+.addButton .x-button-icon.addIconCls.x-icon-mask{
+background: url('../images/addIcon.png')no-repeat!important;
+background-size: 100%;
+background-color: transparent!important;
+background-image: none;
+}
+
+.cancelButton .x-button-icon.cancelIconCls.x-icon-mask{
+background: url('../images/cancelIcon.png')no-repeat!important;
+background-size: 100%;
+background-color: transparent!important;
+background-image: none;
+}
+
+.editButton .x-button-icon.editIconCls.x-icon-mask{
+background: url('../images/editIcon.png')no-repeat!important;
+background-size: 100%;
+background-color: transparent!important;
+background-image: none;
+}
+
+.saveButton .x-button-icon.saveIconCls.x-icon-mask{
+background: url('../images/saveIcon.png')no-repeat!important;
+background-size: 100%;
+background-color: transparent!important;
+background-image: none;
+}
+
+.resetButton .x-button-icon.resetIconCls.x-icon-mask{
+background: url('../images/reset.png')no-repeat!important;
+background-size: 100%;
+background-color: transparent!important;
+background-image: none;
+}
+
+//class to validate validation on form password change
+.validatemsg .x-innerhtml{
+color: rgb(255, 255, 255);
+font-size: small;
+text-align: center;
+}
+
+// Styling for active dashboard button
+
+.activeCls{
+background-color:#333 !important;
+box-shadow: inset 0px 0px 20px 30px rgba(0,0,0, 0.3)!important;
+}
+
+.activeCls .settingsCls{
+background-image: url("../images/white_settitngs.png");
+background-size: 100% 100%;
+}
+
+.activeCls .calendarCls{
+background-image: url("../images/calendar_white.png");
+background-size: 100% 100%;
+}
+
+.activeCls .graphCls{
+background-image: url("../images/white_bar.png");
+background-size: 100%;
+}
+
+.activeCls .logoutCls{
+background-image: url("../images/exit_white.png");
+background-size: 96%;
+}
+
+.activeCls .reportCls{
+background-image: url("../images/report_white.png");
+background-size: 100%;
+}
+
+.activeCls .themeCls{
+background-image: url("../images/paintpalletselected.png");
+background-size: 100%;
+}
+
+// To fix the dark colors on pickers
+.x-docking-vertical{
+    background-color:transparent!important;
+}
+
+center {
+padding: 0.5%;
+}
+
+/****************Ext messsage box styling  Start*******************************/
+/*#ext-element-228 {
+background-color: rgba(223, 25, 25, 0);
+color: #fff;
+padding: 0.5em;
+}
+*/
+
+/*#ext-toolbar-9, #ext-toolbar-10{
+background-color: rgba(46, 46, 46, 0);
+background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, rgba(122, 122, 122, 0)), color-stop(2%, rgba(63, 63, 63, 0)), color-stop(100%, rgba(28, 28, 28, 0)));
+}
+*/
+
+.x-msgbox.x-floating{
+-webkit-box-shadow: rgba(27, 78, 236, 0.8) 0 0.2em 0.6em;
+background-color: rgba(58, 144, 236, 0)!important;
+border:1px solid gray!important;
+.x-toolbar-dark.x-docked-bottom{
+  border:0px!important;
+}
+
+.x-toolbar-dark.x-docked-top{
+  border:0px!important;
+}
+  .x-toolbar-dark{
+    background-color: rgba(46, 46, 46, 0);
+    background-image: none;
+    .x-title{
+      color:#eee!important;
+    }
+    .x-button{
+      padding:0.3em 1em;
+    }
+    }
+    .x-body{
+      border:0px!important;
+      padding:0.8em;
+      background-color:transparent!important;
+      color:#eee!important;
+    }
+}
+
+
+
+/****************Ext messsage box styling End*******************************/
