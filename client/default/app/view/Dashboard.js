@@ -14,31 +14,8 @@ Ext.define('FRIENDAPP.view.Dashboard',{
          enter:'bottom',
          exit:'bottom',
          hideOnMaskTap :true,
-         // bottom:0,
-
-//        showAnimation: 
-//        {
-//            type: 'slideIn',
-//            duration: 150,
-//            direction: 'up'
-//        },  
-//        hideAnimation: 
-//        {
-//            type: 'slideOut',
-//            duration: 250,
-//            direction: 'down'
-//        },  
-        //centered:false,
-        //stretchY:true,
-        //        fullscreen:false,
-        //        enter:'bottom',
-        //        exit:'bottom',
-        //        bottom:0,
-        //        modal:false,
         width:'100%',
         height:162,
-        //        zIndex:90,
-        // expand:false,
         title:'Dashboard',
         items:[
             

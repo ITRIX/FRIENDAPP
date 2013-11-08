@@ -10,10 +10,5 @@ Ext.define('FRIENDAPP.store.MonthStore', {
     config:{
     model:'FRIENDAPP.model.GraphModel',
     autoload:true
-//    storeId:'MonthStore',
-//    proxy:{
-//            type: 'memory',
-//            id  : 'MonthData'
-//         }
     }   
 })

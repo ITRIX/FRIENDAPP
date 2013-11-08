@@ -81,24 +81,10 @@ Ext.define('FRIENDAPP.controller.DashboardController',{
       
     onDashboard:function(){
         if(this.getDashboard().getHidden() == true){
-            //            this.getDashboard().getLayout().setAnimation('slideup');
-            this.getDashboard().show();
-            //this.getDashboard().setHeight(135);
-
-            // this.growDashboard();
-        //            this.getDashboard().removeCls('slidedown');
-        //            this.getDashboard().addCls('slideup');
-        //            this.getDashboard().config.expand = true;
+            this.getDashboard().show();           
         }
         else{
-
-            //this.shrinkDashboard();
              this.getDashboard().hide();
-        //            this.getDashboard().setHeight(10);
-            
-        //            this.getDashboard().removeCls('slideup');
-        //            this.getDashboard().addCls('slidedown');
-        //            this.getDashboard().config.expand = false;
         }
     },
     
@@ -211,8 +197,5 @@ function clearLoginFields(){
         passwdField.reset();
         usernameField.reset();
         return; 
-    }
-        
+    }        
 }
-
-
