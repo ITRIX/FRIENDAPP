@@ -1,5 +1,4 @@
 $sheet-bg-color :rgba(0,0,0,0); 
-
 @import 'sencha-touch/default/all';
 // You may remove any of the following modules that you
 // do not use in order to create a smaller css file.
@@ -21,7 +20,7 @@ $sheet-bg-color :rgba(0,0,0,0);
 @include sencha-loading-spinner; 
 
 @include pictos-iconmask('back_arrow');
-@include pictos-iconmask('dashboard_icon');
+//@include pictos-iconmask('dashboard_icon');
 
 @include sencha-button-ui('login', #274581, 'bevel');
 @include sencha-button-ui('dashboard', #CDD1DA, 'bevel');
@@ -31,8 +30,12 @@ $sheet-bg-color :rgba(0,0,0,0);
 @include sencha-button-ui('pink-button',#ed396d,'glossy');
 
 /*    Styling applied to Login page.*/
-
-
+.x-tab {z-index:1;}
+.x-field-input{
+  .x-field-mask{
+    z-index:1;
+  }
+}
 /*.loginview .expenfieldcls .x-form-fieldset-inner{
   background:rgba(247, 242, 242, 0.51);
 }*/
@@ -180,6 +183,10 @@ Styling for list
   z-index: 100!important;
 }
 
+.x-button .x-button-icon.x-icon-mask.dashboard_icon{
+  
+  -webkit-mask-image: url("../images/dashboard_icon.png")!important;
+}
 // Styling for dashboard
 
 .dashboardPanelCls{
@@ -210,16 +217,26 @@ width: 2.1em!important;
 height: 1.4em!important;
 }
 
-.x-button .x-button-icon.dashboard_icon.x-icon-mask{
-  background-image: -webkit-gradient(
+.x-button .x-button-icon.dashboard_icon{
+  /*background-image: -webkit-gradient(
   linear,
   left bottom,
   left top,
   color-stop(0.42, rgb(222,222,222)),
   color-stop(0.71, rgb(245,242,245))
-);
+);*/
+  background-image: url("../images/dashboard_icon.png")!important;
+  background-size:100% 100%;
 
 }
+
+/*// fix for selectfields
+.x-checkmark-base, .x-field .x-input-radio:after, .x-field .x-input-checkbox:after, .x-field .x-input-radio:checked:after, .x-field .x-input-checkbox:checked:after, .x-field.x-item-disabled .x-input-radio:checked:after, .x-field.x-item-disabled .x-input-checkbox:checked:after, .x-select-overlay .x-item-selected .x-list-item-label:before, .x-select-overlay .x-item-selected .x-list-item-label:after{
+  //-webkit-mask-image: url('../images/check.png')!important;
+  z-index: 100!important;
+}*/
+
+/*.x-field-select { z-index: 1; }*/
 
 .x-button.x-button-plain.x-button-pressing{
   background-image: radial-gradient(closest-side circle at center center, rgba(133, 198, 224, 0.856) 0%, rgba(61, 136, 184, 0) 100%)!important;
