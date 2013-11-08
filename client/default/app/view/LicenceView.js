@@ -23,11 +23,6 @@ Ext.define("FRIENDAPP.view.LicenceView", {
       {
         xtype:'spacer'
       },    
-//      {
-//       text:'Pocket Finder App',
-//        iconMask: true, 
-//        ui: 'plain'   
-//      },
       {
         xtype:'spacer'
       }

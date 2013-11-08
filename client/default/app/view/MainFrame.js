@@ -14,7 +14,6 @@ Ext.define("FRIENDAPP.view.MainFrame",{
     "FRIENDAPP.view.Theme"
     ],
     xtype: 'MainFrameview',
-    //id:'MainFrameview',
     config:{
         fullscreen: true,
         layout: 'card',
@@ -22,9 +21,7 @@ Ext.define("FRIENDAPP.view.MainFrame",{
         items:[
         {
             xtype:'button',
-            // iconMask: true, 
             iconCls:'dashboard_icon',
-            //      text:'DASHBOARD',
             ui:'plain',
             action:'dashboard',
             width:'100%',
