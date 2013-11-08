@@ -93,6 +93,12 @@ Ext.define("FRIENDAPP.view.Login",{
         },
         {
            xtype:'panel',
+           width:'100%',
+           html:'<a href="http://www.itrixit.com" target="_blank">Designed & Developed By ITRIX </a>',
+           cls :'companynamecls'
+        },
+        {
+           xtype:'panel',
            height:5,
            cls:'ribbonCls',
            width:'100%',
