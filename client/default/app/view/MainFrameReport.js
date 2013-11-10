@@ -56,7 +56,7 @@ Ext.define("FRIENDAPP.view.MainFrameReport", {
         picker: {
           yearFrom: 2011,
           dateFormat:'d/m/Y',
-          yearTo:2015,
+          yearTo:2020,
           slotOrder: ['day','month','year']
         }
       },
@@ -71,7 +71,7 @@ Ext.define("FRIENDAPP.view.MainFrameReport", {
         picker: {
           yearFrom: 2011,
           dateFormat:'d/m/Y',
-          yearTo:2015,
+          yearTo:2020,
           slotOrder: ['month','year']
         }
       },
@@ -86,7 +86,7 @@ Ext.define("FRIENDAPP.view.MainFrameReport", {
         picker: {
           yearFrom: 2011,
           dateFormat:'d/m/Y',
-          yearTo:2015,
+          yearTo:2020,
           slotOrder: ['year']
         }
       },

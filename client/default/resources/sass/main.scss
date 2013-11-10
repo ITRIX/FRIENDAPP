@@ -421,14 +421,12 @@ border:1px solid gray!important;
 
 /****************Ext messsage box styling End*******************************/
 
-.companynamecls {
+.companynamecls .x-button-label{
     height: 1.5em !important;
     text-align: right;
     padding-right: 2%;
     font-size: 12px;
+    color:#fff;
 }
 
-.companynamecls a {
-    color: #FFFFFF;
-    text-decoration: none;
-}
+

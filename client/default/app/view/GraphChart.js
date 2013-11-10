@@ -58,7 +58,7 @@ Ext.define("FRIENDAPP.view.GraphChart", {
                     picker: {
                         yearFrom: 2011,
                         dateFormat:'Y',
-                        yearTo:2015,
+                        yearTo:2020,
                         slotOrder: ['year']
                     }
                 }

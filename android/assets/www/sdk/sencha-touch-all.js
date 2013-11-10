@@ -175,15 +175,6 @@ If you are unsure which license is appropriate for your use, please contact the 
                     };
                 }
 
-                //<debug>
-                if (!superclass) {
-                    Ext.Error.raise({
-                        sourceClass: 'Ext',
-                        sourceMethod: 'extend',
-                        msg: 'Attempting to extend from a class which has not been loaded on the page.'
-                    });
-                }
-                //</debug>
 
                 // We create a new temporary class
                 var F = function() {},
@@ -314,13 +305,6 @@ If you are unsure which license is appropriate for your use, please contact the 
                 return 'object';
             }
 
-            //<debug error>
-            Ext.Error.raise({
-                sourceClass: 'Ext',
-                sourceMethod: 'typeOf',
-                msg: 'Failed to determine the type of the specified value "' + value + '". This is most likely a bug.'
-            });
-            //</debug>
         },
 
         /**
@@ -583,7 +567,6 @@ If you are unsure which license is appropriate for your use, please contact the 
             })();
         },
 
-        //<feature logger>
         /**
          * @private
          * @property
@@ -614,7 +597,6 @@ If you are unsure which license is appropriate for your use, please contact the 
                 this.log(message, 'warn');
             }
         }
-        //</feature>
     });
 
     /**
@@ -1689,11 +1671,6 @@ Ext.urlAppend = Ext.String.urlAppend;
          * @return {Boolean} True if no false value is returned by the callback function.
          */
         every: function(array, fn, scope) {
-            //<debug>
-            if (!fn) {
-                Ext.Error.raise('Ext.Array.every must have a callback function passed as second argument.');
-            }
-            //</debug>
             if (supportsEvery) {
                 return array.every(fn, scope);
             }
@@ -1720,11 +1697,6 @@ Ext.urlAppend = Ext.String.urlAppend;
          * @return {Boolean} True if the callback function returns a truthy value.
          */
         some: function(array, fn, scope) {
-            //<debug>
-            if (!fn) {
-                Ext.Error.raise('Ext.Array.some must have a callback function passed as second argument.');
-            }
-            //</debug>
             if (supportsSome) {
                 return array.some(fn, scope);
             }
@@ -2163,10 +2135,6 @@ Ext.urlAppend = Ext.String.urlAppend;
             return sum;
         },
 
-        //<debug>
-        _replaceSim: replaceSim, // for unit testing
-        _spliceSim: spliceSim,
-        //</debug>
 
         /**
          * Removes items from an array. This is functionally equivalent to the splice method
@@ -2656,11 +2624,6 @@ var ExtObject = Ext.Object = {
                     matchedKeys = name.match(/(\[):?([^\]]*)\]/g);
                     matchedName = name.match(/^([^\[]+)/);
 
-                    //<debug error>
-                    if (!matchedName) {
-                        throw new Error('[Ext.Object.fromQueryString] Malformed query string given, failed parsing name from "' + part + '"');
-                    }
-                    //</debug>
 
                     name = matchedName[0];
                     keys = [];
@@ -3744,7 +3707,6 @@ var noArgs = [],
                 }
             }
 
-            //<feature classSystem.inheritableStatics>
             // Statics inheritance
             statics = parentPrototype.$inheritableStatics;
 
@@ -3757,17 +3719,14 @@ var noArgs = [],
                     }
                 }
             }
-            //</feature>
 
             if (parent.$onExtended) {
                 this.$onExtended = parent.$onExtended.slice();
             }
 
-            //<feature classSystem.config>
             prototype.config = prototype.defaultConfig = new prototype.configClass;
             prototype.initConfigList = prototype.initConfigList.slice();
             prototype.initConfigMap = Ext.Object.chain(prototype.initConfigMap);
-            //</feature>
         },
 
         /**
@@ -3871,18 +3830,10 @@ var noArgs = [],
          */
         addStatics: function(members) {
             var member, name;
-            //<debug>
-            var className = Ext.getClassName(this);
-            //</debug>
 
             for (name in members) {
                 if (members.hasOwnProperty(name)) {
                     member = members[name];
-                    //<debug>
-                    if (typeof member == 'function') {
-                        member.displayName = className + '.' + name;
-                    }
-                    //</debug>
                     this[name] = member;
                 }
             }
@@ -3909,18 +3860,10 @@ var noArgs = [],
                 hasInheritableStatics = prototype.$hasInheritableStatics = {};
             }
 
-            //<debug>
-            var className = Ext.getClassName(this);
-            //</debug>
 
             for (name in members) {
                 if (members.hasOwnProperty(name)) {
                     member = members[name];
-                    //<debug>
-                    if (typeof member == 'function') {
-                        member.displayName = className + '.' + name;
-                    }
-                    //</debug>
                     this[name] = member;
 
                     if (!hasInheritableStatics[name]) {
@@ -3961,9 +3904,6 @@ var noArgs = [],
                 names = [],
                 i, ln, name, member;
 
-            //<debug>
-            var className = this.$className || '';
-            //</debug>
 
             for (name in members) {
                 names.push(name);
@@ -3982,9 +3922,6 @@ var noArgs = [],
                     if (typeof member == 'function' && !member.$isClass && member !== Ext.emptyFn) {
                         member.$owner = this;
                         member.$name = name;
-                        //<debug>
-                        member.displayName = className + '#' + name;
-                        //</debug>
                     }
 
                     prototype[name] = member;
@@ -4003,9 +3940,6 @@ var noArgs = [],
             if (typeof member == 'function' && !member.$isClass && member !== Ext.emptyFn) {
                 member.$owner = this;
                 member.$name = name;
-                //<debug>
-                member.displayName = (this.$className || '') + '#' + name;
-                //</debug>
             }
 
             this.prototype[name] = member;
@@ -4053,9 +3987,6 @@ var noArgs = [],
         borrow: function(fromClass, members) {
             var prototype = this.prototype,
                 fromPrototype = fromClass.prototype,
-                //<debug>
-                className = Ext.getClassName(this),
-                //</debug>
                 i, ln, name, fn, toBorrow;
 
             members = Ext.Array.from(members);
@@ -4070,11 +4001,6 @@ var noArgs = [],
                         return toBorrow.apply(this, arguments);
                     };
 
-                    //<debug>
-                    if (className) {
-                        fn.displayName = className + '#' + name;
-                    }
-                    //</debug>
 
                     fn.$owner = this;
                     fn.$name = name;
@@ -4188,12 +4114,6 @@ var noArgs = [],
                                 member = cloneFunction(member);
                             }
 
-                            //<debug>
-                            var className = me.$className;
-                            if (className) {
-                                member.displayName = className + '#' + name;
-                            }
-                            //</debug>
 
                             member.$owner = me;
                             member.$name = name;
@@ -4229,7 +4149,6 @@ var noArgs = [],
                         method.$owner.superclass.$class[method.$name])).apply(this, args || noArgs);
         },
 
-        //<feature classSystem.mixins>
         /**
          * Used internally by the mixins pre-processor
          * @private
@@ -4263,15 +4182,12 @@ var noArgs = [],
                 }
             }
 
-            //<feature classSystem.config>
             if ('config' in mixin) {
                 this.addConfig(mixin.config, false);
             }
-            //</feature>
 
             prototype.mixins[name] = mixin;
         },
-        //</feature>
 
         /**
          * Get the current class' name in string format.
@@ -4520,28 +4436,6 @@ var noArgs = [],
                         ((method = method.$owner ? method : method.caller) &&
                                 method.$owner.superclass[method.$name]));
 
-            //<debug error>
-            if (!superMethod) {
-                method = this.callParent.caller;
-                var parentClass, methodName;
-
-                if (!method.$owner) {
-                    if (!method.caller) {
-                        throw new Error("Attempting to call a protected method from the public scope, which is not allowed");
-                    }
-
-                    method = method.caller;
-                }
-
-                parentClass = method.$owner.superclass;
-                methodName = method.$name;
-
-                if (!(methodName in parentClass)) {
-                    throw new Error("this.callParent() was called but there's no such method (" + methodName +
-                                ") found in the parent class (" + (Ext.getClassName(parentClass) || 'Object') + ")");
-                }
-            }
-            //</debug>
 
             return superMethod.apply(this, args || noArgs);
         },
@@ -4590,7 +4484,6 @@ var noArgs = [],
             return this;
         },
 
-        //<feature classSystem.config>
 
         wasInstantiated: false,
 
@@ -4791,9 +4684,6 @@ var noArgs = [],
          */
         onConfigUpdate: function(names, callback, scope) {
             var self = this.self,
-                //<debug>
-                className = self.$className,
-                //</debug>
                 i, ln, name,
                 updaterName, updater, newUpdater;
 
@@ -4811,14 +4701,10 @@ var noArgs = [],
                 };
                 newUpdater.$name = updaterName;
                 newUpdater.$owner = self;
-                //<debug>
-                newUpdater.displayName = className + '#' + updaterName;
-                //</debug>
 
                 this[updaterName] = newUpdater;
             }
         },
-        //</feature>
 
         /**
          * @private
@@ -5319,7 +5205,6 @@ var noArgs = [],
 
     }, true);
 
-    //<feature classSystem.statics>
     /**
      * @cfg {Object} statics
      * List of static methods for this class. For example:
@@ -5342,9 +5227,7 @@ var noArgs = [],
 
         delete data.statics;
     });
-    //</feature>
 
-    //<feature classSystem.inheritableStatics>
     /**
      * @cfg {Object} inheritableStatics
      * List of inheritable static methods for this class.
@@ -5355,9 +5238,7 @@ var noArgs = [],
 
         delete data.inheritableStatics;
     });
-    //</feature>
 
-    //<feature classSystem.config>
     /**
      * @cfg {Object} config
      *
@@ -5502,9 +5383,7 @@ var noArgs = [],
 
         Class.addConfig(config, true);
     });
-    //</feature>
 
-    //<feature classSystem.mixins>
     /**
      * @cfg {Object} mixins
      * List of classes to mix into this class. For example:
@@ -5547,9 +5426,7 @@ var noArgs = [],
             }
         });
     });
-    //</feature>
 
-    //<feature classSystem.backwardsCompatible>
     // Backwards compatible
     Ext.extend = function(Class, Parent, members) {
         if (arguments.length === 2 && Ext.isObject(Parent)) {
@@ -5567,18 +5444,10 @@ var noArgs = [],
         members.extend = Parent;
         members.preprocessors = [
             'extend'
-            //<feature classSystem.statics>
             ,'statics'
-            //</feature>
-            //<feature classSystem.inheritableStatics>
             ,'inheritableStatics'
-            //</feature>
-            //<feature classSystem.mixins>
             ,'mixins'
-            //</feature>
-            //<feature classSystem.config>
             ,'config'
-            //</feature>
         ];
 
         if (Class) {
@@ -5598,7 +5467,6 @@ var noArgs = [],
 
         return cls;
     };
-    //</feature>
 })();
 
 /**
@@ -5856,11 +5724,6 @@ var noArgs = [],
             var existCache = this.existCache,
                 i, ln, part, root, parts;
 
-            //<debug error>
-            if (typeof className != 'string' || className.length < 1) {
-                throw new Error("[Ext.ClassManager] Invalid classname, must be a string and must not be empty");
-            }
-            //</debug>
 
             if (this.classes[className] || existCache[className]) {
                 return true;
@@ -5966,11 +5829,6 @@ var noArgs = [],
          * @private
          */
         parseNamespace: function(namespace) {
-            //<debug error>
-            if (typeof namespace != 'string') {
-                throw new Error("[Ext.ClassManager] Invalid namespace, must be a string");
-            }
-            //</debug>
 
             var cache = this.namespaceParseCache;
 
@@ -6156,12 +6014,6 @@ var noArgs = [],
             }
 
             if (alias && aliasToNameMap[alias] !== className) {
-                //<debug info>
-                if (aliasToNameMap[alias]) {
-                    Ext.Logger.info("[Ext.ClassManager] Overriding existing alias: '" + alias + "' " +
-                        "of: '" + aliasToNameMap[alias] + "' with: '" + className + "'. Be sure it's intentional.");
-                }
-                //</debug>
 
                 aliasToNameMap[alias] = className;
             }
@@ -6250,11 +6102,6 @@ var noArgs = [],
          * @private
          */
         create: function(className, data, createdFn) {
-            //<debug error>
-            if (typeof className != 'string') {
-                throw new Error("[Ext.define] Invalid class name '" + className + "' specified, must be a non-empty string");
-            }
-            //</debug>
 
             data.$className = className;
 
@@ -6354,16 +6201,7 @@ var noArgs = [],
             if (!className) {
                 className = this.maps.aliasToName[alias];
 
-                //<debug error>
-                if (!className) {
-                    throw new Error("[Ext.createByAlias] Cannot create an instance of unrecognized alias: " + alias);
-                }
-                //</debug>
 
-                //<debug warn>
-                Ext.Logger.warn("[Ext.Loader] Synchronously loading '" + className + "'; consider adding " +
-                     "Ext.require('" + alias + "') above Ext.onReady");
-                //</debug>
 
                 Ext.syncRequire(className);
             }
@@ -6402,11 +6240,6 @@ var noArgs = [],
                 possibleName, cls;
 
             if (typeof name != 'function') {
-                //<debug error>
-                if ((typeof name != 'string' || name.length < 1)) {
-                    throw new Error("[Ext.create] Invalid class name or alias '" + name + "' specified, must be a non-empty string");
-                }
-                //</debug>
 
                 cls = this.get(name);
             }
@@ -6438,25 +6271,12 @@ var noArgs = [],
 
             // Still not existing at this point, try to load it via synchronous mode as the last resort
             if (!cls) {
-                //<debug warn>
-                Ext.Logger.warn("[Ext.Loader] Synchronously loading '" + name + "'; consider adding '" +
-                    ((possibleName) ? alias : name) + "' explicitly as a require of the corresponding class");
-                //</debug>
 
                 Ext.syncRequire(name);
 
                 cls = this.get(name);
             }
 
-            //<debug error>
-            if (!cls) {
-                throw new Error("[Ext.create] Cannot create an instance of unrecognized class name / alias: " + alias);
-            }
-
-            if (typeof cls != 'function') {
-                throw new Error("[Ext.create] '" + name + "' is a singleton and cannot be instantiated");
-            }
-            //</debug>
 
             return this.getInstantiator(args.length)(cls, args);
         },
@@ -6492,9 +6312,6 @@ var noArgs = [],
                 }
 
                 instantiator = instantiators[length] = new Function('c', 'a', 'return new c(' + args.join(',') + ')');
-                //<debug>
-                instantiator.displayName = "Ext.ClassManager.instantiate" + length;
-                //</debug>
             }
 
             return instantiator;
@@ -6612,11 +6429,6 @@ var noArgs = [],
                 names = [],
                 name, alias, aliases, possibleName, regex, i, ln;
 
-            //<debug error>
-            if (typeof expression != 'string' || expression.length < 1) {
-                throw new Error("[Ext.ClassManager.getNamesByExpression] Expression " + expression + " is invalid, must be a non-empty string");
-            }
-            //</debug>
 
             if (expression.indexOf('*') !== -1) {
                 expression = expression.replace(/\*/g, '(.*?)');
@@ -6662,7 +6474,6 @@ var noArgs = [],
         }
     };
 
-    //<feature classSystem.alias>
     /**
      * @cfg {String[]} alias
      * @member Ext.Class
@@ -6695,9 +6506,7 @@ var noArgs = [],
         }
 
     }, ['xtype', 'alias']);
-    //</feature>
 
-    //<feature classSystem.singleton>
     /**
      * @cfg {Boolean} singleton
      * @member Ext.Class
@@ -6716,9 +6525,7 @@ var noArgs = [],
         fn.call(this, name, new cls(), data);
         return false;
     });
-    //</feature>
 
-    //<feature classSystem.alternateClassName>
     /**
      * @cfg {String/String[]} alternateClassName
      * @member Ext.Class
@@ -6748,16 +6555,10 @@ var noArgs = [],
         for (i = 0, ln = alternates.length; i < ln; i++) {
             alternate = alternates[i];
 
-            //<debug error>
-            if (typeof alternate != 'string') {
-                throw new Error("[Ext.define] Invalid alternate of: '" + alternate + "' for class: '" + name + "'; must be a valid string");
-            }
-            //</debug>
 
             this.set(alternate, cls);
         }
     });
-    //</feature>
 
     Ext.apply(Ext, {
         /**
@@ -7001,9 +6802,6 @@ var noArgs = [],
     Class.registerPreprocessor('className', function(cls, data) {
         if (data.$className) {
             cls.$className = data.$className;
-            //<debug>
-            cls.displayName = cls.$className;
-            //</debug>
         }
     }, true, 'first');
 
@@ -7020,11 +6818,6 @@ var noArgs = [],
         for (i = 0,ln = aliases.length; i < ln; i++) {
             alias = aliases[i];
 
-            //<debug error>
-            if (typeof alias != 'string' || alias.length < 1) {
-                throw new Error("[Ext.define] Invalid alias of: '" + alias + "' for class: '" + name + "'; must be a valid string");
-            }
-            //</debug>
 
             if (alias.substring(0, widgetPrefixLength) === widgetPrefix) {
                 xtype = alias.substring(widgetPrefixLength);
@@ -7074,11 +6867,6 @@ var noArgs = [],
         for (i = 0,ln = xtypes.length; i < ln; i++) {
             xtype = xtypes[i];
 
-            //<debug error>
-            if (typeof xtype != 'string' || xtype.length < 1) {
-                throw new Error("[Ext.define] Invalid xtype of: '" + xtype + "' for class: '" + name + "'; must be a valid non-empty string");
-            }
-            //</debug>
 
             Ext.Array.include(aliases, widgetPrefix + xtype);
         }
@@ -7508,7 +7296,6 @@ var noArgs = [],
         }
     };
 
-    //<feature classSystem.loader>
     Ext.apply(Loader, {
         /**
          * @private
@@ -7722,9 +7509,6 @@ var noArgs = [],
 
             if (!synchronous) {
                 onScriptError = function() {
-                    //<debug error>
-                    onError.call(scope, "Failed loading '" + url + "', please verify that the file exists", synchronous);
-                    //</debug>
                 };
 
                 if (!Ext.isReady && Ext.onDocumentReady) {
@@ -7750,12 +7534,6 @@ var noArgs = [],
                     xhr.send(null);
                 }
                 catch (e) {
-                    //<debug error>
-                    onError.call(this, "Failed loading synchronously via XHR: '" + url + "'; It's likely that the file is either " +
-                                       "being loaded from a different domain or from the local file system whereby cross origin " +
-                                       "requests are not allowed due to security reasons. Use asynchronous loading with " +
-                                       "Ext.require instead.", synchronous);
-                    //</debug>
                 }
 
                 status = (xhr.status === 1223) ? 204 : xhr.status;
@@ -7768,11 +7546,6 @@ var noArgs = [],
                     onLoad.call(scope);
                 }
                 else {
-                    //<debug>
-                    onError.call(this, "Failed loading synchronously via XHR: '" + url + "'; please " +
-                                       "verify that the file exists. " +
-                                       "XHR status code: " + status, synchronous);
-                    //</debug>
                 }
 
                 // Prevent potential IE memory leak
@@ -7962,41 +7735,6 @@ var noArgs = [],
                 this.refreshQueue();
             }
 
-            //<debug>
-            if (!this.syncModeEnabled && this.numPendingFiles === 0 && this.isLoading && !this.hasFileLoadError) {
-                var queue = this.queue,
-                    missingClasses = [],
-                    missingPaths = [],
-                    requires,
-                    i, ln, j, subLn;
-
-                for (i = 0,ln = queue.length; i < ln; i++) {
-                    requires = queue[i].requires;
-
-                    for (j = 0,subLn = requires.length; j < subLn; j++) {
-                        if (this.isClassFileLoaded[requires[j]]) {
-                            missingClasses.push(requires[j]);
-                        }
-                    }
-                }
-
-                if (missingClasses.length < 1) {
-                    return;
-                }
-
-                missingClasses = Ext.Array.filter(Ext.Array.unique(missingClasses), function(item) {
-                    return !this.requiresMap.hasOwnProperty(item);
-                }, this);
-
-                for (i = 0,ln = missingClasses.length; i < ln; i++) {
-                    missingPaths.push(this.classNameToFilePathMap[missingClasses[i]]);
-                }
-
-                throw new Error("The following classes are not declared even if their files have been " +
-                            "loaded: '" + missingClasses.join("', '") + "'. Please check the source code of their " +
-                            "corresponding files for possible typos: '" + missingPaths.join("', '"));
-            }
-            //</debug>
         },
 
         /**
@@ -8006,9 +7744,6 @@ var noArgs = [],
             this.numPendingFiles--;
             this.hasFileLoadError = true;
 
-            //<debug error>
-            throw new Error("[Ext.Loader] " + errorMessage);
-            //</debug>
         },
 
         /**
@@ -8103,7 +7838,6 @@ var noArgs = [],
         }
     });
 
-    //</feature>
 
     /**
      * Convenient alias of {@link Ext.Loader#require}. Please see the introduction documentation of
@@ -8207,53 +7941,6 @@ var noArgs = [],
             return;
         }
 
-        //<feature classSystem.loader>
-        //<debug error>
-        var deadlockPath = [],
-            requiresMap = Loader.requiresMap,
-            detectDeadlock;
-
-        /*
-        Automatically detect deadlocks before-hand,
-        will throw an error with detailed path for ease of debugging. Examples of deadlock cases:
-
-        - A extends B, then B extends A
-        - A requires B, B requires C, then C requires A
-
-        The detectDeadlock function will recursively transverse till the leaf, hence it can detect deadlocks
-        no matter how deep the path is.
-        */
-
-        if (className) {
-            requiresMap[className] = dependencies;
-            //<debug>
-            if (!Loader.requiredByMap) Loader.requiredByMap = {};
-            Ext.Array.each(dependencies, function(dependency){
-                if (!Loader.requiredByMap[dependency]) Loader.requiredByMap[dependency] = [];
-                Loader.requiredByMap[dependency].push(className);
-            });
-            //</debug>
-            detectDeadlock = function(cls) {
-                deadlockPath.push(cls);
-
-                if (requiresMap[cls]) {
-                    if (Ext.Array.contains(requiresMap[cls], className)) {
-                        throw new Error("Deadlock detected while loading dependencies! '" + className + "' and '" +
-                                deadlockPath[1] + "' " + "mutually require each other. Path: " +
-                                deadlockPath.join(' -> ') + " -> " + deadlockPath[0]);
-                    }
-
-                    for (i = 0,ln = requiresMap[cls].length; i < ln; i++) {
-                        detectDeadlock(requiresMap[cls][i]);
-                    }
-                }
-            };
-
-            detectDeadlock(className);
-        }
-
-        //</debug>
-        //</feature>
 
         Loader.require(dependencies, function() {
             for (i = 0,ln = dependencyProperties.length; i < ln; i++) {
@@ -8294,7 +7981,6 @@ var noArgs = [],
         return false;
     }, true, 'after', 'className');
 
-    //<feature classSystem.loader>
     /**
      * @cfg {String[]} uses
      * @member Ext.Class
@@ -8321,7 +8007,6 @@ var noArgs = [],
     Manager.onCreated(function(className) {
         this.historyPush(className);
     }, Loader);
-    //</feature>
 
 })(Ext.ClassManager, Ext.Class, Ext.Function.flexSetter, Ext.Function.alias,
    Ext.Function.pass, Ext.Array.from, Ext.Array.erase, Ext.Array.include);
@@ -8636,7 +8321,6 @@ function(el){
             }
         },
 
-        //<feature logger>
         logger: {
             enabled: true,
             xclass: 'Ext.log.Logger',
@@ -8651,7 +8335,6 @@ function(el){
                 }
             }
         },
-        //</feature>
 
         animator: {
             xclass: 'Ext.fx.Runner'
@@ -9265,11 +8948,6 @@ function(el){
             }
         }
 
-        //<debug error>
-        if (!Ext.isObject(config)) {
-            Ext.Logger.error("Invalid config, must be a valid config object");
-        }
-        //</debug>
 
         if ('xtype' in config) {
             newInstance = manager.instantiateByAlias('widget.' + config.xtype, config);
@@ -9334,15 +9012,9 @@ function(el){
         if (newName) {
             Ext.Object.defineProperty(object, oldName, {
                 get: function() {
-                    //<debug warn>
-                    Ext.Logger.deprecate(message, 1);
-                    //</debug>
                     return this[newName];
                 },
                 set: function(value) {
-                    //<debug warn>
-                    Ext.Logger.deprecate(message, 1);
-                    //</debug>
 
                     this[newName] = value;
                 },
@@ -9358,9 +9030,6 @@ function(el){
     deprecatePropertyValue: function(object, name, value, message) {
         Ext.Object.defineProperty(object, name, {
             get: function() {
-                //<debug warn>
-                Ext.Logger.deprecate(message, 1);
-                //</debug>
                 return value;
             },
             configurable: true
@@ -9373,9 +9042,6 @@ function(el){
      */
     deprecateMethod: function(object, name, method, message) {
         object[name] = function() {
-            //<debug warn>
-            Ext.Logger.deprecate(message, 2);
-            //</debug>
             if (method) {
                 return method.apply(this, arguments);
             }
@@ -9409,18 +9075,12 @@ function(el){
 
         if (isLateBinding) {
             member = function() {
-                //<debug warn>
-                Ext.Logger.deprecate(message, this);
-                //</debug>
 
                 return this[method].apply(this, arguments);
             };
         }
         else {
             member = function() {
-                //<debug warn>
-                Ext.Logger.deprecate(message, this);
-                //</debug>
 
                 return method.apply(this, arguments);
             };
@@ -9437,29 +9097,6 @@ function(el){
         cls.addMember(name, member);
     },
 
-    //<debug>
-    /**
-     * Useful snippet to show an exact, narrowed-down list of top-level Components that are not yet destroyed.
-     * @private
-     */
-    showLeaks: function() {
-        var map = Ext.ComponentManager.all.map,
-            leaks = [],
-            parent;
-
-        Ext.Object.each(map, function(id, component) {
-            while ((parent = component.getParent()) && map.hasOwnProperty(parent.getId())) {
-                component = parent;
-            }
-
-            if (leaks.indexOf(component) === -1) {
-                leaks.push(component);
-            }
-        });
-
-        console.log(leaks);
-    },
-    //</debug>
 
     /**
      * True when the document is fully initialized and ready for action
@@ -11560,9 +11197,6 @@ Ext.dom.Element.addStatics({
 
         // Otherwise, warn if it's not a valid CSS measurement
         if (!this.unitRe.test(size)) {
-            //<debug>
-            Ext.Logger.warn("Warning, size detected as NaN on Element.addUnits.");
-            //</debug>
             return size || '';
         }
         return size;
@@ -13620,9 +13254,6 @@ Ext.define('Ext.dom.CompositeElementLite', {
             elements = selector;
         }
         else {
-            //<debug>
-            throw new Error("[Ext.select] Invalid selector specified: " + selector);
-            //</debug>
         }
 
         return new Ext.CompositeElementLite(elements);
@@ -13702,11 +13333,6 @@ Ext.define('Ext.ComponentManager', {
     register: function(component) {
         var id = component.getId();
 
-        // <debug>
-        if (this.map[id]) {
-            Ext.Logger.warn('Registering a component with a id (`' + id + '`) which has already been used. Please ensure the existing component has been destroyed (`Ext.Component#destroy()`.');
-        }
-        // </debug>
 
         this.map[component.getId()] = component;
     },
@@ -14264,12 +13890,6 @@ Ext.define('Ext.ComponentQuery', {
                             selector = selector.replace(selectorMatch[0], '');
                             break; // Break on match
                         }
-                        //<debug>
-                        // Exhausted all matches: It's an error
-                        if (i === (length - 1)) {
-                            Ext.Error.raise('Invalid ComponentQuery selector: "' + arguments[0] + '"');
-                        }
-                        //</debug>
                     }
                 }
 
@@ -15129,11 +14749,6 @@ Ext.define('Ext.data.JsonP', {
     request: function(options){
         options = Ext.apply({}, options);
 
-        //<debug>
-        if (!options.url) {
-            Ext.Logger.error('A url must be specified for a JSONP request.');
-        }
-        //</debug>
 
         var me = this,
             disableCaching = Ext.isDefined(options.disableCaching) ? options.disableCaching : me.disableCaching,
@@ -15524,11 +15139,6 @@ Ext.define('Ext.data.Operation', {
             model = Ext.data.ModelManager.registerType(model.storeId || model.id || Ext.id(), model);
         }
 
-        // <debug>
-        if (!model) {
-            Ext.Logger.warn('Unless you define your model using metadata, an Operation needs to have a model defined.');
-        }
-        // </debug>
 
         return model;
     },
@@ -15676,11 +15286,6 @@ Ext.define('Ext.data.Operation', {
             if (currentRecord) {
                 this.updateRecord(currentRecord, updatedRecord);
             }
-            // <debug>
-            else {
-                Ext.Logger.warn('Unable to match the record that came back from the server.');
-            }
-            // </debug>
         }
 
         return true;
@@ -15699,11 +15304,6 @@ Ext.define('Ext.data.Operation', {
             if (currentRecord) {
                 this.updateRecord(currentRecord, updatedRecord);
             }
-            // <debug>
-            else {
-                Ext.Logger.warn('Unable to match the updated record that came back from the server.');
-            }
-            // </debug>
         }
 
         return true;
@@ -15722,11 +15322,6 @@ Ext.define('Ext.data.Operation', {
                 currentRecord.setIsErased(true);
                 currentRecord.notifyStores('afterErase', currentRecord);
             }
-            // <debug>
-            else {
-                Ext.Logger.warn('Unable to match the destroyed record that came back from the server.');
-            }
-            // </debug>
         }
     },
 
@@ -16256,11 +15851,6 @@ Ext.define('Ext.data.Types', {
                         // Dates with the format "2012-01-20" fail, but "2012/01/20" work in some browsers. We'll try and
                         // get around that.
                         parsed = new Date(Date.parse(value.replace(this.dashesRe, "/")));
-                        //<debug>
-                        if (isNaN(parsed)) {
-                            Ext.Logger.warn("Cannot parse the passed value (" + value + ") into a valid date");
-                        }
-                        //</debug>
                     }
                 }
 
@@ -17210,9 +16800,6 @@ Ext.define('Ext.dom.CompositeElement', {
             elements = selector;
         }
         else {
-            //<debug>
-            throw new Error("[Ext.select] Invalid selector specified: " + selector);
-            //</debug>
         }
 
         return (unique === true) ? new Ext.CompositeElement(elements) : new Ext.CompositeElementLite(elements);
@@ -18251,7 +17838,6 @@ Ext.define('Ext.fx.easing.Momentum', {
     }
 });
 
-//<feature logger>
 Ext.define('Ext.log.Base', {
     config: {},
 
@@ -18261,9 +17847,7 @@ Ext.define('Ext.log.Base', {
         return this;
     }
 });
-//</feature>
 
-//<feature logger>
 /**
  * @class Ext.Logger
  * Logs messages to help with debugging.
@@ -18418,9 +18002,7 @@ var Logger = Ext.define('Ext.log.Logger', {
 });
 
 })();
-//</feature>
 
-//<feature logger>
 Ext.define('Ext.log.filter.Filter', {
     extend: 'Ext.log.Base',
 
@@ -18428,9 +18010,7 @@ Ext.define('Ext.log.filter.Filter', {
         return true;
     }
 });
-//</feature>
 
-//<feature logger>
 Ext.define('Ext.log.filter.Priority', {
     extend: 'Ext.log.filter.Filter',
 
@@ -18442,9 +18022,7 @@ Ext.define('Ext.log.filter.Priority', {
         return event.priority >= this.getMinPriority();
     }
 });
-//</feature>
 
-//<feature logger>
 Ext.define('Ext.log.formatter.Formatter', {
     extend: 'Ext.log.Base',
 
@@ -18470,9 +18048,7 @@ Ext.define('Ext.log.formatter.Formatter', {
         return template;
     }
 });
-//</feature>
 
-//<feature logger>
 Ext.define('Ext.log.writer.Writer', {
     extend: 'Ext.log.Base',
 
@@ -18528,7 +18104,6 @@ Ext.define('Ext.log.writer.Writer', {
     // @private
     doWrite: Ext.emptyFn
 });
-//</feature>
 
 /**
  * Base class for all mixins.
@@ -19460,9 +19035,6 @@ Ext.define('Ext.util.Filter', {
 
             var value = this.getValue();
             if (!this.getProperty() && !value && value !== 0) {
-                // <debug>
-                Ext.Logger.error('A Filter requires either a property and value, or a filterFn to be set');
-                // </debug>
                 return Ext.emptyFn;
             }
             else {
@@ -20177,21 +19749,6 @@ Ext.define('Ext.util.Sorter', {
         this.initConfig(config);
     },
 
-    // <debug>
-    applySorterFn: function(sorterFn) {
-        if (!sorterFn && !this.getProperty()) {
-            Ext.Logger.error("A Sorter requires either a property or a sorterFn.");
-        }
-        return sorterFn;
-    },
-
-    applyProperty: function(property) {
-        if (!property && !this.getSorterFn()) {
-            Ext.Logger.error("A Sorter requires either a property or a sorterFn.");
-        }
-        return property;
-    },
-    // </debug>
 
     applyId: function(id) {
         if (!id) {
@@ -22068,9 +21625,6 @@ Ext.define('Ext.data.writer.Json', {
                 // sending as a param, need to encode
                 params[root] = Ext.encode(data);
             } else {
-                //<debug>
-                Ext.Logger.error('Must specify a root when using encode');
-                //</debug>
             }
         } else {
             // send as jsonData
@@ -23343,34 +22897,6 @@ Ext.define('Ext.event.publisher.Dom', {
         this.publish(eventName, targets, new Ext.event.Dom(e));
     },
 
-    //<debug>
-    hasSubscriber: function(target, eventName) {
-        if (!this.handles(eventName)) {
-            return false;
-        }
-
-        var match = target.match(this.idOrClassSelectorRegex),
-            subscribers = this.getSubscribers(eventName),
-            type, value;
-
-        if (match !== null) {
-            type = match[1];
-            value = match[2];
-
-            if (type === '#') {
-                return subscribers.id.hasOwnProperty(value);
-            }
-            else {
-                return subscribers.className.hasOwnProperty(value);
-            }
-        }
-        else {
-            return (subscribers.selector.hasOwnProperty(target) && Ext.Array.indexOf(subscribers.selector, target) !== -1);
-        }
-
-        return false;
-    },
-    //</debug>
 
     getSubscribersCount: function(eventName) {
         if (!this.handles(eventName)) {
@@ -26102,7 +25628,6 @@ Ext.define('Ext.fx.easing.EaseOut', {
     }
 });
 
-//<feature logger>
 Ext.define('Ext.log.formatter.Default', {
     extend: 'Ext.log.formatter.Formatter',
 
@@ -26118,9 +25643,7 @@ Ext.define('Ext.log.formatter.Default', {
         return this.callParent([event]);
     }
 });
-//</feature>
 
-//<feature logger>
 Ext.define('Ext.log.formatter.Identity', {
     extend: 'Ext.log.formatter.Default',
 
@@ -26136,9 +25659,7 @@ Ext.define('Ext.log.formatter.Identity', {
         return this.callParent(arguments);
     }
 });
-//</feature>
 
-//<feature logger>
 Ext.define('Ext.log.writer.Console', {
 
     extend: 'Ext.log.writer.Writer',
@@ -26176,9 +25697,7 @@ Ext.define('Ext.log.writer.Console', {
         }
     }
 });
-//</feature>
 
-//<feature logger>
 Ext.define('Ext.log.writer.DocumentTitle', {
 
     extend: 'Ext.log.writer.Writer',
@@ -26189,7 +25708,6 @@ Ext.define('Ext.log.writer.DocumentTitle', {
         document.title = message;
     }
 });
-//</feature>
 
 /**
  * @private
@@ -26345,11 +25863,6 @@ Ext.define('Ext.mixin.Filterable', {
                 }
             }
             // Finally we get to the point where it has to be invalid
-            // <debug>
-            else {
-                Ext.Logger.warn('Invalid filter specified:', filter);
-            }
-            // </debug>
 
             // If a sorter config was created, make it an instance
             filter = Ext.create('Ext.util.Filter', filterConfig);
@@ -26591,11 +26104,6 @@ Ext.define('Ext.mixin.Observable', {
         if (!this.observableId) {
             var id = this.getUniqueId();
 
-            //<debug error>
-            if (!id.match(this.validIdRegex)) {
-                Ext.Logger.error("Invalid unique id of '" + id + "' for this object", this);
-            }
-            //</debug>
 
             this.observableId = this.observableIdPrefix + id;
 
@@ -28067,11 +27575,6 @@ Ext.define('Ext.app.Controller', {
      * @private
      */
     applyRefs: function(refs) {
-        //<debug>
-        if (Ext.isArray(refs)) {
-            Ext.Logger.deprecate("In Sencha Touch 2 the refs config accepts an object but you have passed it an array.");
-        }
-        //</debug>
 
         this.ref(refs);
 
@@ -28947,9 +28450,6 @@ Ext.define('Ext.app.Application', {
         }
 
 
-        //<debug>
-        Ext.Loader.setConfig({ enabled: true });
-        //</debug>
 
         Ext.require(this.getRequires(), function() {
             if (this.getEnableLoader() !== false) {
@@ -29172,15 +28672,7 @@ Ext.define('Ext.app.Application', {
         launcher.call(me);
 
         for (name in controllers) {
-            //<debug warn>
-            if (controllers[name] && !(controllers[name] instanceof Ext.app.Controller)) {
-                Ext.Logger.warn("The controller '" + name + "' doesn't have a launch method. Are you sure it extends from Ext.app.Controller?");
-            } else {
-            //</debug>
                 controllers[name].launch(this);
-            //<debug warn>
-            }
-            //</debug>
         }
 
         me.redirectTo(window.location.hash.substr(1));
@@ -29290,9 +28782,6 @@ Ext.define('Ext.app.Application', {
             oldName = name;
             name = name.replace(/ /g, "");
 
-            // <debug>
-            Ext.Logger.warn('Attempting to create an application with a name which contains whitespace ("' + oldName + '"). Renamed to "' + name + '".');
-            // </debug>
         }
 
         return name;
@@ -29999,11 +29488,6 @@ Ext.define('Ext.data.Connection', {
 
         url = this.setupUrl(options, url);
 
-        //<debug>
-        if (!url) {
-            Ext.Logger.error('No URL specified');
-        }
-        //</debug>
 
         // check for xml or json data, and make sure json data is encoded
         data = options.rawData || options.xmlData || jsonData || null;
@@ -30973,11 +30457,6 @@ Ext.define('Ext.data.reader.Reader', {
             me.onMetaChange(data.metaData);
         }
 
-        // <debug>
-        if (!me.getModel()) {
-            Ext.Logger.warn('In order to read record data, a Reader needs to have a Model defined on it.');
-        }
-        // </debug>
 
         // If we pass an array as the data, we dont use getRoot on the data.
         // Instead the root equals to the data.
@@ -31436,13 +30915,6 @@ Ext.define('Ext.data.reader.Json', {
             this.fireEvent('exception', this, response, 'Unable to parse the JSON returned by the server: ' + ex.toString());
             Ext.Logger.warn('Unable to parse the JSON returned by the server: ' + ex.toString());
         }
-        //<debug>
-        if (!data) {
-            this.fireEvent('exception', this, response, 'JSON object not found');
-
-            Ext.Logger.error('JSON object not found');
-        }
-        //</debug>
 
         return data;
     },
@@ -31853,9 +31325,6 @@ Ext.define('Ext.data.proxy.Proxy', {
                 }
             };
 
-            // <debug warn>
-            Ext.Logger.deprecate('Passes old-style signature to Proxy.batch (operations, listeners). Please convert to single options argument syntax.');
-            // </debug>
         }
 
         if (options.batch) {
@@ -31948,9 +31417,6 @@ Ext.define('Ext.data.proxy.Client', {
      * from the client side storage, as well as removing any supporting data (such as lists of record IDs)
      */
     clear: function() {
-        //<debug>
-        Ext.Logger.error("The Ext.data.proxy.Client subclass that you are using has not defined a 'clear' function. See src/data/ClientProxy.js for details.");
-        //</debug>
     }
 });
 
@@ -32257,9 +31723,6 @@ Ext.define('Ext.data.proxy.Server', {
         config = config || {};
         if (config.nocache !== undefined) {
             config.noCache = config.nocache;
-            // <debug>
-            Ext.Logger.warn('nocache configuration on Ext.data.proxy.Server has been deprecated. Please use noCache.');
-            // </debug>
         }
         this.callParent([config]);
     },
@@ -32508,11 +31971,6 @@ Ext.define('Ext.data.proxy.Server', {
         var me = this,
             url = me.getUrl(request);
 
-        //<debug>
-        if (!url) {
-            Ext.Logger.error("You are using a ServerProxy but have not supplied it with a url.");
-        }
-        //</debug>
 
         if (me.getNoCache()) {
             url = Ext.urlAppend(url, Ext.String.format("{0}={1}", me.getCacheString(), Ext.Date.now()));
@@ -32547,9 +32005,6 @@ Ext.define('Ext.data.proxy.Server', {
      * @template
      */
     doRequest: function(operation, callback, scope) {
-        //<debug>
-        Ext.Logger.error("The doRequest function has not been implemented on your Ext.data.proxy.Server subclass. See src/data/ServerProxy.js for details");
-        //</debug>
     },
 
     /**
@@ -32732,12 +32187,6 @@ Ext.define('Ext.data.proxy.JsonP', {
      * @protected
      */
     doRequest: function(operation, callback, scope) {
-        // <debug>
-        var action = operation.getAction();
-        if (action !== 'read') {
-            Ext.Logger.error('JsonP proxies can only be used to read data.');
-        }
-        // </debug>
 
         //generate the unique IDs for this request
         var me      = this,
@@ -32886,11 +32335,6 @@ Ext.define('Ext.data.proxy.WebStorage', {
          */
         this.cache = {};
 
-        //<debug>
-        if (this.getStorageObject() === undefined) {
-            Ext.Logger.error("Local Storage is not supported in this browser, please use another type of data proxy");
-        }
-        //</debug>
     },
 
     updateModel: function(model) {
@@ -33276,9 +32720,6 @@ Ext.define('Ext.data.proxy.WebStorage', {
      * @return {Object} The storage object
      */
     getStorageObject: function() {
-        //<debug>
-        Ext.Logger.error("The getStorageObject function has not been defined in your Ext.data.proxy.WebStorage subclass");
-        //</debug>
     }
 });
 
@@ -33686,19 +33127,6 @@ Ext.define('Ext.data.reader.Xml', {
 
         var xml = response.responseXML;
 
-        //<debug>
-        if (!xml) {
-            /**
-             * @event exception Fires whenever the reader is unable to parse a response.
-             * @param {Ext.data.reader.Xml} reader A reference to this reader
-             * @param {XMLHttpRequest} response The XMLHttpRequest response object.
-             * @param {String} error The error message.
-             */
-            this.fireEvent('exception', this, response, 'XML data not found in the response');
-
-            Ext.Logger.warn('XML data not found in the response');
-        }
-        //</debug>
 
         return xml;
     },
@@ -33741,11 +33169,6 @@ Ext.define('Ext.data.reader.Xml', {
     extractData: function(root) {
         var recordName = this.getRecord();
 
-        //<debug>
-        if (!recordName) {
-            Ext.Logger.error('Record is a required parameter');
-        }
-        //</debug>
 
         if (recordName != root.nodeName) {
             root = Ext.DomQuery.select(recordName, root);
@@ -34074,9 +33497,6 @@ Ext.define('Ext.direct.PollingProvider', {
             }, me.getInterval());
             me.fireEvent('connect', me);
         } else if (!url) {
-            //<debug>
-            Ext.Error.raise('Error initializing PollingProvider, no url configured.');
-            //</debug>
         }
     },
 
@@ -34257,11 +33677,6 @@ Ext.define('Ext.fx.animation.Abstract', {
         if (stateInstance) {
             states[name] = stateInstance;
         }
-        //<debug error>
-        else if (name === this.STATE_TO) {
-            Ext.Logger.error("Setting and invalid '100%' / 'to' state of: " + state);
-        }
-        //</debug>
 
         return this;
     },
@@ -34934,11 +34349,6 @@ Ext.define('Ext.fx.Animation', {
             }
             defaultClass = Ext.ClassManager.getByAlias('animation.' + type);
 
-            //<debug error>
-            if (!defaultClass) {
-                Ext.Logger.error("Invalid animation type of: '" + type + "'");
-            }
-            //</debug>
         }
 
         return Ext.factory(config, defaultClass);
@@ -35539,11 +34949,6 @@ Ext.define('Ext.fx.layout.Card', {
 
             defaultClass = Ext.ClassManager.getByAlias('fx.layout.card.' + type);
 
-            //<debug error>
-            if (!defaultClass) {
-                Ext.Logger.error("Unknown card animation type: '" + type + "'");
-            }
-            //</debug>
         }
 
         return Ext.factory(config, defaultClass);
@@ -35787,12 +35192,6 @@ Ext.define('Ext.fx.runner.Css', {
                 unit = value.match(this.lengthUnitRegex)[1];
 
                 if (unit.length > 0) {
-                    //<debug error>
-                    if (unit !== lengthUnit) {
-                        Ext.Logger.error("Length unit: '" + unit + "' in value: '" + value + "' of property: '" + name + "' is not " +
-                            "valid for animation. Only 'px' is allowed");
-                    }
-                    //</debug>
                 }
                 else {
                     return value + lengthUnit;
@@ -37306,11 +36705,6 @@ Ext.define('Ext.layout.Layout', {
         if (type) {
             layoutClass = Ext.ClassManager.getByAlias('layout.' + type);
 
-            //<debug error>
-            if (!layoutClass) {
-                Ext.Logger.error("Unknown layout type of: '" + type + "'");
-            }
-            //</debug>
         }
 
         return new layoutClass(container, config);
@@ -37318,7 +36712,6 @@ Ext.define('Ext.layout.Layout', {
 });
 
 
-//<feature logger>
 Ext.define('Ext.log.writer.Remote', {
     extend: 'Ext.log.writer.Writer',
 
@@ -37390,7 +36783,6 @@ Ext.define('Ext.log.writer.Remote', {
         });
     }
 });
-//</feature>
 
 /**
  * @private
@@ -37582,11 +36974,6 @@ Ext.define('Ext.mixin.Sortable', {
                 }
             }
             // Finally we get to the point where it has to be invalid
-            // <debug>
-            else {
-                Ext.Logger.warn('Invalid sorter specified:', sorter);
-            }
-            // </debug>
 
             // If a sorter config was created, make it an instance
             sorter = Ext.create('Ext.util.Sorter', sorterConfig);
@@ -39141,9 +38528,6 @@ Ext.define('Ext.util.Collection', {
             ln, key, i, item;
 
         if (sorted && this.getAutoSort()) {
-            // <debug>
-            Ext.Logger.error('Inserting a collection of items into a sorted Collection is invalid. Please just add these items or remove the sorters.');
-            // </debug>
         }
 
         if (Ext.isObject(insertItems)) {
@@ -40101,11 +39485,6 @@ Ext.define('Ext.data.proxy.Direct', {
             args = [],
             method;
 
-        //<debug>
-        if (!fn) {
-            Ext.Error.raise('No direct function specified for this proxy');
-        }
-        //</debug>
 
         request = writer.write(request);
 
@@ -40424,11 +39803,6 @@ var s = Ext.util.Format.format('&lt;div class="{0}">{1}&lt;/div>', cls, text);
                     // Dates with the format "2012-01-20" fail, but "2012/01/20" work in some browsers. We'll try and
                     // get around that.
                     date = new Date(Date.parse(value.replace(this.dashesRe, "/")));
-                    //<debug>
-                    if (isNaN(date)) {
-                        Ext.Logger.error("Cannot parse the passed value " + value + " into a valid date");
-                    }
-                    //</debug>
                 }
             }
             value = date;
@@ -41057,9 +40431,6 @@ Ext.define('Ext.XTemplate', {
         try {
             me.fn.call(me, out, values, {}, 1, 1);
         } catch (e) {
-            //<debug>
-            Ext.Logger.error(e.message);
-            //</debug>
         }
 
         return out;
@@ -42018,11 +41389,6 @@ Ext.define('Ext.AbstractManager', {
         var type        = config[this.typeName] || config.type || defaultType,
             Constructor = this.types[type];
 
-        //<debug>
-        if (Constructor == undefined) {
-            Ext.Error.raise("The '" + type + "' type has not been registered with this manager");
-        }
-        //</debug>
 
         return new Constructor(config);
     },
@@ -42263,10 +41629,6 @@ Ext.define('Ext.data.ModelManager', {
      * @deprecated 2.0.0 Please use {@link Ext#define} instead.
      */
     Ext.regModel = function() {
-        //<debug>
-        Ext.Logger.deprecate('Ext.regModel has been deprecated. Models can now be created by ' +
-            'extending Ext.data.Model: Ext.define("MyModel", {extend: "Ext.data.Model", fields: []});.');
-        //</debug>
         return this.ModelManager.registerType.apply(this.ModelManager, arguments);
     };
 });
@@ -44179,9 +43541,6 @@ Ext.define('Ext.data.association.HasMany', {
         config = config || {};
 
         if (config.storeConfig) {
-            // <debug>
-            Ext.Logger.warn('storeConfig is deprecated on an association. Instead use the store configuration.');
-            // </debug>
             config.store = config.storeConfig;
             delete config.storeConfig;
         }
@@ -44965,11 +44324,6 @@ Ext.define('Ext.event.publisher.ComponentSize', {
 
             component = Ext.ComponentManager.get(match[1]);
 
-            //<debug error>
-            if (!component) {
-                Ext.Logger.error("Adding a listener to the 'resize' event of a non-existing component");
-            }
-            //</debug>
 
             sizeMonitors[target] = new Ext.util.SizeMonitor({
                 element: component.element,
@@ -47124,14 +46478,6 @@ Ext.define('Ext.data.Model', {
         me.callParent(arguments);
     },
 
-    //<debug>
-    markDirty : function() {
-        if (Ext.isDefined(Ext.Logger)) {
-            Ext.Logger.deprecate('Ext.data.Model: markDirty has been deprecated. Use setDirty instead.');
-        }
-        return this.setDirty.apply(this, arguments);
-    },
-    //</debug>
 
     applyProxy: function(proxy, currentProxy) {
         return Ext.factory(proxy, Ext.data.Proxy, currentProxy, 'proxy');
@@ -47999,11 +47345,6 @@ Ext.define('Ext.data.Store', {
             model = this.getProxy().getModel();
         }
 
-        // <debug>
-        if (!model) {
-            Ext.Logger.warn('Unless you define your model through metadata, a store needs to have a model defined on either itself or on its proxy');
-        }
-        // </debug>
 
         return model;
     },
@@ -48135,9 +47476,6 @@ Ext.define('Ext.data.Store', {
     applyGetGroupString: function(getGroupStringFn) {
         var grouper = this.getGrouper();
         if (getGroupStringFn) {
-            // <debug>
-            Ext.Logger.warn('Specifying getGroupString on a store has been deprecated. Please use grouper: {groupFn: yourFunction}');
-            // </debug>
 
             if (grouper) {
                 grouper.setGroupFn(getGroupStringFn);
@@ -48863,11 +48201,6 @@ Ext.define('Ext.data.Store', {
             group,
             i;
 
-        // <debug>
-        if (!grouper) {
-            Ext.Logger.error('Trying to get groups for a store that has no grouper');
-        }
-        // </debug>
 
         for (i = 0; i < length; i++) {
             record = records[i];
@@ -49739,12 +49072,6 @@ Ext.define('Ext.data.NodeStore', {
     },
 
     applyProxy: function(proxy) {
-        //<debug>
-        if (proxy) {
-            Ext.Logger.warn("A NodeStore cannot be bound to a proxy. Instead bind it to a record " +
-                            "decorated with the NodeInterface by setting the node config.");
-        }
-        //</debug>
     },
 
     applyNode: function(node) {
@@ -50586,9 +49913,6 @@ Ext.define('Ext.direct.RemotingProvider', {
             me.connected = true;
             me.fireEvent('connect', me);
         } else {
-            //<debug>
-            Ext.Error.raise('Error initializing RemotingProvider, no url configured.');
-            //</debug>
         }
     },
 
@@ -50922,14 +50246,6 @@ Ext.define('Ext.util.TapRepeater', {
      */
     constructor: function(config) {
         var me = this;
-        //<debug warn>
-        for (var configName in config) {
-            if (me.self.prototype.config && !(configName in me.self.prototype.config)) {
-                me[configName] = config[configName];
-                Ext.Logger.warn('Applied config as instance property: "' + configName + '"', me);
-            }
-        }
-        //</debug>
         me.initConfig(config);
     },
 
@@ -52216,11 +51532,6 @@ Ext.define('Ext.scroll.Scroller', {
 
         if (!container) {
             this.container = container = this.getElement().getParent();
-            //<debug error>
-            if (!container) {
-                Ext.Logger.error("Making an element scrollable that doesn't have any container");
-            }
-            //</debug>
             container.addCls(this.containerCls);
         }
 
@@ -54671,10 +53982,6 @@ Ext.define('Ext.Component', {
     applyDocked: function(docked) {
         if (docked) {
             if (!this.dockPositions[docked]) {
-                //<debug error>
-                Ext.Logger.error("Invalid docking position of '" + docked + "', must be either 'top', 'right', 'bottom', " +
-                    "'left' or `null` (for no docking)", this);
-                //</debug>
                 return;
             }
 
@@ -55170,12 +54477,6 @@ alert(t.getXTypes());  // alerts 'component/field/textfield'
     //@private
     doAddListener: function(name, fn, scope, options, order) {
         if (options && 'element' in options) {
-            //<debug error>
-            if (this.referenceList.indexOf(options.element) === -1) {
-                Ext.Logger.error("Adding event listener with an invalid element reference of '" + options.element +
-                    "' for this component. Available values are: '" + this.referenceList.join("', '") + "'", this);
-            }
-            //</debug>
 
             // The default scope is this component
             this[options.element].doAddListener(name, fn, scope || this, options, order);
@@ -55187,12 +54488,6 @@ alert(t.getXTypes());  // alerts 'component/field/textfield'
     //@private
     doRemoveListener: function(name, fn, scope, options, order) {
         if (options && 'element' in options) {
-            //<debug error>
-            if (this.referenceList.indexOf(options.element) === -1) {
-                Ext.Logger.error("Removing event listener with an invalid element reference of '" + options.element +
-                    "' for this component. Available values are: '" + this.referenceList.join('", "') + "'", this);
-            }
-            //</debug>
 
             // The default scope is this component
             this[options.element].doRemoveListener(name, fn, scope || this, options, order);
@@ -55308,11 +54603,6 @@ alert(t.getXTypes());  // alerts 'component/field/textfield'
         }
 
         var matches = alignment.match(this.alignmentRegex);
-        //<debug error>
-        if (!matches) {
-            Ext.Logger.error("Invalid alignment value of '" + alignment + "'");
-        }
-        //</debug>
 
         var from = matches[1].split(''),
             to = matches[2].split(''),
@@ -59453,15 +58743,6 @@ Ext.define('Ext.field.Input', {
         return this;
     },
 
-    //<debug>
-    // @private
-    applyTabIndex: function(tabIndex) {
-        if (tabIndex !== null && typeof tabIndex != 'number') {
-            throw new Error("Ext.field.Field: [applyTabIndex] trying to pass a value which is not a number");
-        }
-        return tabIndex;
-    },
-    //</debug>
 
     /**
      * Updates the tabIndex attribute with the {@link #tabIndex} configuration
@@ -59476,14 +58757,6 @@ Ext.define('Ext.field.Input', {
         return [true, 'on'].indexOf(value) !== -1;
     },
 
-    //<debug>
-    applyMaxLength: function(maxLength) {
-        if (maxLength !== null && typeof maxLength != 'number') {
-            throw new Error("Ext.field.Text: [applyMaxLength] trying to pass a value which is not a number");
-        }
-        return maxLength;
-    },
-    //</debug>
 
     /**
      * Updates the maxlength attribute with the {@link #maxLength} configuration
@@ -59612,16 +58885,6 @@ Ext.define('Ext.field.Input', {
         this.updateFieldAttribute('readonly', readOnly);
     },
 
-    //<debug>
-    // @private
-    applyMaxRows: function(maxRows) {
-        if (maxRows !== null && typeof maxRows !== 'number') {
-            throw new Error("Ext.field.Input: [applyMaxRows] trying to pass a value which is not a number");
-        }
-
-        return maxRows;
-    },
-    //</debug>
 
     updateMaxRows: function(newRows) {
         this.updateFieldAttribute('rows', newRows);
@@ -63257,36 +62520,8 @@ Ext.define('Ext.scroll.View', {
         this.setIndicatorValue('x', x);
         this.setIndicatorValue('y', y);
 
-        //<debug>
-        if (this.isBenchmarking) {
-            this.framesCount++;
-        }
-        //</debug>
     },
 
-    //<debug>
-    isBenchmarking: false,
-
-    framesCount: 0,
-
-    getCurrentFps: function() {
-        var now = Date.now(),
-            fps;
-
-        if (!this.isBenchmarking) {
-            this.isBenchmarking = true;
-            fps = 0;
-        }
-        else {
-            fps = Math.round(this.framesCount * 1000 / (now - this.framesCountStartTime));
-        }
-
-        this.framesCountStartTime = now;
-        this.framesCount = 0;
-
-        return fps;
-    },
-    //</debug>
 
     setIndicatorValue: function(axis, scrollerPosition) {
         if (!this.isAxisEnabled(axis)) {
@@ -63869,9 +63104,6 @@ Ext.define('Ext.Container', {
             this.on(listeners);
             newModal.on('destroy', 'onModalDestroy', this);
             if (this.getTop() === null && this.getBottom() === null && this.getRight() === null && this.getLeft() === null && !this.getCentered()) {
-                //<debug warn>
-                Ext.Logger.warn("You have specified a modal config on a container that is neither centered nor has any positioning information.  Setting to top and left to 0 to compensate.");
-                //</debug>
                 this.setTop(0);
                 this.setLeft(0);
             }
@@ -64020,23 +63252,11 @@ Ext.define('Ext.Container', {
         return this.onItemAdd.apply(this, arguments);
     },
 
-    //<debug error>
-    updateLayout: function(newLayout, oldLayout) {
-        if (oldLayout && oldLayout.isLayout) {
-            Ext.Logger.error('Replacing a layout after one has already been initialized is not currently supported.');
-        }
-    },
-    //</debug>
 
     updateDefaultType: function(defaultType) {
         // Cache the direct reference to the default item class here for performance
         this.defaultItemClass = Ext.ClassManager.getByAlias('widget.' + defaultType);
 
-        //<debug error>
-        if (!this.defaultItemClass) {
-            Ext.Logger.error("Invalid defaultType of: '" + defaultType + "', must be a valid component xtype");
-        }
-        //</debug>
     },
 
     applyDefaults: function(defaults) {
@@ -64047,23 +63267,11 @@ Ext.define('Ext.Container', {
     },
 
     factoryItem: function(item) {
-        //<debug error>
-        if (!item) {
-            Ext.Logger.error("Invalid item given: " + item + ", must be either the config object to factory a new item, " +
-                "or an existing component instance");
-        }
-        //</debug>
 
         return Ext.factory(item, this.defaultItemClass);
     },
 
     factoryItemWithDefaults: function(item) {
-        //<debug error>
-        if (!item) {
-            Ext.Logger.error("Invalid item given: " + item + ", must be either the config object to factory a new item, " +
-                "or an existing component instance");
-        }
-        //</debug>
 
         var me = this,
             defaults = me.getDefaults(),
@@ -64658,11 +63866,6 @@ Ext.define('Ext.Container', {
                 activeItem = this.factoryItem(activeItem);
             }
 
-            //<debug error>
-            if (!activeItem.isInnerItem()) {
-                Ext.Logger.error("Setting activeItem to be a non-inner item");
-            }
-            //</debug>
 
             if (!this.has(activeItem)) {
                 this.add(activeItem);
@@ -66419,9 +65622,6 @@ Ext.define('Ext.MessageBox', {
         config = config || {};
 
         if (config.hasOwnProperty('promptConfig')) {
-            //<debug warn>
-            Ext.Logger.deprecate("'promptConfig' config is deprecated, please use 'prompt' config instead", this);
-            //</debug>
 
             Ext.applyIf(config, {
                 prompt: config.promptConfig
@@ -66775,9 +65975,6 @@ Ext.define('Ext.MessageBox', {
         config.buttons = buttonBarItems;
 
         if (config.promptConfig) {
-            //<debug warn>
-            Ext.Logger.deprecate("'promptConfig' config is deprecated, please use 'prompt' config instead", this);
-            //</debug>
         }
         config.prompt = (config.promptConfig || config.prompt) || null;
 
@@ -67850,11 +67047,6 @@ Ext.define('Ext.carousel.Infinite', {
     },
 
     applyIndicator: function(indicator) {
-        //<debug error>
-        if (indicator) {
-            Ext.Logger.error("'indicator' in Infinite Carousel implementation is not currently supported", this);
-        }
-        //</debug>
         return;
     },
 
@@ -68859,12 +68051,6 @@ Ext.define('Ext.dataview.DataView', {
     constructor: function(config) {
         var me = this;
 
-        // <debug warn>
-        if (config && config.layout) {
-            Ext.Logger.warn('Attempting to create a DataView with a layout. DataViews do not have a layout configuration as their items are laid out automatically.');
-            delete config.layout;
-        }
-        // </debug>
 
         me.hasLoadedStore = false;
 
@@ -69159,11 +68345,6 @@ Ext.define('Ext.dataview.DataView', {
                     }
                 }
             }
-            //<debug warn>
-            else {
-                Ext.Logger.warn("The specified Store cannot be found", this);
-            }
-            //</debug>
         }
 
         return store;
@@ -70522,11 +69703,6 @@ Ext.define('Ext.dataview.NestedList', {
         if (store) {
             store = Ext.data.StoreManager.lookup(store);
 
-            // <debug>
-            if (!store)  {
-                Ext.Logger.warn("The specified Store cannot be found", this);
-            }
-            //</debug>
         }
 
         return store;
@@ -71667,9 +70843,6 @@ Ext.define('Ext.form.Panel', {
      * @deprecated 2.0.0 Please use {@link #setMasked} instead.
      */
     showMask: function(cfg, target) {
-        //<debug>
-        Ext.Logger.warn('showMask is now deprecated. Please use Ext.form.Panel#setMasked instead');
-        //</debug>
 
         cfg = Ext.isObject(cfg) ? cfg.message : cfg;
 
@@ -72984,12 +72157,6 @@ Ext.define('Ext.navigation.View', {
             remove: 'pop'
         });
 
-        //<debug>
-        var layout = this.getLayout();
-        if (layout && !layout.isCard) {
-            Ext.Logger.error('The base layout for a NavigationView must always be a Card Layout');
-        }
-        //</debug>
     },
 
     /**
@@ -73127,10 +72294,6 @@ Ext.define('Ext.navigation.View', {
 
         if (config.title) {
             delete config.title;
-            //<debug>
-            Ext.Logger.warn("Ext.navigation.View: The 'navigationBar' configuration does not accept a 'title' property. You " +
-                            "set the title of the navigationBar by giving this navigation view's children a 'title' property.");
-            //</debug>
         }
 
         config.view = this;
@@ -75961,10 +75124,6 @@ Ext.define('Ext.slider.Slider', {
             filteredValue = this.constrainValue(values[i]);
 
             if (filteredValue < previousFilteredValue) {
-                //<debug warn>
-                Ext.Logger.warn("Invalid values of '"+Ext.encode(values)+"', values at smaller indexes must " +
-                    "be smaller than or equal to values at greater indexes");
-                //</debug>
                 filteredValue = previousFilteredValue;
             }
 
@@ -76677,11 +75836,6 @@ Ext.define('Ext.tab.Bar', {
         var activeTabInstance = this.parseActiveTab(activeTab);
 
         if (!activeTabInstance) {
-            // <debug warn>
-            if (oldActiveTab) {
-                Ext.Logger.warn('Trying to set a non-existent activeTab');
-            }
-            // </debug>
             return;
         }
         return activeTabInstance;
@@ -76871,12 +76025,6 @@ Ext.define('Ext.tab.Panel', {
             scope   : this
         });
 
-        //<debug>
-        var layout = this.getLayout();
-        if (layout && !layout.isCard) {
-            Ext.Logger.error('The base layout for a TabPanel must always be a Card Layout');
-        }
-        //</debug>
     },
 
     /**
@@ -77023,13 +76171,6 @@ Ext.define('Ext.tab.Panel', {
             tabConfig.badgeText = tabBadgeText;
         }
 
-        //<debug warn>
-        if (!currentTabInstance && !tabConfig.title && !tabConfig.iconCls) {
-            if (!tabConfig.title && !tabConfig.iconCls) {
-                Ext.Logger.error('Adding a card to a tab container without specifying any tab configuration');
-            }
-        }
-        //</debug>
 
         tabInstance = Ext.factory(tabConfig, Ext.tab.Tab, currentTabInstance);
 
@@ -77745,9 +76886,6 @@ Ext.define('Ext.viewport.Android', {
             this.orientationChanging = false;
 
         }, function() {
-            //<debug error>
-            Ext.Logger.error("Timeout waiting for viewport's outerHeight to change before firing orientationchange", this);
-            //</debug>
         });
 
         return this;
@@ -78000,9 +77138,6 @@ Ext.define('Ext.viewport.Ios', {
 
                 this.fireMaximizeEvent();
             }, function() {
-                //<debug error>
-                Ext.Logger.error("Timeout waiting for window.innerHeight to change", this);
-                //</debug>
                 height = stretchHeights[orientation] = this.getWindowHeight();
                 this.setHeight(height);
                 this.fireMaximizeEvent();

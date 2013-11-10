@@ -4,9 +4,12 @@
     <head>
         <meta charset="UTF-8">
         <title>FRIENDAPP</title>
-        <script type="text/javascript" src="cordova-2.4.0.js"></script>   
+        <script type="text/javascript" src="cordova.js"></script>   
         <link rel="stylesheet" type="text/css" href="./resources/css/main.css"/>
         <link rel="stylesheet" type="text/css" href="./resources/css/Ext.ux.TouchCalendarView.css"/>
+        <script type="text/javascript">
+            
+        </script>
         <style type="text/css">
             /**
              * Example of an initial loading indicator.
@@ -91,20 +94,22 @@
                         }*/
             .index.x-loading-spinner{
                 top: 50%;
-                left: 50%;
+                left: 47.3%;
                 position:absolute!important;
             }
         </style>
 
-        <script id="microloader" type="text/javascript" src="sdk/microloader/development.js"></script>
+        <script type="text/javascript">(function(h){function f(c,d){document.write('<meta name="'+c+'" content="'+d+'">')}if("undefined"===typeof g)var g=h.Ext={};g.blink=function(c){var d=c.js||[],c=c.css||[],b,e,a;f("viewport","width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no");f("apple-mobile-web-app-capable","yes");f("apple-touch-fullscreen","yes");for(b=0,e=c.length;b<e;b++)a=c[b],"string"!=typeof a&&(a=a.path),document.write('<link rel="stylesheet" href="'+a+'">');for(b=0,e=d.length;b<
+e;b++)a=d[b],"string"!=typeof a&&(a=a.path),document.write('<script src="'+a+'"><\/script>')}})(this);
+;Ext.blink({"id":"1aadb080-1977-11e3-8085-d77e8400e67b","js":[{"path":"sdk/sencha-touch.js","type":"js"},{"path":"sdk/sencha-touch-all.js","type":"js"},{"path":"touch-charts/touch-charts.js","type":"js"},{"path":"app.js","bundle":true,"update":"full","type":"js"}],"css":[{"path":"resources/css/app.css","update":"delta","type":"css"}]})</script>
     </head>
     <body>
 
         <div class="index x-loading-spinner">
-            <span class="x-loading-top"></span>
-            <span class="x-loading-right"></span>
-            <span class="x-loading-bottom"></span>
-            <span class="x-loading-left"></span>
+            <span class="x-loading-top" ></span>
+            <span class="x-loading-right" ></span>
+            <span class="x-loading-bottom" ></span>
+            <span class="x-loading-left" ></span>
         </div>
 
     </body>

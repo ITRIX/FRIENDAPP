@@ -68,27 +68,4 @@ Ext.define('FRIENDAPP.controller.Main', {
     }
 });
 
-document.addEventListener("backbutton", function(){
-    var mainController = FRIENDAPP.app.getController('Main');
-    var mainFrame = mainController.getMainFrameview();
-    
-    if(mainFrame.getActiveItem().xtype == 'MainFrameCalender'){
-        var mainFrameCal = FRIENDAPP.app.getController('Main').getMainFrameCal();
-        
-        if(mainFrameCal.getActiveItem().xtype !== 'touchcalendar'){
-            mainController.itemTap();
-            return;
-        }else{
-            Ext.Msg.confirm("My Pocket Finder Says", "Do you really want to exit?", function(res){
-                res = res.toLowerCase();
-                if(res == "yes")
-                    navigator.app.exitApp();
-            });
-        }
-    }
-    Ext.Msg.confirm("", "Do you really want to exit?", function(res){
-        res = res.toLowerCase();
-        if(res == "yes")
-            navigator.app.exitApp();
-    });
-},false);
+
