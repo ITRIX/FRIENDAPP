@@ -1,10 +1,7 @@
 //<debug>
 Ext.Loader.setPath({
     'Ext': 'sdk/src',
-
    'Ext.chart': 'touch-charts/src/chart'
-//    'Ext.draw': 'touch-charts/src/draw',
-//    'Ext.fx': 'touch-charts/src/fx'
 });
 //</debug>
 

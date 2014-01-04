@@ -50,7 +50,8 @@ Ext.define('FRIENDAPP.controller.PasswordChangeController', {
             });
             store.sync();
             store.load();
-            window.location.reload();
+            Ext.Viewport.remove(Ext.Viewport.getActiveItem(), true);
+            Ext.Viewport.add(Ext.create('FRIENDAPP.view.Main'));
         }
     },
     

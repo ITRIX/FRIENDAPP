@@ -29,7 +29,6 @@ config:{
         docked:'bottom',
         items:[
         {
-            // text:"Reset",
             ui:'plain',
             cls:'resetButton',
             iconCls:'resetIconCls',
@@ -38,7 +37,6 @@ config:{
             hidden:true
         },
         {
-            // text:"Delete",
             iconMask: true,
             ui:'plain',
             cls:'cancelButton',
@@ -51,7 +49,6 @@ config:{
         xtype:'spacer'
         },
         {
-            // text:"Save",
             cls:'saveButton',
             iconCls:'saveIconCls',
             ui:'plain',
@@ -60,7 +57,6 @@ config:{
             hidden:true
         },
         {
-            // text:"Update",
             cls:'editButton',
             ui:'plain',
             iconCls:'editIconCls',

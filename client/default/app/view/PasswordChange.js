@@ -42,7 +42,6 @@ Ext.define("FRIENDAPP.view.PasswordChange",{
           xtype:'spacer'
       },
       {
-        //text:"Save",
         cls:'saveButton',
         iconCls:'saveIconCls',
         ui:'plain',
@@ -51,7 +50,6 @@ Ext.define("FRIENDAPP.view.PasswordChange",{
        
       },
       {
-        //text:"Update",
         cls:'editButton',
         ui:'plain',
         iconCls:'editIconCls',

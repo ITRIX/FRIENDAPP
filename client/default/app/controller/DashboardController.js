@@ -120,7 +120,9 @@ Ext.define('FRIENDAPP.controller.DashboardController',{
    onPanelInit:function(panel){
        var self = this;
        panel.element.on('tap',function(){
-           self.getDashboard().hide();
+           if( self.getDashboard() ){
+            self.getDashboard().hide();
+           }          
        });
    },
 
