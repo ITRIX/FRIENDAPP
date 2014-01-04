@@ -1,0 +1,1 @@
+{"id":"1aadb080-1977-11e3-8085-d77e8400e67b","js":[{"path":"sdk/sencha-touch.js","type":"js"},{"path":"sdk/sencha-touch-all.js","type":"js"},{"path":"touch-charts/touch-charts.js","type":"js"},{"path":"app.js","bundle":true,"update":"full","type":"js"}],"css":[{"path":"resources/css/app.css","update":"delta","type":"css"}]}
