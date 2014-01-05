@@ -88,32 +88,6 @@ Ext.define('FRIENDAPP.controller.DashboardController',{
         }
     },
     
-    growDashboard:function(){
-        var self=this;
-        setTimeout(function(){
-            var height = self.getDashboard().getHeight()+40;
-            if(height < 135){
-                self.getDashboard().setHeight(height);
-                self.growDashboard();
-            }
-                
-        },1)
-    },
-    
-    shrinkDashboard:function(){
-        var self=this;
-        setTimeout(function(){
-            var height = self.getDashboard().getHeight()-40;
-            if(height > 0){
-                self.getDashboard().setHeight(height);
-                self.shrinkDashboard();
-            }else{
-                self.getDashboard().hide();
-            }
-                
-        },1)
-    },
-   
    /*
     * Initialize tap event to handle dashboard
     */
@@ -131,7 +105,7 @@ Ext.define('FRIENDAPP.controller.DashboardController',{
         }
         this.activeButton=button;
         button.addCls('activeCls');
-        
+
         var self = this;
         
         setTimeout(function(){
@@ -143,13 +117,13 @@ Ext.define('FRIENDAPP.controller.DashboardController',{
                     break;
         
                 case 'graph':
-                    self.getMainFrame().setActiveItem(1);
                     var store=Ext.getStore('DailyExpenseStore');
                     store.load();
                     store.clearFilter();
                     Ext.getStore('MonthStore').clearFilter();
                     FRIENDAPP.app.getController('GraphController').onGraphFilter(null,new Date());
                     self.getMonthChart().setData(Ext.getStore('MonthStore').getData());
+                    self.getMainFrame().setActiveItem(1);
                     break;
                     
                 case 'report':

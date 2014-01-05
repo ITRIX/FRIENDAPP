@@ -77,7 +77,7 @@ Ext.application({
                         });
                     }
                 }
-                Ext.Msg.confirm("", "Do you really want to exit?", function(res){
+                Ext.Msg.confirm("My Pocket Finder Says", "Do you really want to exit?", function(res){
                     res = res.toLowerCase();
                     if(res == "yes")
                         navigator.app.exitApp();
@@ -100,3 +100,42 @@ Ext.application({
         );
     }
 });
+
+if(Ext.os.is.Android && Ext.os.version.equals(4.0)) {
+
+        Ext.define('app.overrides.TouchGesture', {
+            override: 'Ext.event.publisher.TouchGesture',
+
+            reset: function(e){
+                if(Ext.os.version.equals(4.0) && this.currentTouchesCount > 0){
+                    e.changedTouches = Ext.Object.getValues(this.currentTouches);
+                    this.onTouchEnd(e);
+                }
+            }
+        });
+
+
+            window.orgPinchEndMethod = Ext.event.recognizer.Pinch.prototype.end;
+            Ext.define('app.overrides.Pinch', {
+            override: 'Ext.event.recognizer.Pinch',
+
+            end: function(e){
+            var wasTracking = this.isTracking,
+            result = window.orgPinchEndMethod.apply(this, arguments);
+            if(wasTracking){
+                this._resetDetection(e);
+            }
+            return result;
+        },
+
+            _resetDetection: function(e){
+                var tg = Ext.event.Dispatcher.getInstance().getPublishers().touchGesture;
+                setTimeout(function(){
+                    tg.reset(e);
+                }, 0);
+            }
+           });
+
+     }
+
+
