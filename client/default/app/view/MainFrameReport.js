@@ -11,7 +11,6 @@ Ext.define("FRIENDAPP.view.MainFrameReport", {
   'Ext.field.Select',
   'Ext.field.DatePicker'],
   xtype: 'MainFrameReport',
-  //id : 'MainPanel',
   config: {
     fullscreen: true,
     layout: 'card',

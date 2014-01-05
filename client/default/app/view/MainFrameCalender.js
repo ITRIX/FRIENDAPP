@@ -10,7 +10,6 @@ Ext.define("FRIENDAPP.view.MainFrameCalender", {
     
   ],
   xtype: 'MainFrameCalender',
-  //id : 'MainPanel',
   config: {
     fullscreen: true,
     layout: 'card',
@@ -33,7 +32,6 @@ Ext.define("FRIENDAPP.view.MainFrameCalender", {
        iconCls: 'back_arrow',
         action:'back',
         width:90,
-//        height:30,
         text:'BACK',
         itemId:'backButton'
       },

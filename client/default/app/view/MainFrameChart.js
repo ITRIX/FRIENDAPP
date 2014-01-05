@@ -7,7 +7,6 @@ Ext.define("FRIENDAPP.view.MainFrameChart", {
   extend: 'Ext.Panel',
   requires:["FRIENDAPP.view.GraphChart"],
   xtype: 'MainFrameChart',
-  //id : 'MainPanel',
   config: {
         
     fullscreen: true,
